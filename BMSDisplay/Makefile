@@ -47,11 +47,12 @@
 #APP_LIBS_LIST = Wire Wire/utility EEPROM Ethernet Ethernet/utility \
 	SPI Firmata LiquidCrystal Matrix Sprite SD SD/utility Servo SoftwareSerial Stepper 
 
-APP_LIBS_LIST = Wire Wire/utility EEPROM SD SD/utility SoftwareSerial
+APP_LIBS_LIST = Wire Wire/utility EEPROM SD SD/utility SoftwareSerial SPI
 
 # List users libraries here 
 
-USER_LIBS_LIST = Adafruit_RGB_LCD_Shield_Library Canbus
+#USER_LIBS_LIST = Adafruit_RGB_LCD_Shield_Library Canbus
+USER_LIBS_LIST = Adafruit_GFX  Adafruit_HX8340B
 # Time/Time Time/TimeAlarms Time/DS1307RTC
 
 MAKEFILE_PATH  = $(CURDIR)/Makefiles
