@@ -7,11 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D5200CE1650691000F3BF4E /* DefaultFonts.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5200C61650691000F3BF4E /* DefaultFonts.c */; };
+		9D5200CF1650691000F3BF4E /* HW_AVR_defines.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D5200C71650691000F3BF4E /* HW_AVR_defines.h */; };
+		9D5200D01650691000F3BF4E /* HW_AVR.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D5200C81650691000F3BF4E /* HW_AVR.h */; };
+		9D5200D11650691000F3BF4E /* HW_PIC32_defines.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D5200C91650691000F3BF4E /* HW_PIC32_defines.h */; };
+		9D5200D21650691000F3BF4E /* HW_PIC32.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D5200CA1650691000F3BF4E /* HW_PIC32.h */; };
+		9D5200D31650691000F3BF4E /* memorysaver.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D5200CB1650691000F3BF4E /* memorysaver.h */; };
+		9D5200D41650691000F3BF4E /* UTFT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5200CC1650691000F3BF4E /* UTFT.cpp */; };
+		9D5200D51650691000F3BF4E /* UTFT.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D5200CD1650691000F3BF4E /* UTFT.h */; };
+		9D5201201650A17F00F3BF4E /* SPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52011E1650A17F00F3BF4E /* SPI.cpp */; };
+		9D5201211650A17F00F3BF4E /* SPI.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D52011F1650A17F00F3BF4E /* SPI.h */; };
+		9D5201241653405100F3BF4E /* CorbGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201221653405100F3BF4E /* CorbGraphics.cpp */; };
+		9D52012B165341F100F3BF4E /* Adafruit_GFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D520126165341F100F3BF4E /* Adafruit_GFX.cpp */; };
+		9D52012C165341F100F3BF4E /* glcdfont.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D520128165341F100F3BF4E /* glcdfont.c */; };
 		9D77CBA91589994A0089EB0A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D77CBA81589994A0089EB0A /* main.cpp */; };
 		9D77CBAD1589994A0089EB0A /* LocalLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D77CBAC1589994A0089EB0A /* LocalLibrary.cpp */; };
 		9DCC753B1589A3A000564CB8 /* BMSDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */; };
-		9DCC76951589A3D300564CB8 /* Adafruit_GFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC75F81589A3D300564CB8 /* Adafruit_GFX.cpp */; };
-		9DCC76961589A3D300564CB8 /* glcdfont.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC75FA1589A3D300564CB8 /* glcdfont.c */; };
 		9DCC76971589A3D300564CB8 /* Adafruit_HX8340B.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC75FE1589A3D300564CB8 /* Adafruit_HX8340B.cpp */; };
 		9DCC76981589A3D300564CB8 /* Adafruit_MCP23017.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC760A1589A3D300564CB8 /* Adafruit_MCP23017.cpp */; };
 		9DCC76991589A3D300564CB8 /* Adafruit_MCP23017.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76151589A3D300564CB8 /* Adafruit_MCP23017.cpp */; };
@@ -19,7 +30,6 @@
 		9DCC769B1589A3D300564CB8 /* Canbus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76201589A3D300564CB8 /* Canbus.cpp */; };
 		9DCC769C1589A3D300564CB8 /* mcp2515.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76281589A3D300564CB8 /* mcp2515.c */; };
 		9DCC769D1589A3D300564CB8 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC762E1589A3D300564CB8 /* main.c */; };
-		9DCC769F1589A3D300564CB8 /* mcp2515.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76301589A3D300564CB8 /* mcp2515.c */; };
 		9DCC76A01589A3D300564CB8 /* uart.c in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76331589A3D300564CB8 /* uart.c */; };
 		9DCC76A11589A3D300564CB8 /* Menu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC763E1589A3D300564CB8 /* Menu.cpp */; };
 		9DCC76A21589A3D300564CB8 /* MenuItem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76401589A3D300564CB8 /* MenuItem.cpp */; };
@@ -35,7 +45,6 @@
 		9DCC76AC1589A3D300564CB8 /* DateStrings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76751589A3D300564CB8 /* DateStrings.cpp */; };
 		9DCC76AD1589A3D300564CB8 /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC768B1589A3D300564CB8 /* Time.cpp */; };
 		9DCC76AE1589A3D300564CB8 /* TimeAlarms.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76931589A3D300564CB8 /* TimeAlarms.cpp */; };
-		9DCC76AF1589A3E600564CB8 /* Adafruit_GFX.h in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC75F91589A3D300564CB8 /* Adafruit_GFX.h */; };
 		9DCC76B01589A40100564CB8 /* SD.h in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76611589A3D300564CB8 /* SD.h */; };
 		9DCC76B11589A40100564CB8 /* FatStructs.h in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76631589A3D300564CB8 /* FatStructs.h */; };
 		9DCC76B21589A40100564CB8 /* Sd2Card.h in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC76651589A3D300564CB8 /* Sd2Card.h */; };
@@ -49,6 +58,23 @@
 
 /* Begin PBXFileReference section */
 		9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Arduino Leonardo.xcconfig"; path = "Config/Arduino Leonardo.xcconfig"; sourceTree = "<group>"; };
+		9D5200C61650691000F3BF4E /* DefaultFonts.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = DefaultFonts.c; path = ../../../Documents/Arduino/Libraries/UTFT/DefaultFonts.c; sourceTree = "<group>"; };
+		9D5200C71650691000F3BF4E /* HW_AVR_defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HW_AVR_defines.h; path = ../../../Documents/Arduino/Libraries/UTFT/HW_AVR_defines.h; sourceTree = "<group>"; };
+		9D5200C81650691000F3BF4E /* HW_AVR.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HW_AVR.h; path = ../../../Documents/Arduino/Libraries/UTFT/HW_AVR.h; sourceTree = "<group>"; };
+		9D5200C91650691000F3BF4E /* HW_PIC32_defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HW_PIC32_defines.h; path = ../../../Documents/Arduino/Libraries/UTFT/HW_PIC32_defines.h; sourceTree = "<group>"; };
+		9D5200CA1650691000F3BF4E /* HW_PIC32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HW_PIC32.h; path = ../../../Documents/Arduino/Libraries/UTFT/HW_PIC32.h; sourceTree = "<group>"; };
+		9D5200CB1650691000F3BF4E /* memorysaver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = memorysaver.h; path = ../../../Documents/Arduino/Libraries/UTFT/memorysaver.h; sourceTree = "<group>"; };
+		9D5200CC1650691000F3BF4E /* UTFT.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UTFT.cpp; path = ../../../Documents/Arduino/Libraries/UTFT/UTFT.cpp; sourceTree = "<group>"; };
+		9D5200CD1650691000F3BF4E /* UTFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UTFT.h; path = ../../../Documents/Arduino/Libraries/UTFT/UTFT.h; sourceTree = "<group>"; };
+		9D52011E1650A17F00F3BF4E /* SPI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SPI.cpp; path = ../../../../Applications/Arduino.app/Contents/Resources/Java/libraries/SPI/SPI.cpp; sourceTree = "<group>"; };
+		9D52011F1650A17F00F3BF4E /* SPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPI.h; path = ../../../../Applications/Arduino.app/Contents/Resources/Java/libraries/SPI/SPI.h; sourceTree = "<group>"; };
+		9D5201221653405100F3BF4E /* CorbGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CorbGraphics.cpp; path = ../../../../Documents/Arduino/Libraries/CorbGraphics/CorbGraphics.cpp; sourceTree = "<group>"; };
+		9D5201231653405100F3BF4E /* CorbGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorbGraphics.h; path = ../../../../Documents/Arduino/Libraries/CorbGraphics/CorbGraphics.h; sourceTree = "<group>"; };
+		9D520126165341F100F3BF4E /* Adafruit_GFX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Adafruit_GFX.cpp; sourceTree = "<group>"; };
+		9D520127165341F100F3BF4E /* Adafruit_GFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adafruit_GFX.h; sourceTree = "<group>"; };
+		9D520128165341F100F3BF4E /* glcdfont.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glcdfont.c; sourceTree = "<group>"; };
+		9D520129165341F100F3BF4E /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		9D52012A165341F100F3BF4E /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		9D77CB9D1589994A0089EB0A /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D77CBA81589994A0089EB0A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BMSDisplay.cpp; sourceTree = "<group>"; };
@@ -73,11 +99,6 @@
 		9D77CDE41589994B0089EB0A /* Mpide.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = Mpide.mk; path = Makefiles/Mpide.mk; sourceTree = "<group>"; };
 		9D77CDE51589994B0089EB0A /* Wiring.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = Wiring.mk; path = Makefiles/Wiring.mk; sourceTree = "<group>"; };
 		9D77CDE61589994B0089EB0A /* Avrdude.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = Avrdude.mk; path = Makefiles/Avrdude.mk; sourceTree = "<group>"; };
-		9DCC75F81589A3D300564CB8 /* Adafruit_GFX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Adafruit_GFX.cpp; sourceTree = "<group>"; };
-		9DCC75F91589A3D300564CB8 /* Adafruit_GFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adafruit_GFX.h; sourceTree = "<group>"; };
-		9DCC75FA1589A3D300564CB8 /* glcdfont.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glcdfont.c; sourceTree = "<group>"; };
-		9DCC75FB1589A3D300564CB8 /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
-		9DCC75FC1589A3D300564CB8 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		9DCC75FE1589A3D300564CB8 /* Adafruit_HX8340B.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Adafruit_HX8340B.cpp; sourceTree = "<group>"; };
 		9DCC75FF1589A3D300564CB8 /* Adafruit_HX8340B.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adafruit_HX8340B.h; sourceTree = "<group>"; };
 		9DCC76021589A3D300564CB8 /* hx8340b.pde */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hx8340b.pde; sourceTree = "<group>"; };
@@ -185,10 +206,40 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		9D5200D61650691D00F3BF4E /* UTFT */ = {
+			isa = PBXGroup;
+			children = (
+				9D5200C61650691000F3BF4E /* DefaultFonts.c */,
+				9D5200C71650691000F3BF4E /* HW_AVR_defines.h */,
+				9D5200C81650691000F3BF4E /* HW_AVR.h */,
+				9D5200C91650691000F3BF4E /* HW_PIC32_defines.h */,
+				9D5200CA1650691000F3BF4E /* HW_PIC32.h */,
+				9D5200CB1650691000F3BF4E /* memorysaver.h */,
+				9D5200CC1650691000F3BF4E /* UTFT.cpp */,
+				9D5200CD1650691000F3BF4E /* UTFT.h */,
+			);
+			name = UTFT;
+			path = ../../../Projects/Arduino/BMSDisplay;
+			sourceTree = "<group>";
+		};
+		9D520125165341F100F3BF4E /* Adafruit-GFX-Library */ = {
+			isa = PBXGroup;
+			children = (
+				9D520126165341F100F3BF4E /* Adafruit_GFX.cpp */,
+				9D520127165341F100F3BF4E /* Adafruit_GFX.h */,
+				9D520128165341F100F3BF4E /* glcdfont.c */,
+				9D520129165341F100F3BF4E /* license.txt */,
+				9D52012A165341F100F3BF4E /* README.txt */,
+			);
+			path = "Adafruit-GFX-Library";
+			sourceTree = "<group>";
+		};
 		9D77CB94158999490089EB0A = {
 			isa = PBXGroup;
 			children = (
 				9DCC75F61589A3D300564CB8 /* Libraries */,
+				9D52011E1650A17F00F3BF4E /* SPI.cpp */,
+				9D52011F1650A17F00F3BF4E /* SPI.h */,
 				9D77CBA71589994A0089EB0A /* BMSDisplay */,
 				9D77CB9E1589994A0089EB0A /* Products */,
 			);
@@ -205,6 +256,8 @@
 		9D77CBA71589994A0089EB0A /* BMSDisplay */ = {
 			isa = PBXGroup;
 			children = (
+				9D5201221653405100F3BF4E /* CorbGraphics.cpp */,
+				9D5201231653405100F3BF4E /* CorbGraphics.h */,
 				9D77CBA81589994A0089EB0A /* main.cpp */,
 				9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */,
 				9D77CBAB1589994A0089EB0A /* LocalLibrary.h */,
@@ -252,7 +305,8 @@
 		9DCC75F61589A3D300564CB8 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				9DCC75F71589A3D300564CB8 /* Adafruit_GFX */,
+				9D5200D61650691D00F3BF4E /* UTFT */,
+				9D520125165341F100F3BF4E /* Adafruit-GFX-Library */,
 				9DCC75FD1589A3D300564CB8 /* Adafruit_HX8340B */,
 				9DCC76091589A3D300564CB8 /* Adafruit_MCP23017 */,
 				9DCC76141589A3D300564CB8 /* Adafruit_RGB_LCD_Shield_Library */,
@@ -264,18 +318,6 @@
 			);
 			name = Libraries;
 			path = ../../../Documents/Arduino/Libraries;
-			sourceTree = "<group>";
-		};
-		9DCC75F71589A3D300564CB8 /* Adafruit_GFX */ = {
-			isa = PBXGroup;
-			children = (
-				9DCC75F81589A3D300564CB8 /* Adafruit_GFX.cpp */,
-				9DCC75F91589A3D300564CB8 /* Adafruit_GFX.h */,
-				9DCC75FA1589A3D300564CB8 /* glcdfont.c */,
-				9DCC75FB1589A3D300564CB8 /* license.txt */,
-				9DCC75FC1589A3D300564CB8 /* README.txt */,
-			);
-			path = Adafruit_GFX;
 			sourceTree = "<group>";
 		};
 		9DCC75FD1589A3D300564CB8 /* Adafruit_HX8340B */ = {
@@ -911,6 +953,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D5201201650A17F00F3BF4E /* SPI.cpp in Sources */,
+				9D5201211650A17F00F3BF4E /* SPI.h in Sources */,
+				9D5200CE1650691000F3BF4E /* DefaultFonts.c in Sources */,
+				9D5200CF1650691000F3BF4E /* HW_AVR_defines.h in Sources */,
+				9D5200D01650691000F3BF4E /* HW_AVR.h in Sources */,
+				9D5200D11650691000F3BF4E /* HW_PIC32_defines.h in Sources */,
+				9D5200D21650691000F3BF4E /* HW_PIC32.h in Sources */,
+				9D5200D31650691000F3BF4E /* memorysaver.h in Sources */,
+				9D5200D41650691000F3BF4E /* UTFT.cpp in Sources */,
+				9D5200D51650691000F3BF4E /* UTFT.h in Sources */,
 				9DCC76B81589A41000564CB8 /* Canbus.h in Sources */,
 				9DCC76B01589A40100564CB8 /* SD.h in Sources */,
 				9DCC76B11589A40100564CB8 /* FatStructs.h in Sources */,
@@ -920,12 +972,9 @@
 				9DCC76B51589A40100564CB8 /* SdFatmainpage.h in Sources */,
 				9DCC76B61589A40100564CB8 /* SdFatUtil.h in Sources */,
 				9DCC76B71589A40100564CB8 /* SdInfo.h in Sources */,
-				9DCC76AF1589A3E600564CB8 /* Adafruit_GFX.h in Sources */,
 				9DCC753B1589A3A000564CB8 /* BMSDisplay.cpp in Sources */,
 				9D77CBA91589994A0089EB0A /* main.cpp in Sources */,
 				9D77CBAD1589994A0089EB0A /* LocalLibrary.cpp in Sources */,
-				9DCC76951589A3D300564CB8 /* Adafruit_GFX.cpp in Sources */,
-				9DCC76961589A3D300564CB8 /* glcdfont.c in Sources */,
 				9DCC76971589A3D300564CB8 /* Adafruit_HX8340B.cpp in Sources */,
 				9DCC76981589A3D300564CB8 /* Adafruit_MCP23017.cpp in Sources */,
 				9DCC76991589A3D300564CB8 /* Adafruit_MCP23017.cpp in Sources */,
@@ -933,7 +982,6 @@
 				9DCC769B1589A3D300564CB8 /* Canbus.cpp in Sources */,
 				9DCC769C1589A3D300564CB8 /* mcp2515.c in Sources */,
 				9DCC769D1589A3D300564CB8 /* main.c in Sources */,
-				9DCC769F1589A3D300564CB8 /* mcp2515.c in Sources */,
 				9DCC76A01589A3D300564CB8 /* uart.c in Sources */,
 				9DCC76A11589A3D300564CB8 /* Menu.cpp in Sources */,
 				9DCC76A21589A3D300564CB8 /* MenuItem.cpp in Sources */,
@@ -949,6 +997,9 @@
 				9DCC76AC1589A3D300564CB8 /* DateStrings.cpp in Sources */,
 				9DCC76AD1589A3D300564CB8 /* Time.cpp in Sources */,
 				9DCC76AE1589A3D300564CB8 /* TimeAlarms.cpp in Sources */,
+				9D5201241653405100F3BF4E /* CorbGraphics.cpp in Sources */,
+				9D52012B165341F100F3BF4E /* Adafruit_GFX.cpp in Sources */,
+				9D52012C165341F100F3BF4E /* glcdfont.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,7 +1008,7 @@
 /* Begin XCBuildConfiguration section */
 		9D77CDEE1589994B0089EB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */;
+			baseConfigurationReference = 9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
@@ -997,7 +1048,7 @@
 		};
 		9D77CDF11589994B0089EB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */;
+			baseConfigurationReference = 9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1012,7 +1063,7 @@
 		};
 		9D77CDF41589994B0089EB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */;
+			baseConfigurationReference = 9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
@@ -1025,7 +1076,7 @@
 		};
 		9D77CDF71589994B0089EB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */;
+			baseConfigurationReference = 9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
@@ -1038,7 +1089,7 @@
 		};
 		9D77CDFA1589994B0089EB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */;
+			baseConfigurationReference = 9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
@@ -1051,7 +1102,7 @@
 		};
 		9D77CDFD1589994B0089EB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */;
+			baseConfigurationReference = 9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
@@ -1064,7 +1115,7 @@
 		};
 		9D77CE001589994B0089EB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */;
+			baseConfigurationReference = 9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
@@ -1077,7 +1128,7 @@
 		};
 		9D77CE031589994B0089EB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */;
+			baseConfigurationReference = 9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;
@@ -1090,7 +1141,7 @@
 		};
 		9D77CE061589994B0089EB0A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D5200B7164DB6CB00F3BF4E /* Arduino Leonardo.xcconfig */;
+			baseConfigurationReference = 9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */;
 			buildSettings = {
 			};
 			name = Debug;

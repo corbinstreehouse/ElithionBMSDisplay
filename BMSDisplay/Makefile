@@ -51,8 +51,10 @@ APP_LIBS_LIST = Wire Wire/utility EEPROM SD SD/utility SoftwareSerial SPI
 
 # List users libraries here 
 
-#USER_LIBS_LIST = Adafruit_RGB_LCD_Shield_Library Canbus
-USER_LIBS_LIST = Adafruit_GFX  Adafruit_HX8340B
+#USER_LIBS_LIST = Adafruit_RGB_LCD_Shield_Library
+#USER_LIBS_LIST = Adafruit_GFX  Adafruit_HX8340B  UTFT Canbus
+#USER_LIBS_LIST = Adafruit-GFX-Library  Adafruit_HX8340B  Canbus
+USER_LIBS_LIST = CorbGraphics Canbus
 # Time/Time Time/TimeAlarms Time/DS1307RTC
 
 MAKEFILE_PATH  = $(CURDIR)/Makefiles
