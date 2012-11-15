@@ -20,7 +20,7 @@
 #include <stdint.h> // We can compile without this, but it kills xcode completion without it! it took me a while to discover that..
 
 //#include <SPI.h>
-//#include <UTFT.h>
+#include <UTFT.h>
 
 
 // Requires: display of at least 220x176 pixels.
@@ -43,8 +43,6 @@ extern uint8_t SevenSegNumFont[];
 #define DOWN   A3
 #define CLICK  A4
 #define LEFT   A5
-
-char buffer[512];  //Data will be temporarily stored to this buffer before being written to the file
 
 int CAN_BUS_LED2 = 8;
 int CAN_BUS_LED3 = 7;
@@ -69,8 +67,7 @@ static inline void setupCanbus() {
     digitalWrite(CLICK, HIGH);
 }
 
-/*
-UTFT myGLCD(ITDB22, 11, 13, 3, 9);   // Remember to change the model parameter to suit your display module!
+UTFT myGLCD(ADAFRUIT_2_2_TFT, 11, 13, 3, 9);   // Remember to change the model parameter to suit your display module!
 
 float g_stateOfCharge = 0;
 
@@ -107,6 +104,9 @@ enum _StatusKind {
 typedef uint8_t StatusKind;
 
 void printStatus(char *statusMessage, StatusKind statusKind) {
+#if DEBUG
+    Serial.println(statusMessage);
+#endif
     switch (statusKind) {
         case StatusKindNormal: {
             myGLCD.setBackColor(64, 64, 64);
@@ -133,77 +133,34 @@ void printStatus(char *statusMessage, StatusKind statusKind) {
     myGLCD.setFont(SmallFont);
     myGLCD.print(statusMessage, CENTER, 163);
 }
- */
-
-
-#include <CorbGraphics.h>
-
-// if we're using fast hardware SPI on an '328 or '168 arduino such
-// as an Uno, Duemilanove, Diecimila, etc then the MOSI and CLK
-// pins are 'fixed' in hardware. If you'rere using 'bitbang' (slower)
-// interfacing, you can change any of these pins as deired.
-#define TFT_MOSI  11		// SDI
-#define TFT_CLK   13		// SCL
-#define TFT_CS    10		// CS
-#define TFT_RESET  9		// RESET
-
-// Color definitions
-#define	BLACK           0x0000
-#define	BLUE            0x001F
-#define	RED             0xF800
-#define	GREEN           0x07E0
-#define CYAN            0x07FF
-#define MAGENTA         0xF81F
-#define YELLOW          0xFFE0
-#define WHITE           0xFFFF
-
-#include <SPI.h>
-#define TFT_CS    3		// CS
-#define TFT_RESET  9		// RESET
-
-// Option 2: must use the hardware SPI pins
-// (for UNO thats sclk = 13 and sid = 11) and pin 10 must be
-// an output. This is much faster - also required if you want
-// to use the microSD card (see the image drawing example)
-CorbGraphics display(TFT_RESET, TFT_CS);
-
-
+ 
 void setup() {
-    SPI.begin(); // needed?
-    
     Serial.begin(9600);
 #if DEBUG
     Serial.println("initialized");
 #endif
     
-//    setupLCD();
-//    printTitle("** BMS Display for Elithion **");
+    Serial.println("Doing setup");
+    setupLCD();
     
+    Serial.println("LCD setup");
+    printTitle("** BMS Display for Elithion **");
+
     setupCanbus();
 //    updateSOCDisplay();
 
-  
-    display.begin();
-
-    display.fillScreen(BLACK);
-    display.setCursor(0,40);
-    display.print("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur adipiscing ante sed nibh tincidunt feugiat. Maecenas enim massa");
-    delay(1000);
-    
-    display.setCursor(0,0);
-    
     if (Canbus.init(CANSPEED_500)) {
-        display.print("Canb bus init");
-      //  printStatus("Can bus initialized", StatusKindNormal);
+        printStatus("Can bus initialized", StatusKindNormal);
     } else {
-       // printStatus("FAILED CAN BUS INIT", StatusKindError);
-        display.print("Canb bus FAILED init");
+        printStatus("FAILED CAN BUS INIT", StatusKindError);
         delay(1000); // Show it for 5 seconds...
     }
     
 
-//    updateSOCDisplay();
+    updateSOCDisplay();
 }
+
+char buffer[512];  //Data will be temporarily stored to this buffer before being written to the file
 
 void loop() {
 #if DEBUG
