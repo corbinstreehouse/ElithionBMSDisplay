@@ -858,7 +858,7 @@
 		};
 		9D77CBA41589994A0089EB0A /* Clean */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "clean -C $(PROJECT)";
+			buildArgumentsString = clean;
 			buildConfigurationList = 9D77CDFF1589994B0089EB0A /* Build configuration list for PBXLegacyTarget "Clean" */;
 			buildPhases = (
 			);
