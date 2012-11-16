@@ -67,7 +67,6 @@
 		9D5203231656C3E200F3BF4E /* WMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5203101656C3E200F3BF4E /* WMath.cpp */; };
 		9D5203241656C3E200F3BF4E /* WString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5203111656C3E200F3BF4E /* WString.cpp */; };
 		9D77CBA91589994A0089EB0A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D77CBA81589994A0089EB0A /* main.cpp */; };
-		9D77CBAD1589994A0089EB0A /* LocalLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D77CBAC1589994A0089EB0A /* LocalLibrary.cpp */; };
 		9DCC753B1589A3A000564CB8 /* BMSDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */; };
 		9DCC76971589A3D300564CB8 /* Adafruit_HX8340B.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC75FE1589A3D300564CB8 /* Adafruit_HX8340B.cpp */; };
 		9DCC76981589A3D300564CB8 /* Adafruit_MCP23017.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9DCC760A1589A3D300564CB8 /* Adafruit_MCP23017.cpp */; };
@@ -468,8 +467,6 @@
 		9D77CB9D1589994A0089EB0A /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D77CBA81589994A0089EB0A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BMSDisplay.cpp; sourceTree = "<group>"; };
-		9D77CBAB1589994A0089EB0A /* LocalLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalLibrary.h; sourceTree = "<group>"; };
-		9D77CBAC1589994A0089EB0A /* LocalLibrary.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LocalLibrary.cpp; sourceTree = "<group>"; };
 		9D77CDD31589994B0089EB0A /* Arduino mega2560.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Arduino mega2560.xcconfig"; path = "Config/Arduino mega2560.xcconfig"; sourceTree = "<group>"; };
 		9D77CDD41589994B0089EB0A /* Arduino mini pro.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Arduino mini pro.xcconfig"; path = "Config/Arduino mini pro.xcconfig"; sourceTree = "<group>"; };
 		9D77CDD51589994B0089EB0A /* Arduino UNO.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Arduino UNO.xcconfig"; path = "Config/Arduino UNO.xcconfig"; sourceTree = "<group>"; };
@@ -1821,8 +1818,6 @@
 			children = (
 				9D77CBA81589994A0089EB0A /* main.cpp */,
 				9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */,
-				9D77CBAB1589994A0089EB0A /* LocalLibrary.h */,
-				9D77CBAC1589994A0089EB0A /* LocalLibrary.cpp */,
 				9D77CDDC1589994B0089EB0A /* Makefile */,
 				9D77CDD21589994B0089EB0A /* Config */,
 				9D77CDDD1589994B0089EB0A /* Makefiles */,
@@ -2535,7 +2530,6 @@
 				9DCC76B71589A40100564CB8 /* SdInfo.h in Sources */,
 				9DCC753B1589A3A000564CB8 /* BMSDisplay.cpp in Sources */,
 				9D77CBA91589994A0089EB0A /* main.cpp in Sources */,
-				9D77CBAD1589994A0089EB0A /* LocalLibrary.cpp in Sources */,
 				9DCC76971589A3D300564CB8 /* Adafruit_HX8340B.cpp in Sources */,
 				9DCC76981589A3D300564CB8 /* Adafruit_MCP23017.cpp in Sources */,
 				9DCC76991589A3D300564CB8 /* Adafruit_MCP23017.cpp in Sources */,
