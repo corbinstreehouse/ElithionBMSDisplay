@@ -47,9 +47,9 @@ extern uint8_t SevenSegNumFont[];
 int CAN_BUS_LED2 = 8;
 int CAN_BUS_LED3 = 7;
 
-CanbusClass Canbus;
+CanbusClass g_canBus;
 
-static inline void setupCanbus() {
+static inline void setupCanbusPins() {
     pinMode(CAN_BUS_LED2, OUTPUT);
     pinMode(CAN_BUS_LED3, OUTPUT);
     
@@ -69,31 +69,32 @@ static inline void setupCanbus() {
     digitalWrite(CLICK, HIGH);
 }
 
-UTFT myGLCD(ADAFRUIT_2_2_TFT, 11, 13, 3, 9);   // Remember to change the model parameter to suit your display module!
+UTFT g_display(ADAFRUIT_2_2_TFT, 11, 13, 3, 9);   // Remember to change the model parameter to suit your display module!
 
 float g_stateOfCharge = 0;
 
 static inline void setupLCD() {
     //randomSeed(analogRead(0));
-    myGLCD.InitLCD();
-    myGLCD.clrScr();
+    g_display.InitLCD();
+    g_display.clrScr();
 }
 
 void updateSOCDisplay() {
-    myGLCD.setBackColor(0, 0, 0); // black
-    myGLCD.setColor(255,255,255); // white
-    myGLCD.setFont(SevenSegNumFont);
-    myGLCD.print("100", CENTER, 50);
+    g_display.setBackColor(0, 0, 0); // black
+    g_display.setColor(255,255,255); // white
+    g_display.setFont(SevenSegNumFont);
+    int soc = g_canBus.stateOfCharge();
+    g_display.printNumI(soc, CENTER, 50);
 }
 
 static inline void printTitle(char *title) {
-    myGLCD.setBackColor(64, 64, 64);
-    myGLCD.setColor(64, 64, 64);
-    myGLCD.fillRect(0, 0, SCREEN_WIDTH - 1, 13);
+    g_display.setBackColor(64, 64, 64);
+    g_display.setColor(64, 64, 64);
+    g_display.fillRect(0, 0, SCREEN_WIDTH - 1, 13);
     
-    myGLCD.setColor(255, 255, 255);
-    myGLCD.setFont(SmallFont);
-    myGLCD.print(title, CENTER, 1);
+    g_display.setColor(255, 255, 255);
+    g_display.setFont(SmallFont);
+    g_display.print(title, CENTER, 1);
 }
 
 
@@ -111,30 +112,32 @@ void printStatus(char *statusMessage, StatusKind statusKind) {
 #endif
     switch (statusKind) {
         case StatusKindNormal: {
-            myGLCD.setBackColor(64, 64, 64);
-            myGLCD.setColor(64, 64, 64);
+            g_display.setBackColor(64, 64, 64);
+            g_display.setColor(64, 64, 64);
             break;
         }
         case StatusKindWarning: {
 #warning TODO: appropriate color
-            myGLCD.setBackColor(64, 64, 64);
-            myGLCD.setColor(64, 64, 64);
+            g_display.setBackColor(64, 64, 64);
+            g_display.setColor(64, 64, 64);
             break;
         }
         default:
         case StatusKindError: {
-            myGLCD.setBackColor(255, 0, 0); // red background
-            myGLCD.setColor(255, 0, 0);
+            g_display.setBackColor(255, 0, 0); // red background
+            g_display.setColor(255, 0, 0);
             break;
         }
     }
     //Fill a square at the top
-    myGLCD.fillRect(0, 162, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    g_display.fillRect(0, 162, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
  
-    myGLCD.setColor(255, 255, 255); // white text
-    myGLCD.setFont(SmallFont);
-    myGLCD.print(statusMessage, CENTER, 163);
+    g_display.setColor(255, 255, 255); // white text
+    g_display.setFont(SmallFont);
+    g_display.print(statusMessage, CENTER, 163);
 }
+
+#define ELITHION_CAN_SPEED CanSpeed500 // TODO: this should be an option!
  
 void setup() {
     Serial.begin(9600);
@@ -146,72 +149,26 @@ void setup() {
     
     printTitle("** BMS Display for Elithion **");
 
-    setupCanbus();
-    updateSOCDisplay();
+    setupCanbusPins();
 
-    if (Canbus.init(CANSPEED_500)) {
+    if (g_canBus.init(ELITHION_CAN_SPEED)) {
         printStatus("Can bus initialized", StatusKindNormal);
     } else {
         printStatus("FAILED CAN BUS INIT", StatusKindError);
-        delay(1000); // Show it for 5 seconds...
+        delay(5000); // Show it for 5 seconds
     }
-    
-
-    updateSOCDisplay();
 }
 
-char buffer[512];  //Data will be temporarily stored to this buffer before being written to the file
-
 void loop() {
-//    printStatus("Looping...", StatusKindNormal);
-#if DEBUG
-//    Serial.println("loop");
-#endif
-
-    delay(100);
+    // High when it is doing work
     digitalWrite(CAN_BUS_LED3, HIGH);
+    updateSOCDisplay();
     
-    if(Canbus.ecu_req(ENGINE_RPM,buffer) == 1)          // Request for engine RPM
-  {
-//    sLCD.write(COMMAND);                   // Move LCD cursor to line 0 
-//    sLCD.write(LINE0);
-    Serial.println(buffer);                         // Display data on LCD
-   
     
-  }
-
-  if(Canbus.ecu_req(VEHICLE_SPEED,buffer) == 1)
-  {
-//    sLCD.write(COMMAND);
-//    sLCD.write(LINE0 + 9);
-    Serial.println(buffer);
-   
-  }
-  
-  if(Canbus.ecu_req(ENGINE_COOLANT_TEMP,buffer) == 1)
-  {
-//    sLCD.write(COMMAND);
-//    sLCD.write(LINE1);                     // Move LCD cursor to line 1 
-    Serial.println(buffer);
-   
-   
-  }
-  
-  if(Canbus.ecu_req(THROTTLE,buffer) == 1)
-  {
-//    sLCD.write(COMMAND);
-//    sLCD.write(LINE1 + 9);
-    Serial.println(buffer);
-//     file.print(buffer);
-  }
-//  Canbus.ecu_req(O2_VOLTAGE,buffer);
-     
-   
+    
     delay(100);
-   digitalWrite(CAN_BUS_LED3, LOW);
-   
-   
-
+    digitalWrite(CAN_BUS_LED3, LOW);
+    delay(100);
 }
 
 

@@ -17,9 +17,55 @@
 		9D5200D51650691000F3BF4E /* UTFT.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D5200CD1650691000F3BF4E /* UTFT.h */; };
 		9D5201201650A17F00F3BF4E /* SPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52011E1650A17F00F3BF4E /* SPI.cpp */; };
 		9D5201211650A17F00F3BF4E /* SPI.h in Sources */ = {isa = PBXBuildFile; fileRef = 9D52011F1650A17F00F3BF4E /* SPI.h */; };
-		9D5201241653405100F3BF4E /* CorbGraphics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201221653405100F3BF4E /* CorbGraphics.cpp */; };
 		9D52012B165341F100F3BF4E /* Adafruit_GFX.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D520126165341F100F3BF4E /* Adafruit_GFX.cpp */; };
 		9D52012C165341F100F3BF4E /* glcdfont.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D520128165341F100F3BF4E /* glcdfont.c */; };
+		9D5202301656C30E00F3BF4E /* EEPROM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201381656C30E00F3BF4E /* EEPROM.cpp */; };
+		9D5202311656C30E00F3BF4E /* Dhcp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201431656C30E00F3BF4E /* Dhcp.cpp */; };
+		9D5202321656C30E00F3BF4E /* Dns.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201451656C30E00F3BF4E /* Dns.cpp */; };
+		9D5202331656C30E00F3BF4E /* Ethernet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201471656C30E00F3BF4E /* Ethernet.cpp */; };
+		9D5202341656C30E00F3BF4E /* EthernetClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201491656C30E00F3BF4E /* EthernetClient.cpp */; };
+		9D5202351656C30E00F3BF4E /* EthernetServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52014B1656C30E00F3BF4E /* EthernetServer.cpp */; };
+		9D5202361656C30E00F3BF4E /* EthernetUdp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52014D1656C30E00F3BF4E /* EthernetUdp.cpp */; };
+		9D5202371656C30E00F3BF4E /* socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52016F1656C30E00F3BF4E /* socket.cpp */; };
+		9D5202381656C30E00F3BF4E /* w5100.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201711656C30E00F3BF4E /* w5100.cpp */; };
+		9D5202391656C30E00F3BF4E /* Firmata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52018A1656C30E00F3BF4E /* Firmata.cpp */; };
+		9D52023A1656C30E00F3BF4E /* LiquidCrystal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201A61656C30E00F3BF4E /* LiquidCrystal.cpp */; };
+		9D52023B1656C30E00F3BF4E /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201B61656C30E00F3BF4E /* File.cpp */; };
+		9D52023C1656C30E00F3BF4E /* SD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201B91656C30E00F3BF4E /* SD.cpp */; };
+		9D52023D1656C30E00F3BF4E /* Sd2Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201BD1656C30E00F3BF4E /* Sd2Card.cpp */; };
+		9D52023E1656C30E00F3BF4E /* SdFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201C31656C30E00F3BF4E /* SdFile.cpp */; };
+		9D52023F1656C30E00F3BF4E /* SdVolume.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201C51656C30E00F3BF4E /* SdVolume.cpp */; };
+		9D5202401656C30E00F3BF4E /* Servo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201CD1656C30E00F3BF4E /* Servo.cpp */; };
+		9D5202411656C30E00F3BF4E /* SoftwareSerial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201D61656C30E00F3BF4E /* SoftwareSerial.cpp */; };
+		9D5202421656C30E00F3BF4E /* SPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201E11656C30E00F3BF4E /* SPI.cpp */; };
+		9D5202431656C30E00F3BF4E /* Stepper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5201EE1656C30E00F3BF4E /* Stepper.cpp */; };
+		9D5202441656C30E00F3BF4E /* server_drv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52020B1656C30E00F3BF4E /* server_drv.cpp */; };
+		9D5202451656C30E00F3BF4E /* socket.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D52020D1656C30E00F3BF4E /* socket.c */; };
+		9D5202461656C30E00F3BF4E /* spi_drv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52020F1656C30E00F3BF4E /* spi_drv.cpp */; };
+		9D5202471656C30E00F3BF4E /* wifi_drv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202111656C30E00F3BF4E /* wifi_drv.cpp */; };
+		9D5202481656C30E00F3BF4E /* WiFi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202161656C30E00F3BF4E /* WiFi.cpp */; };
+		9D5202491656C30E00F3BF4E /* WiFiClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202181656C30E00F3BF4E /* WiFiClient.cpp */; };
+		9D52024A1656C30E00F3BF4E /* WiFiServer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52021A1656C30E00F3BF4E /* WiFiServer.cpp */; };
+		9D52024B1656C30E00F3BF4E /* twi.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D52022C1656C30E00F3BF4E /* twi.c */; };
+		9D52024C1656C30E00F3BF4E /* Wire.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D52022E1656C30E00F3BF4E /* Wire.cpp */; };
+		9D5203131656C3E200F3BF4E /* CDC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202F11656C3E200F3BF4E /* CDC.cpp */; };
+		9D5203141656C3E200F3BF4E /* HardwareSerial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202F31656C3E200F3BF4E /* HardwareSerial.cpp */; };
+		9D5203151656C3E200F3BF4E /* HID.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202F51656C3E200F3BF4E /* HID.cpp */; };
+		9D5203161656C3E200F3BF4E /* IPAddress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202F61656C3E200F3BF4E /* IPAddress.cpp */; };
+		9D5203171656C3E200F3BF4E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202F81656C3E200F3BF4E /* main.cpp */; };
+		9D5203181656C3E200F3BF4E /* new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202F91656C3E200F3BF4E /* new.cpp */; };
+		9D5203191656C3E200F3BF4E /* Print.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5202FC1656C3E200F3BF4E /* Print.cpp */; };
+		9D52031A1656C3E200F3BF4E /* Stream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5203001656C3E200F3BF4E /* Stream.cpp */; };
+		9D52031B1656C3E200F3BF4E /* Tone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5203021656C3E200F3BF4E /* Tone.cpp */; };
+		9D52031C1656C3E200F3BF4E /* USBCore.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5203051656C3E200F3BF4E /* USBCore.cpp */; };
+		9D52031D1656C3E200F3BF4E /* WInterrupts.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D5203091656C3E200F3BF4E /* WInterrupts.c */; };
+		9D52031E1656C3E200F3BF4E /* wiring.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D52030A1656C3E200F3BF4E /* wiring.c */; };
+		9D52031F1656C3E200F3BF4E /* wiring_analog.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D52030B1656C3E200F3BF4E /* wiring_analog.c */; };
+		9D5203201656C3E200F3BF4E /* wiring_digital.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D52030C1656C3E200F3BF4E /* wiring_digital.c */; };
+		9D5203211656C3E200F3BF4E /* wiring_pulse.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D52030E1656C3E200F3BF4E /* wiring_pulse.c */; };
+		9D5203221656C3E200F3BF4E /* wiring_shift.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D52030F1656C3E200F3BF4E /* wiring_shift.c */; };
+		9D5203231656C3E200F3BF4E /* WMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5203101656C3E200F3BF4E /* WMath.cpp */; };
+		9D5203241656C3E200F3BF4E /* WString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D5203111656C3E200F3BF4E /* WString.cpp */; };
 		9D77CBA91589994A0089EB0A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D77CBA81589994A0089EB0A /* main.cpp */; };
 		9D77CBAD1589994A0089EB0A /* LocalLibrary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D77CBAC1589994A0089EB0A /* LocalLibrary.cpp */; };
 		9DCC753B1589A3A000564CB8 /* BMSDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */; };
@@ -68,13 +114,357 @@
 		9D5200CD1650691000F3BF4E /* UTFT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UTFT.h; path = ../../../Documents/Arduino/Libraries/UTFT/UTFT.h; sourceTree = "<group>"; };
 		9D52011E1650A17F00F3BF4E /* SPI.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SPI.cpp; path = ../../../../Applications/Arduino.app/Contents/Resources/Java/libraries/SPI/SPI.cpp; sourceTree = "<group>"; };
 		9D52011F1650A17F00F3BF4E /* SPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SPI.h; path = ../../../../Applications/Arduino.app/Contents/Resources/Java/libraries/SPI/SPI.h; sourceTree = "<group>"; };
-		9D5201221653405100F3BF4E /* CorbGraphics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CorbGraphics.cpp; path = ../../../../Documents/Arduino/Libraries/CorbGraphics/CorbGraphics.cpp; sourceTree = "<group>"; };
-		9D5201231653405100F3BF4E /* CorbGraphics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CorbGraphics.h; path = ../../../../Documents/Arduino/Libraries/CorbGraphics/CorbGraphics.h; sourceTree = "<group>"; };
 		9D520126165341F100F3BF4E /* Adafruit_GFX.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Adafruit_GFX.cpp; sourceTree = "<group>"; };
 		9D520127165341F100F3BF4E /* Adafruit_GFX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Adafruit_GFX.h; sourceTree = "<group>"; };
 		9D520128165341F100F3BF4E /* glcdfont.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glcdfont.c; sourceTree = "<group>"; };
 		9D520129165341F100F3BF4E /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
 		9D52012A165341F100F3BF4E /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		9D5201381656C30E00F3BF4E /* EEPROM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EEPROM.cpp; sourceTree = "<group>"; };
+		9D5201391656C30E00F3BF4E /* EEPROM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEPROM.h; sourceTree = "<group>"; };
+		9D52013C1656C30E00F3BF4E /* eeprom_clear.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eeprom_clear.ino; sourceTree = "<group>"; };
+		9D52013E1656C30E00F3BF4E /* eeprom_read.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eeprom_read.ino; sourceTree = "<group>"; };
+		9D5201401656C30E00F3BF4E /* eeprom_write.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = eeprom_write.ino; sourceTree = "<group>"; };
+		9D5201411656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D5201431656C30E00F3BF4E /* Dhcp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dhcp.cpp; sourceTree = "<group>"; };
+		9D5201441656C30E00F3BF4E /* Dhcp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dhcp.h; sourceTree = "<group>"; };
+		9D5201451656C30E00F3BF4E /* Dns.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dns.cpp; sourceTree = "<group>"; };
+		9D5201461656C30E00F3BF4E /* Dns.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dns.h; sourceTree = "<group>"; };
+		9D5201471656C30E00F3BF4E /* Ethernet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Ethernet.cpp; sourceTree = "<group>"; };
+		9D5201481656C30E00F3BF4E /* Ethernet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ethernet.h; sourceTree = "<group>"; };
+		9D5201491656C30E00F3BF4E /* EthernetClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EthernetClient.cpp; sourceTree = "<group>"; };
+		9D52014A1656C30E00F3BF4E /* EthernetClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EthernetClient.h; sourceTree = "<group>"; };
+		9D52014B1656C30E00F3BF4E /* EthernetServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EthernetServer.cpp; sourceTree = "<group>"; };
+		9D52014C1656C30E00F3BF4E /* EthernetServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EthernetServer.h; sourceTree = "<group>"; };
+		9D52014D1656C30E00F3BF4E /* EthernetUdp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EthernetUdp.cpp; sourceTree = "<group>"; };
+		9D52014E1656C30E00F3BF4E /* EthernetUdp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EthernetUdp.h; sourceTree = "<group>"; };
+		9D5201511656C30E00F3BF4E /* BarometricPressureWebServer.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarometricPressureWebServer.ino; sourceTree = "<group>"; };
+		9D5201531656C30E00F3BF4E /* ChatServer.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChatServer.ino; sourceTree = "<group>"; };
+		9D5201551656C30E00F3BF4E /* DhcpAddressPrinter.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DhcpAddressPrinter.ino; sourceTree = "<group>"; };
+		9D5201571656C30E00F3BF4E /* DhcpChatServer.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DhcpChatServer.ino; sourceTree = "<group>"; };
+		9D5201591656C30E00F3BF4E /* DnsWebClient.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DnsWebClient.ino; sourceTree = "<group>"; };
+		9D52015B1656C30E00F3BF4E /* PachubeClient.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PachubeClient.ino; sourceTree = "<group>"; };
+		9D52015D1656C30E00F3BF4E /* PachubeClientString.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PachubeClientString.ino; sourceTree = "<group>"; };
+		9D52015F1656C30E00F3BF4E /* TelnetClient.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TelnetClient.ino; sourceTree = "<group>"; };
+		9D5201611656C30E00F3BF4E /* TwitterClient.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TwitterClient.ino; sourceTree = "<group>"; };
+		9D5201631656C30E00F3BF4E /* UdpNtpClient.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UdpNtpClient.ino; sourceTree = "<group>"; };
+		9D5201651656C30E00F3BF4E /* UDPSendReceiveString.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = UDPSendReceiveString.ino; sourceTree = "<group>"; };
+		9D5201671656C30E00F3BF4E /* WebClient.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebClient.ino; sourceTree = "<group>"; };
+		9D5201691656C30E00F3BF4E /* WebClientRepeating.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebClientRepeating.ino; sourceTree = "<group>"; };
+		9D52016B1656C30E00F3BF4E /* WebServer.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebServer.ino; sourceTree = "<group>"; };
+		9D52016C1656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D52016D1656C30E00F3BF4E /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		9D52016F1656C30E00F3BF4E /* socket.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = socket.cpp; sourceTree = "<group>"; };
+		9D5201701656C30E00F3BF4E /* socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.h; sourceTree = "<group>"; };
+		9D5201711656C30E00F3BF4E /* w5100.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = w5100.cpp; sourceTree = "<group>"; };
+		9D5201721656C30E00F3BF4E /* w5100.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = w5100.h; sourceTree = "<group>"; };
+		9D5201741656C30E00F3BF4E /* Boards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boards.h; sourceTree = "<group>"; };
+		9D5201771656C30E00F3BF4E /* AllInputsFirmata.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AllInputsFirmata.ino; sourceTree = "<group>"; };
+		9D5201791656C30E00F3BF4E /* AnalogFirmata.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnalogFirmata.ino; sourceTree = "<group>"; };
+		9D52017B1656C30E00F3BF4E /* EchoString.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = EchoString.ino; sourceTree = "<group>"; };
+		9D52017D1656C30E00F3BF4E /* I2CFirmata.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = I2CFirmata.ino; sourceTree = "<group>"; };
+		9D52017F1656C30E00F3BF4E /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		9D5201801656C30E00F3BF4E /* OldStandardFirmata.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldStandardFirmata.ino; sourceTree = "<group>"; };
+		9D5201821656C30E00F3BF4E /* ServoFirmata.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ServoFirmata.ino; sourceTree = "<group>"; };
+		9D5201841656C30E00F3BF4E /* SimpleAnalogFirmata.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleAnalogFirmata.ino; sourceTree = "<group>"; };
+		9D5201861656C30E00F3BF4E /* SimpleDigitalFirmata.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SimpleDigitalFirmata.ino; sourceTree = "<group>"; };
+		9D5201881656C30E00F3BF4E /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		9D5201891656C30E00F3BF4E /* StandardFirmata.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = StandardFirmata.ino; sourceTree = "<group>"; };
+		9D52018A1656C30E00F3BF4E /* Firmata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Firmata.cpp; sourceTree = "<group>"; };
+		9D52018B1656C30E00F3BF4E /* Firmata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Firmata.h; sourceTree = "<group>"; };
+		9D52018C1656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D52018D1656C30E00F3BF4E /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		9D52018E1656C30E00F3BF4E /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		9D5201921656C30E00F3BF4E /* Autoscroll.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Autoscroll.ino; sourceTree = "<group>"; };
+		9D5201941656C30E00F3BF4E /* Blink.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Blink.ino; sourceTree = "<group>"; };
+		9D5201961656C30E00F3BF4E /* Cursor.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cursor.ino; sourceTree = "<group>"; };
+		9D5201981656C30E00F3BF4E /* CustomCharacter.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CustomCharacter.ino; sourceTree = "<group>"; };
+		9D52019A1656C30E00F3BF4E /* Display.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Display.ino; sourceTree = "<group>"; };
+		9D52019C1656C30E00F3BF4E /* HelloWorld.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HelloWorld.ino; sourceTree = "<group>"; };
+		9D52019E1656C30E00F3BF4E /* Scroll.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Scroll.ino; sourceTree = "<group>"; };
+		9D5201A01656C30E00F3BF4E /* SerialDisplay.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SerialDisplay.ino; sourceTree = "<group>"; };
+		9D5201A21656C30E00F3BF4E /* setCursor.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = setCursor.ino; sourceTree = "<group>"; };
+		9D5201A41656C30E00F3BF4E /* TextDirection.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TextDirection.ino; sourceTree = "<group>"; };
+		9D5201A51656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D5201A61656C30E00F3BF4E /* LiquidCrystal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiquidCrystal.cpp; sourceTree = "<group>"; };
+		9D5201A71656C30E00F3BF4E /* LiquidCrystal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiquidCrystal.h; sourceTree = "<group>"; };
+		9D5201AB1656C30E00F3BF4E /* CardInfo.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CardInfo.ino; sourceTree = "<group>"; };
+		9D5201AD1656C30E00F3BF4E /* Datalogger.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Datalogger.ino; sourceTree = "<group>"; };
+		9D5201AF1656C30E00F3BF4E /* DumpFile.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DumpFile.ino; sourceTree = "<group>"; };
+		9D5201B11656C30E00F3BF4E /* Files.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Files.ino; sourceTree = "<group>"; };
+		9D5201B31656C30E00F3BF4E /* listfiles.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = listfiles.ino; sourceTree = "<group>"; };
+		9D5201B51656C30E00F3BF4E /* ReadWrite.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadWrite.ino; sourceTree = "<group>"; };
+		9D5201B61656C30E00F3BF4E /* File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = File.cpp; sourceTree = "<group>"; };
+		9D5201B71656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D5201B81656C30E00F3BF4E /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		9D5201B91656C30E00F3BF4E /* SD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SD.cpp; sourceTree = "<group>"; };
+		9D5201BA1656C30E00F3BF4E /* SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SD.h; sourceTree = "<group>"; };
+		9D5201BC1656C30E00F3BF4E /* FatStructs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FatStructs.h; sourceTree = "<group>"; };
+		9D5201BD1656C30E00F3BF4E /* Sd2Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sd2Card.cpp; sourceTree = "<group>"; };
+		9D5201BE1656C30E00F3BF4E /* Sd2Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sd2Card.h; sourceTree = "<group>"; };
+		9D5201BF1656C30E00F3BF4E /* Sd2PinMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sd2PinMap.h; sourceTree = "<group>"; };
+		9D5201C01656C30E00F3BF4E /* SdFat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SdFat.h; sourceTree = "<group>"; };
+		9D5201C11656C30E00F3BF4E /* SdFatmainpage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SdFatmainpage.h; sourceTree = "<group>"; };
+		9D5201C21656C30E00F3BF4E /* SdFatUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SdFatUtil.h; sourceTree = "<group>"; };
+		9D5201C31656C30E00F3BF4E /* SdFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdFile.cpp; sourceTree = "<group>"; };
+		9D5201C41656C30E00F3BF4E /* SdInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SdInfo.h; sourceTree = "<group>"; };
+		9D5201C51656C30E00F3BF4E /* SdVolume.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SdVolume.cpp; sourceTree = "<group>"; };
+		9D5201C91656C30E00F3BF4E /* Knob.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Knob.ino; sourceTree = "<group>"; };
+		9D5201CB1656C30E00F3BF4E /* Sweep.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sweep.ino; sourceTree = "<group>"; };
+		9D5201CC1656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D5201CD1656C30E00F3BF4E /* Servo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Servo.cpp; sourceTree = "<group>"; };
+		9D5201CE1656C30E00F3BF4E /* Servo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Servo.h; sourceTree = "<group>"; };
+		9D5201D21656C30E00F3BF4E /* SoftwareSerialExample.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SoftwareSerialExample.ino; sourceTree = "<group>"; };
+		9D5201D41656C30E00F3BF4E /* TwoPortReceive.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TwoPortReceive.ino; sourceTree = "<group>"; };
+		9D5201D51656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D5201D61656C30E00F3BF4E /* SoftwareSerial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoftwareSerial.cpp; sourceTree = "<group>"; };
+		9D5201D71656C30E00F3BF4E /* SoftwareSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareSerial.h; sourceTree = "<group>"; };
+		9D5201DC1656C30E00F3BF4E /* BarometricPressureSensor.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarometricPressureSensor.ino; sourceTree = "<group>"; };
+		9D5201DD1656C30E00F3BF4E /* BarometricPressureSensor.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BarometricPressureSensor.ino; sourceTree = "<group>"; };
+		9D5201DF1656C30E00F3BF4E /* DigitalPotControl.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DigitalPotControl.ino; sourceTree = "<group>"; };
+		9D5201E01656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D5201E11656C30E00F3BF4E /* SPI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SPI.cpp; sourceTree = "<group>"; };
+		9D5201E21656C30E00F3BF4E /* SPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPI.h; sourceTree = "<group>"; };
+		9D5201E61656C30E00F3BF4E /* MotorKnob.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MotorKnob.ino; sourceTree = "<group>"; };
+		9D5201E81656C30E00F3BF4E /* stepper_oneRevolution.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stepper_oneRevolution.ino; sourceTree = "<group>"; };
+		9D5201EA1656C30E00F3BF4E /* stepper_oneStepAtATime.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stepper_oneStepAtATime.ino; sourceTree = "<group>"; };
+		9D5201EC1656C30E00F3BF4E /* stepper_speedControl.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = stepper_speedControl.ino; sourceTree = "<group>"; };
+		9D5201ED1656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D5201EE1656C30E00F3BF4E /* Stepper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stepper.cpp; sourceTree = "<group>"; };
+		9D5201EF1656C30E00F3BF4E /* Stepper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stepper.h; sourceTree = "<group>"; };
+		9D5201F31656C30E00F3BF4E /* ConnectNoEncryption.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ConnectNoEncryption.ino; sourceTree = "<group>"; };
+		9D5201F51656C30E00F3BF4E /* ConnectWithWEP.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ConnectWithWEP.ino; sourceTree = "<group>"; };
+		9D5201F71656C30E00F3BF4E /* ConnectWithWPA.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ConnectWithWPA.ino; sourceTree = "<group>"; };
+		9D5201F91656C30E00F3BF4E /* ScanNetworks.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ScanNetworks.ino; sourceTree = "<group>"; };
+		9D5201FB1656C30E00F3BF4E /* WifiChatServer.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WifiChatServer.ino; sourceTree = "<group>"; };
+		9D5201FD1656C30E00F3BF4E /* WifiPachubeClient.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WifiPachubeClient.ino; sourceTree = "<group>"; };
+		9D5201FF1656C30E00F3BF4E /* WifiPachubeClientString.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WifiPachubeClientString.ino; sourceTree = "<group>"; };
+		9D5202011656C30E00F3BF4E /* WifiTwitterClient.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WifiTwitterClient.ino; sourceTree = "<group>"; };
+		9D5202031656C30E00F3BF4E /* WifiWebClient.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WifiWebClient.ino; sourceTree = "<group>"; };
+		9D5202051656C30E00F3BF4E /* WifiWebClientRepeating.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WifiWebClientRepeating.ino; sourceTree = "<group>"; };
+		9D5202071656C30E00F3BF4E /* WifiWebServer.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WifiWebServer.ino; sourceTree = "<group>"; };
+		9D5202081656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D52020A1656C30E00F3BF4E /* debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = debug.h; sourceTree = "<group>"; };
+		9D52020B1656C30E00F3BF4E /* server_drv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = server_drv.cpp; sourceTree = "<group>"; };
+		9D52020C1656C30E00F3BF4E /* server_drv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = server_drv.h; sourceTree = "<group>"; };
+		9D52020D1656C30E00F3BF4E /* socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = socket.c; sourceTree = "<group>"; };
+		9D52020E1656C30E00F3BF4E /* socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = socket.h; sourceTree = "<group>"; };
+		9D52020F1656C30E00F3BF4E /* spi_drv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = spi_drv.cpp; sourceTree = "<group>"; };
+		9D5202101656C30E00F3BF4E /* spi_drv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spi_drv.h; sourceTree = "<group>"; };
+		9D5202111656C30E00F3BF4E /* wifi_drv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = wifi_drv.cpp; sourceTree = "<group>"; };
+		9D5202121656C30E00F3BF4E /* wifi_drv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wifi_drv.h; sourceTree = "<group>"; };
+		9D5202131656C30E00F3BF4E /* wifi_spi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wifi_spi.h; sourceTree = "<group>"; };
+		9D5202141656C30E00F3BF4E /* wl_definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wl_definitions.h; sourceTree = "<group>"; };
+		9D5202151656C30E00F3BF4E /* wl_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wl_types.h; sourceTree = "<group>"; };
+		9D5202161656C30E00F3BF4E /* WiFi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WiFi.cpp; sourceTree = "<group>"; };
+		9D5202171656C30E00F3BF4E /* WiFi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiFi.h; sourceTree = "<group>"; };
+		9D5202181656C30E00F3BF4E /* WiFiClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WiFiClient.cpp; sourceTree = "<group>"; };
+		9D5202191656C30E00F3BF4E /* WiFiClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiFiClient.h; sourceTree = "<group>"; };
+		9D52021A1656C30E00F3BF4E /* WiFiServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WiFiServer.cpp; sourceTree = "<group>"; };
+		9D52021B1656C30E00F3BF4E /* WiFiServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiFiServer.h; sourceTree = "<group>"; };
+		9D52021F1656C30E00F3BF4E /* digital_potentiometer.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = digital_potentiometer.ino; sourceTree = "<group>"; };
+		9D5202211656C30E00F3BF4E /* master_reader.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = master_reader.ino; sourceTree = "<group>"; };
+		9D5202231656C30E00F3BF4E /* master_writer.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = master_writer.ino; sourceTree = "<group>"; };
+		9D5202251656C30E00F3BF4E /* SFRRanger_reader.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SFRRanger_reader.ino; sourceTree = "<group>"; };
+		9D5202271656C30E00F3BF4E /* slave_receiver.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slave_receiver.ino; sourceTree = "<group>"; };
+		9D5202291656C30E00F3BF4E /* slave_sender.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = slave_sender.ino; sourceTree = "<group>"; };
+		9D52022A1656C30E00F3BF4E /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		9D52022C1656C30E00F3BF4E /* twi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = twi.c; sourceTree = "<group>"; };
+		9D52022D1656C30E00F3BF4E /* twi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twi.h; sourceTree = "<group>"; };
+		9D52022E1656C30E00F3BF4E /* Wire.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wire.cpp; sourceTree = "<group>"; };
+		9D52022F1656C30E00F3BF4E /* Wire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wire.h; sourceTree = "<group>"; };
+		9D52024E1656C33100F3BF4E /* alloca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = alloca.h; sourceTree = "<group>"; };
+		9D52024F1656C33100F3BF4E /* assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = assert.h; sourceTree = "<group>"; };
+		9D5202511656C33100F3BF4E /* boot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = boot.h; sourceTree = "<group>"; };
+		9D5202521656C33100F3BF4E /* builtins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = builtins.h; sourceTree = "<group>"; };
+		9D5202531656C33100F3BF4E /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		9D5202541656C33100F3BF4E /* crc16.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc16.h; sourceTree = "<group>"; };
+		9D5202551656C33100F3BF4E /* delay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = delay.h; sourceTree = "<group>"; };
+		9D5202561656C33100F3BF4E /* eeprom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eeprom.h; sourceTree = "<group>"; };
+		9D5202571656C33100F3BF4E /* fuse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fuse.h; sourceTree = "<group>"; };
+		9D5202581656C33100F3BF4E /* interrupt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interrupt.h; sourceTree = "<group>"; };
+		9D5202591656C33100F3BF4E /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io.h; sourceTree = "<group>"; };
+		9D52025A1656C33100F3BF4E /* io1200.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io1200.h; sourceTree = "<group>"; };
+		9D52025B1656C33100F3BF4E /* io2313.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io2313.h; sourceTree = "<group>"; };
+		9D52025C1656C33100F3BF4E /* io2323.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io2323.h; sourceTree = "<group>"; };
+		9D52025D1656C33100F3BF4E /* io2333.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io2333.h; sourceTree = "<group>"; };
+		9D52025E1656C33100F3BF4E /* io2343.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io2343.h; sourceTree = "<group>"; };
+		9D52025F1656C33100F3BF4E /* io43u32x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io43u32x.h; sourceTree = "<group>"; };
+		9D5202601656C33100F3BF4E /* io43u35x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io43u35x.h; sourceTree = "<group>"; };
+		9D5202611656C33100F3BF4E /* io4414.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io4414.h; sourceTree = "<group>"; };
+		9D5202621656C33100F3BF4E /* io4433.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io4433.h; sourceTree = "<group>"; };
+		9D5202631656C33100F3BF4E /* io4434.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io4434.h; sourceTree = "<group>"; };
+		9D5202641656C33100F3BF4E /* io76c711.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io76c711.h; sourceTree = "<group>"; };
+		9D5202651656C33100F3BF4E /* io8515.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io8515.h; sourceTree = "<group>"; };
+		9D5202661656C33100F3BF4E /* io8534.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io8534.h; sourceTree = "<group>"; };
+		9D5202671656C33100F3BF4E /* io8535.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io8535.h; sourceTree = "<group>"; };
+		9D5202681656C33100F3BF4E /* io86r401.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io86r401.h; sourceTree = "<group>"; };
+		9D5202691656C33100F3BF4E /* io90pwm1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io90pwm1.h; sourceTree = "<group>"; };
+		9D52026A1656C33100F3BF4E /* io90pwm216.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io90pwm216.h; sourceTree = "<group>"; };
+		9D52026B1656C33100F3BF4E /* io90pwm2b.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io90pwm2b.h; sourceTree = "<group>"; };
+		9D52026C1656C33100F3BF4E /* io90pwm316.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io90pwm316.h; sourceTree = "<group>"; };
+		9D52026D1656C33100F3BF4E /* io90pwm3b.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io90pwm3b.h; sourceTree = "<group>"; };
+		9D52026E1656C33100F3BF4E /* io90pwmx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io90pwmx.h; sourceTree = "<group>"; };
+		9D52026F1656C33100F3BF4E /* ioat94k.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioat94k.h; sourceTree = "<group>"; };
+		9D5202701656C33100F3BF4E /* iocan128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iocan128.h; sourceTree = "<group>"; };
+		9D5202711656C33100F3BF4E /* iocan32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iocan32.h; sourceTree = "<group>"; };
+		9D5202721656C33100F3BF4E /* iocan64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iocan64.h; sourceTree = "<group>"; };
+		9D5202731656C33100F3BF4E /* iocanxx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iocanxx.h; sourceTree = "<group>"; };
+		9D5202741656C33100F3BF4E /* iom103.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom103.h; sourceTree = "<group>"; };
+		9D5202751656C33100F3BF4E /* iom128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom128.h; sourceTree = "<group>"; };
+		9D5202761656C33100F3BF4E /* iom1280.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom1280.h; sourceTree = "<group>"; };
+		9D5202771656C33100F3BF4E /* iom1281.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom1281.h; sourceTree = "<group>"; };
+		9D5202781656C33100F3BF4E /* iom1284p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom1284p.h; sourceTree = "<group>"; };
+		9D5202791656C33100F3BF4E /* iom16.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom16.h; sourceTree = "<group>"; };
+		9D52027A1656C33100F3BF4E /* iom161.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom161.h; sourceTree = "<group>"; };
+		9D52027B1656C33100F3BF4E /* iom162.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom162.h; sourceTree = "<group>"; };
+		9D52027C1656C33100F3BF4E /* iom163.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom163.h; sourceTree = "<group>"; };
+		9D52027D1656C33100F3BF4E /* iom164.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom164.h; sourceTree = "<group>"; };
+		9D52027E1656C33100F3BF4E /* iom165.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom165.h; sourceTree = "<group>"; };
+		9D52027F1656C33100F3BF4E /* iom165p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom165p.h; sourceTree = "<group>"; };
+		9D5202801656C33100F3BF4E /* iom168.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom168.h; sourceTree = "<group>"; };
+		9D5202811656C33100F3BF4E /* iom168p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom168p.h; sourceTree = "<group>"; };
+		9D5202821656C33100F3BF4E /* iom169.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom169.h; sourceTree = "<group>"; };
+		9D5202831656C33100F3BF4E /* iom169p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom169p.h; sourceTree = "<group>"; };
+		9D5202841656C33100F3BF4E /* iom16hva.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom16hva.h; sourceTree = "<group>"; };
+		9D5202851656C33100F3BF4E /* iom2560.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom2560.h; sourceTree = "<group>"; };
+		9D5202861656C33100F3BF4E /* iom2561.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom2561.h; sourceTree = "<group>"; };
+		9D5202871656C33100F3BF4E /* iom32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom32.h; sourceTree = "<group>"; };
+		9D5202881656C33100F3BF4E /* iom323.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom323.h; sourceTree = "<group>"; };
+		9D5202891656C33100F3BF4E /* iom324.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom324.h; sourceTree = "<group>"; };
+		9D52028A1656C33100F3BF4E /* iom325.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom325.h; sourceTree = "<group>"; };
+		9D52028B1656C33100F3BF4E /* iom3250.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom3250.h; sourceTree = "<group>"; };
+		9D52028C1656C33100F3BF4E /* iom328p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom328p.h; sourceTree = "<group>"; };
+		9D52028D1656C33100F3BF4E /* iom329.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom329.h; sourceTree = "<group>"; };
+		9D52028E1656C33100F3BF4E /* iom3290.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom3290.h; sourceTree = "<group>"; };
+		9D52028F1656C33100F3BF4E /* iom32c1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom32c1.h; sourceTree = "<group>"; };
+		9D5202901656C33100F3BF4E /* iom32hvb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom32hvb.h; sourceTree = "<group>"; };
+		9D5202911656C33100F3BF4E /* iom32m1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom32m1.h; sourceTree = "<group>"; };
+		9D5202921656C33100F3BF4E /* iom32u4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom32u4.h; sourceTree = "<group>"; };
+		9D5202931656C33100F3BF4E /* iom32u6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom32u6.h; sourceTree = "<group>"; };
+		9D5202941656C33100F3BF4E /* iom406.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom406.h; sourceTree = "<group>"; };
+		9D5202951656C33100F3BF4E /* iom48.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom48.h; sourceTree = "<group>"; };
+		9D5202961656C33100F3BF4E /* iom48p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom48p.h; sourceTree = "<group>"; };
+		9D5202971656C33100F3BF4E /* iom64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom64.h; sourceTree = "<group>"; };
+		9D5202981656C33100F3BF4E /* iom640.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom640.h; sourceTree = "<group>"; };
+		9D5202991656C33100F3BF4E /* iom644.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom644.h; sourceTree = "<group>"; };
+		9D52029A1656C33100F3BF4E /* iom645.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom645.h; sourceTree = "<group>"; };
+		9D52029B1656C33100F3BF4E /* iom6450.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom6450.h; sourceTree = "<group>"; };
+		9D52029C1656C33100F3BF4E /* iom649.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom649.h; sourceTree = "<group>"; };
+		9D52029D1656C33100F3BF4E /* iom6490.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom6490.h; sourceTree = "<group>"; };
+		9D52029E1656C33100F3BF4E /* iom8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom8.h; sourceTree = "<group>"; };
+		9D52029F1656C33100F3BF4E /* iom8515.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom8515.h; sourceTree = "<group>"; };
+		9D5202A01656C33100F3BF4E /* iom8535.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom8535.h; sourceTree = "<group>"; };
+		9D5202A11656C33100F3BF4E /* iom88.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom88.h; sourceTree = "<group>"; };
+		9D5202A21656C33100F3BF4E /* iom88p.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom88p.h; sourceTree = "<group>"; };
+		9D5202A31656C33100F3BF4E /* iom8hva.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iom8hva.h; sourceTree = "<group>"; };
+		9D5202A41656C33100F3BF4E /* iomx8.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iomx8.h; sourceTree = "<group>"; };
+		9D5202A51656C33100F3BF4E /* iomxx0_1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iomxx0_1.h; sourceTree = "<group>"; };
+		9D5202A61656C33100F3BF4E /* iomxx4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iomxx4.h; sourceTree = "<group>"; };
+		9D5202A71656C33100F3BF4E /* iomxxhva.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iomxxhva.h; sourceTree = "<group>"; };
+		9D5202A81656C33100F3BF4E /* iotn11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn11.h; sourceTree = "<group>"; };
+		9D5202A91656C33100F3BF4E /* iotn12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn12.h; sourceTree = "<group>"; };
+		9D5202AA1656C33100F3BF4E /* iotn13.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn13.h; sourceTree = "<group>"; };
+		9D5202AB1656C33100F3BF4E /* iotn13a.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn13a.h; sourceTree = "<group>"; };
+		9D5202AC1656C33100F3BF4E /* iotn15.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn15.h; sourceTree = "<group>"; };
+		9D5202AD1656C33100F3BF4E /* iotn167.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn167.h; sourceTree = "<group>"; };
+		9D5202AE1656C33100F3BF4E /* iotn22.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn22.h; sourceTree = "<group>"; };
+		9D5202AF1656C33100F3BF4E /* iotn2313.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn2313.h; sourceTree = "<group>"; };
+		9D5202B01656C33100F3BF4E /* iotn24.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn24.h; sourceTree = "<group>"; };
+		9D5202B11656C33100F3BF4E /* iotn25.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn25.h; sourceTree = "<group>"; };
+		9D5202B21656C33100F3BF4E /* iotn26.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn26.h; sourceTree = "<group>"; };
+		9D5202B31656C33100F3BF4E /* iotn261.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn261.h; sourceTree = "<group>"; };
+		9D5202B41656C33100F3BF4E /* iotn28.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn28.h; sourceTree = "<group>"; };
+		9D5202B51656C33100F3BF4E /* iotn43u.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn43u.h; sourceTree = "<group>"; };
+		9D5202B61656C33100F3BF4E /* iotn44.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn44.h; sourceTree = "<group>"; };
+		9D5202B71656C33100F3BF4E /* iotn45.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn45.h; sourceTree = "<group>"; };
+		9D5202B81656C33100F3BF4E /* iotn461.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn461.h; sourceTree = "<group>"; };
+		9D5202B91656C33100F3BF4E /* iotn48.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn48.h; sourceTree = "<group>"; };
+		9D5202BA1656C33100F3BF4E /* iotn84.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn84.h; sourceTree = "<group>"; };
+		9D5202BB1656C33100F3BF4E /* iotn85.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn85.h; sourceTree = "<group>"; };
+		9D5202BC1656C33100F3BF4E /* iotn861.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn861.h; sourceTree = "<group>"; };
+		9D5202BD1656C33100F3BF4E /* iotn88.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotn88.h; sourceTree = "<group>"; };
+		9D5202BE1656C33100F3BF4E /* iotnx4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotnx4.h; sourceTree = "<group>"; };
+		9D5202BF1656C33100F3BF4E /* iotnx5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotnx5.h; sourceTree = "<group>"; };
+		9D5202C01656C33100F3BF4E /* iotnx61.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iotnx61.h; sourceTree = "<group>"; };
+		9D5202C11656C33100F3BF4E /* iousb1286.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iousb1286.h; sourceTree = "<group>"; };
+		9D5202C21656C33100F3BF4E /* iousb1287.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iousb1287.h; sourceTree = "<group>"; };
+		9D5202C31656C33100F3BF4E /* iousb162.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iousb162.h; sourceTree = "<group>"; };
+		9D5202C41656C33100F3BF4E /* iousb646.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iousb646.h; sourceTree = "<group>"; };
+		9D5202C51656C33100F3BF4E /* iousb647.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iousb647.h; sourceTree = "<group>"; };
+		9D5202C61656C33100F3BF4E /* iousb82.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iousb82.h; sourceTree = "<group>"; };
+		9D5202C71656C33100F3BF4E /* iousbxx2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iousbxx2.h; sourceTree = "<group>"; };
+		9D5202C81656C33100F3BF4E /* iousbxx6_7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iousbxx6_7.h; sourceTree = "<group>"; };
+		9D5202C91656C33100F3BF4E /* iox128a1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iox128a1.h; sourceTree = "<group>"; };
+		9D5202CA1656C33100F3BF4E /* iox128a3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iox128a3.h; sourceTree = "<group>"; };
+		9D5202CB1656C33100F3BF4E /* iox256a3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iox256a3.h; sourceTree = "<group>"; };
+		9D5202CC1656C33100F3BF4E /* iox256a3b.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iox256a3b.h; sourceTree = "<group>"; };
+		9D5202CD1656C33100F3BF4E /* iox64a1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iox64a1.h; sourceTree = "<group>"; };
+		9D5202CE1656C33100F3BF4E /* iox64a3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iox64a3.h; sourceTree = "<group>"; };
+		9D5202CF1656C33100F3BF4E /* lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lock.h; sourceTree = "<group>"; };
+		9D5202D01656C33100F3BF4E /* parity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parity.h; sourceTree = "<group>"; };
+		9D5202D11656C33100F3BF4E /* pgmspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pgmspace.h; sourceTree = "<group>"; };
+		9D5202D21656C33100F3BF4E /* portpins.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = portpins.h; sourceTree = "<group>"; };
+		9D5202D31656C33100F3BF4E /* power.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = power.h; sourceTree = "<group>"; };
+		9D5202D41656C33100F3BF4E /* sfr_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sfr_defs.h; sourceTree = "<group>"; };
+		9D5202D51656C33100F3BF4E /* signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = signal.h; sourceTree = "<group>"; };
+		9D5202D61656C33100F3BF4E /* sleep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sleep.h; sourceTree = "<group>"; };
+		9D5202D71656C33100F3BF4E /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		9D5202D81656C33100F3BF4E /* wdt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wdt.h; sourceTree = "<group>"; };
+		9D5202DA1656C33100F3BF4E /* deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = deprecated.h; sourceTree = "<group>"; };
+		9D5202DB1656C33100F3BF4E /* ina90.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ina90.h; sourceTree = "<group>"; };
+		9D5202DC1656C33100F3BF4E /* twi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twi.h; sourceTree = "<group>"; };
+		9D5202DD1656C33100F3BF4E /* ctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ctype.h; sourceTree = "<group>"; };
+		9D5202DE1656C33100F3BF4E /* errno.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errno.h; sourceTree = "<group>"; };
+		9D5202DF1656C33100F3BF4E /* inttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = inttypes.h; sourceTree = "<group>"; };
+		9D5202E01656C33100F3BF4E /* math.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = math.h; sourceTree = "<group>"; };
+		9D5202E11656C33100F3BF4E /* setjmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setjmp.h; sourceTree = "<group>"; };
+		9D5202E21656C33100F3BF4E /* stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdint.h; sourceTree = "<group>"; };
+		9D5202E31656C33100F3BF4E /* stdio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdio.h; sourceTree = "<group>"; };
+		9D5202E41656C33100F3BF4E /* stdlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdlib.h; sourceTree = "<group>"; };
+		9D5202E51656C33100F3BF4E /* string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string.h; sourceTree = "<group>"; };
+		9D5202E71656C33100F3BF4E /* atomic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = atomic.h; sourceTree = "<group>"; };
+		9D5202E81656C33100F3BF4E /* crc16.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crc16.h; sourceTree = "<group>"; };
+		9D5202E91656C33100F3BF4E /* delay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = delay.h; sourceTree = "<group>"; };
+		9D5202EA1656C33100F3BF4E /* delay_basic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = delay_basic.h; sourceTree = "<group>"; };
+		9D5202EB1656C33100F3BF4E /* parity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parity.h; sourceTree = "<group>"; };
+		9D5202EC1656C33100F3BF4E /* setbaud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setbaud.h; sourceTree = "<group>"; };
+		9D5202ED1656C33100F3BF4E /* twi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twi.h; sourceTree = "<group>"; };
+		9D5202EF1656C3E200F3BF4E /* Arduino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arduino.h; sourceTree = "<group>"; };
+		9D5202F01656C3E200F3BF4E /* binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = binary.h; sourceTree = "<group>"; };
+		9D5202F11656C3E200F3BF4E /* CDC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CDC.cpp; sourceTree = "<group>"; };
+		9D5202F21656C3E200F3BF4E /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
+		9D5202F31656C3E200F3BF4E /* HardwareSerial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HardwareSerial.cpp; sourceTree = "<group>"; };
+		9D5202F41656C3E200F3BF4E /* HardwareSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HardwareSerial.h; sourceTree = "<group>"; };
+		9D5202F51656C3E200F3BF4E /* HID.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HID.cpp; sourceTree = "<group>"; };
+		9D5202F61656C3E200F3BF4E /* IPAddress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IPAddress.cpp; sourceTree = "<group>"; };
+		9D5202F71656C3E200F3BF4E /* IPAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPAddress.h; sourceTree = "<group>"; };
+		9D5202F81656C3E200F3BF4E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		9D5202F91656C3E200F3BF4E /* new.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = new.cpp; sourceTree = "<group>"; };
+		9D5202FA1656C3E200F3BF4E /* new.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = new.h; sourceTree = "<group>"; };
+		9D5202FB1656C3E200F3BF4E /* Platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Platform.h; sourceTree = "<group>"; };
+		9D5202FC1656C3E200F3BF4E /* Print.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Print.cpp; sourceTree = "<group>"; };
+		9D5202FD1656C3E200F3BF4E /* Print.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Print.h; sourceTree = "<group>"; };
+		9D5202FE1656C3E200F3BF4E /* Printable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Printable.h; sourceTree = "<group>"; };
+		9D5202FF1656C3E200F3BF4E /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		9D5203001656C3E200F3BF4E /* Stream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stream.cpp; sourceTree = "<group>"; };
+		9D5203011656C3E200F3BF4E /* Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stream.h; sourceTree = "<group>"; };
+		9D5203021656C3E200F3BF4E /* Tone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tone.cpp; sourceTree = "<group>"; };
+		9D5203031656C3E200F3BF4E /* Udp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Udp.h; sourceTree = "<group>"; };
+		9D5203041656C3E200F3BF4E /* USBAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBAPI.h; sourceTree = "<group>"; };
+		9D5203051656C3E200F3BF4E /* USBCore.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = USBCore.cpp; sourceTree = "<group>"; };
+		9D5203061656C3E200F3BF4E /* USBCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBCore.h; sourceTree = "<group>"; };
+		9D5203071656C3E200F3BF4E /* USBDesc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = USBDesc.h; sourceTree = "<group>"; };
+		9D5203081656C3E200F3BF4E /* WCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCharacter.h; sourceTree = "<group>"; };
+		9D5203091656C3E200F3BF4E /* WInterrupts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = WInterrupts.c; sourceTree = "<group>"; };
+		9D52030A1656C3E200F3BF4E /* wiring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiring.c; sourceTree = "<group>"; };
+		9D52030B1656C3E200F3BF4E /* wiring_analog.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiring_analog.c; sourceTree = "<group>"; };
+		9D52030C1656C3E200F3BF4E /* wiring_digital.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiring_digital.c; sourceTree = "<group>"; };
+		9D52030D1656C3E200F3BF4E /* wiring_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wiring_private.h; sourceTree = "<group>"; };
+		9D52030E1656C3E200F3BF4E /* wiring_pulse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiring_pulse.c; sourceTree = "<group>"; };
+		9D52030F1656C3E200F3BF4E /* wiring_shift.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wiring_shift.c; sourceTree = "<group>"; };
+		9D5203101656C3E200F3BF4E /* WMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WMath.cpp; sourceTree = "<group>"; };
+		9D5203111656C3E200F3BF4E /* WString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WString.cpp; sourceTree = "<group>"; };
+		9D5203121656C3E200F3BF4E /* WString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WString.h; sourceTree = "<group>"; };
 		9D77CB9D1589994A0089EB0A /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D77CBA81589994A0089EB0A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BMSDisplay.cpp; sourceTree = "<group>"; };
@@ -234,9 +624,1182 @@
 			path = "Adafruit-GFX-Library";
 			sourceTree = "<group>";
 		};
+		9D5201351656C2F800F3BF4E /* Arduino Reference Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202EE1656C3E200F3BF4E /* arduino */,
+				9D52024D1656C33100F3BF4E /* include */,
+				9D5201361656C30E00F3BF4E /* libraries */,
+			);
+			name = "Arduino Reference Files";
+			sourceTree = "<group>";
+		};
+		9D5201361656C30E00F3BF4E /* libraries */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201371656C30E00F3BF4E /* EEPROM */,
+				9D5201421656C30E00F3BF4E /* Ethernet */,
+				9D5201731656C30E00F3BF4E /* Firmata */,
+				9D52018F1656C30E00F3BF4E /* LiquidCrystal */,
+				9D5201A81656C30E00F3BF4E /* SD */,
+				9D5201C61656C30E00F3BF4E /* Servo */,
+				9D5201CF1656C30E00F3BF4E /* SoftwareSerial */,
+				9D5201D81656C30E00F3BF4E /* SPI */,
+				9D5201E31656C30E00F3BF4E /* Stepper */,
+				9D5201F01656C30E00F3BF4E /* WiFi */,
+				9D52021C1656C30E00F3BF4E /* Wire */,
+			);
+			name = libraries;
+			path = ../../../../Applications/Arduino.app/Contents/Resources/Java/libraries;
+			sourceTree = "<group>";
+		};
+		9D5201371656C30E00F3BF4E /* EEPROM */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201381656C30E00F3BF4E /* EEPROM.cpp */,
+				9D5201391656C30E00F3BF4E /* EEPROM.h */,
+				9D52013A1656C30E00F3BF4E /* examples */,
+				9D5201411656C30E00F3BF4E /* keywords.txt */,
+			);
+			path = EEPROM;
+			sourceTree = "<group>";
+		};
+		9D52013A1656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D52013B1656C30E00F3BF4E /* eeprom_clear */,
+				9D52013D1656C30E00F3BF4E /* eeprom_read */,
+				9D52013F1656C30E00F3BF4E /* eeprom_write */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D52013B1656C30E00F3BF4E /* eeprom_clear */ = {
+			isa = PBXGroup;
+			children = (
+				9D52013C1656C30E00F3BF4E /* eeprom_clear.ino */,
+			);
+			path = eeprom_clear;
+			sourceTree = "<group>";
+		};
+		9D52013D1656C30E00F3BF4E /* eeprom_read */ = {
+			isa = PBXGroup;
+			children = (
+				9D52013E1656C30E00F3BF4E /* eeprom_read.ino */,
+			);
+			path = eeprom_read;
+			sourceTree = "<group>";
+		};
+		9D52013F1656C30E00F3BF4E /* eeprom_write */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201401656C30E00F3BF4E /* eeprom_write.ino */,
+			);
+			path = eeprom_write;
+			sourceTree = "<group>";
+		};
+		9D5201421656C30E00F3BF4E /* Ethernet */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201431656C30E00F3BF4E /* Dhcp.cpp */,
+				9D5201441656C30E00F3BF4E /* Dhcp.h */,
+				9D5201451656C30E00F3BF4E /* Dns.cpp */,
+				9D5201461656C30E00F3BF4E /* Dns.h */,
+				9D5201471656C30E00F3BF4E /* Ethernet.cpp */,
+				9D5201481656C30E00F3BF4E /* Ethernet.h */,
+				9D5201491656C30E00F3BF4E /* EthernetClient.cpp */,
+				9D52014A1656C30E00F3BF4E /* EthernetClient.h */,
+				9D52014B1656C30E00F3BF4E /* EthernetServer.cpp */,
+				9D52014C1656C30E00F3BF4E /* EthernetServer.h */,
+				9D52014D1656C30E00F3BF4E /* EthernetUdp.cpp */,
+				9D52014E1656C30E00F3BF4E /* EthernetUdp.h */,
+				9D52014F1656C30E00F3BF4E /* examples */,
+				9D52016C1656C30E00F3BF4E /* keywords.txt */,
+				9D52016D1656C30E00F3BF4E /* util.h */,
+				9D52016E1656C30E00F3BF4E /* utility */,
+			);
+			path = Ethernet;
+			sourceTree = "<group>";
+		};
+		9D52014F1656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201501656C30E00F3BF4E /* BarometricPressureWebServer */,
+				9D5201521656C30E00F3BF4E /* ChatServer */,
+				9D5201541656C30E00F3BF4E /* DhcpAddressPrinter */,
+				9D5201561656C30E00F3BF4E /* DhcpChatServer */,
+				9D5201581656C30E00F3BF4E /* DnsWebClient */,
+				9D52015A1656C30E00F3BF4E /* PachubeClient */,
+				9D52015C1656C30E00F3BF4E /* PachubeClientString */,
+				9D52015E1656C30E00F3BF4E /* TelnetClient */,
+				9D5201601656C30E00F3BF4E /* TwitterClient */,
+				9D5201621656C30E00F3BF4E /* UdpNtpClient */,
+				9D5201641656C30E00F3BF4E /* UDPSendReceiveString */,
+				9D5201661656C30E00F3BF4E /* WebClient */,
+				9D5201681656C30E00F3BF4E /* WebClientRepeating */,
+				9D52016A1656C30E00F3BF4E /* WebServer */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D5201501656C30E00F3BF4E /* BarometricPressureWebServer */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201511656C30E00F3BF4E /* BarometricPressureWebServer.ino */,
+			);
+			path = BarometricPressureWebServer;
+			sourceTree = "<group>";
+		};
+		9D5201521656C30E00F3BF4E /* ChatServer */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201531656C30E00F3BF4E /* ChatServer.ino */,
+			);
+			path = ChatServer;
+			sourceTree = "<group>";
+		};
+		9D5201541656C30E00F3BF4E /* DhcpAddressPrinter */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201551656C30E00F3BF4E /* DhcpAddressPrinter.ino */,
+			);
+			path = DhcpAddressPrinter;
+			sourceTree = "<group>";
+		};
+		9D5201561656C30E00F3BF4E /* DhcpChatServer */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201571656C30E00F3BF4E /* DhcpChatServer.ino */,
+			);
+			path = DhcpChatServer;
+			sourceTree = "<group>";
+		};
+		9D5201581656C30E00F3BF4E /* DnsWebClient */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201591656C30E00F3BF4E /* DnsWebClient.ino */,
+			);
+			path = DnsWebClient;
+			sourceTree = "<group>";
+		};
+		9D52015A1656C30E00F3BF4E /* PachubeClient */ = {
+			isa = PBXGroup;
+			children = (
+				9D52015B1656C30E00F3BF4E /* PachubeClient.ino */,
+			);
+			path = PachubeClient;
+			sourceTree = "<group>";
+		};
+		9D52015C1656C30E00F3BF4E /* PachubeClientString */ = {
+			isa = PBXGroup;
+			children = (
+				9D52015D1656C30E00F3BF4E /* PachubeClientString.ino */,
+			);
+			path = PachubeClientString;
+			sourceTree = "<group>";
+		};
+		9D52015E1656C30E00F3BF4E /* TelnetClient */ = {
+			isa = PBXGroup;
+			children = (
+				9D52015F1656C30E00F3BF4E /* TelnetClient.ino */,
+			);
+			path = TelnetClient;
+			sourceTree = "<group>";
+		};
+		9D5201601656C30E00F3BF4E /* TwitterClient */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201611656C30E00F3BF4E /* TwitterClient.ino */,
+			);
+			path = TwitterClient;
+			sourceTree = "<group>";
+		};
+		9D5201621656C30E00F3BF4E /* UdpNtpClient */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201631656C30E00F3BF4E /* UdpNtpClient.ino */,
+			);
+			path = UdpNtpClient;
+			sourceTree = "<group>";
+		};
+		9D5201641656C30E00F3BF4E /* UDPSendReceiveString */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201651656C30E00F3BF4E /* UDPSendReceiveString.ino */,
+			);
+			path = UDPSendReceiveString;
+			sourceTree = "<group>";
+		};
+		9D5201661656C30E00F3BF4E /* WebClient */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201671656C30E00F3BF4E /* WebClient.ino */,
+			);
+			path = WebClient;
+			sourceTree = "<group>";
+		};
+		9D5201681656C30E00F3BF4E /* WebClientRepeating */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201691656C30E00F3BF4E /* WebClientRepeating.ino */,
+			);
+			path = WebClientRepeating;
+			sourceTree = "<group>";
+		};
+		9D52016A1656C30E00F3BF4E /* WebServer */ = {
+			isa = PBXGroup;
+			children = (
+				9D52016B1656C30E00F3BF4E /* WebServer.ino */,
+			);
+			path = WebServer;
+			sourceTree = "<group>";
+		};
+		9D52016E1656C30E00F3BF4E /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				9D52016F1656C30E00F3BF4E /* socket.cpp */,
+				9D5201701656C30E00F3BF4E /* socket.h */,
+				9D5201711656C30E00F3BF4E /* w5100.cpp */,
+				9D5201721656C30E00F3BF4E /* w5100.h */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		9D5201731656C30E00F3BF4E /* Firmata */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201741656C30E00F3BF4E /* Boards.h */,
+				9D5201751656C30E00F3BF4E /* examples */,
+				9D52018A1656C30E00F3BF4E /* Firmata.cpp */,
+				9D52018B1656C30E00F3BF4E /* Firmata.h */,
+				9D52018C1656C30E00F3BF4E /* keywords.txt */,
+				9D52018D1656C30E00F3BF4E /* LICENSE.txt */,
+				9D52018E1656C30E00F3BF4E /* TODO.txt */,
+			);
+			path = Firmata;
+			sourceTree = "<group>";
+		};
+		9D5201751656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201761656C30E00F3BF4E /* AllInputsFirmata */,
+				9D5201781656C30E00F3BF4E /* AnalogFirmata */,
+				9D52017A1656C30E00F3BF4E /* EchoString */,
+				9D52017C1656C30E00F3BF4E /* I2CFirmata */,
+				9D52017E1656C30E00F3BF4E /* OldStandardFirmata */,
+				9D5201811656C30E00F3BF4E /* ServoFirmata */,
+				9D5201831656C30E00F3BF4E /* SimpleAnalogFirmata */,
+				9D5201851656C30E00F3BF4E /* SimpleDigitalFirmata */,
+				9D5201871656C30E00F3BF4E /* StandardFirmata */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D5201761656C30E00F3BF4E /* AllInputsFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201771656C30E00F3BF4E /* AllInputsFirmata.ino */,
+			);
+			path = AllInputsFirmata;
+			sourceTree = "<group>";
+		};
+		9D5201781656C30E00F3BF4E /* AnalogFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201791656C30E00F3BF4E /* AnalogFirmata.ino */,
+			);
+			path = AnalogFirmata;
+			sourceTree = "<group>";
+		};
+		9D52017A1656C30E00F3BF4E /* EchoString */ = {
+			isa = PBXGroup;
+			children = (
+				9D52017B1656C30E00F3BF4E /* EchoString.ino */,
+			);
+			path = EchoString;
+			sourceTree = "<group>";
+		};
+		9D52017C1656C30E00F3BF4E /* I2CFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				9D52017D1656C30E00F3BF4E /* I2CFirmata.ino */,
+			);
+			path = I2CFirmata;
+			sourceTree = "<group>";
+		};
+		9D52017E1656C30E00F3BF4E /* OldStandardFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				9D52017F1656C30E00F3BF4E /* LICENSE.txt */,
+				9D5201801656C30E00F3BF4E /* OldStandardFirmata.ino */,
+			);
+			path = OldStandardFirmata;
+			sourceTree = "<group>";
+		};
+		9D5201811656C30E00F3BF4E /* ServoFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201821656C30E00F3BF4E /* ServoFirmata.ino */,
+			);
+			path = ServoFirmata;
+			sourceTree = "<group>";
+		};
+		9D5201831656C30E00F3BF4E /* SimpleAnalogFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201841656C30E00F3BF4E /* SimpleAnalogFirmata.ino */,
+			);
+			path = SimpleAnalogFirmata;
+			sourceTree = "<group>";
+		};
+		9D5201851656C30E00F3BF4E /* SimpleDigitalFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201861656C30E00F3BF4E /* SimpleDigitalFirmata.ino */,
+			);
+			path = SimpleDigitalFirmata;
+			sourceTree = "<group>";
+		};
+		9D5201871656C30E00F3BF4E /* StandardFirmata */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201881656C30E00F3BF4E /* LICENSE.txt */,
+				9D5201891656C30E00F3BF4E /* StandardFirmata.ino */,
+			);
+			path = StandardFirmata;
+			sourceTree = "<group>";
+		};
+		9D52018F1656C30E00F3BF4E /* LiquidCrystal */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201901656C30E00F3BF4E /* examples */,
+				9D5201A51656C30E00F3BF4E /* keywords.txt */,
+				9D5201A61656C30E00F3BF4E /* LiquidCrystal.cpp */,
+				9D5201A71656C30E00F3BF4E /* LiquidCrystal.h */,
+			);
+			path = LiquidCrystal;
+			sourceTree = "<group>";
+		};
+		9D5201901656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201911656C30E00F3BF4E /* Autoscroll */,
+				9D5201931656C30E00F3BF4E /* Blink */,
+				9D5201951656C30E00F3BF4E /* Cursor */,
+				9D5201971656C30E00F3BF4E /* CustomCharacter */,
+				9D5201991656C30E00F3BF4E /* Display */,
+				9D52019B1656C30E00F3BF4E /* HelloWorld */,
+				9D52019D1656C30E00F3BF4E /* Scroll */,
+				9D52019F1656C30E00F3BF4E /* SerialDisplay */,
+				9D5201A11656C30E00F3BF4E /* setCursor */,
+				9D5201A31656C30E00F3BF4E /* TextDirection */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D5201911656C30E00F3BF4E /* Autoscroll */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201921656C30E00F3BF4E /* Autoscroll.ino */,
+			);
+			path = Autoscroll;
+			sourceTree = "<group>";
+		};
+		9D5201931656C30E00F3BF4E /* Blink */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201941656C30E00F3BF4E /* Blink.ino */,
+			);
+			path = Blink;
+			sourceTree = "<group>";
+		};
+		9D5201951656C30E00F3BF4E /* Cursor */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201961656C30E00F3BF4E /* Cursor.ino */,
+			);
+			path = Cursor;
+			sourceTree = "<group>";
+		};
+		9D5201971656C30E00F3BF4E /* CustomCharacter */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201981656C30E00F3BF4E /* CustomCharacter.ino */,
+			);
+			path = CustomCharacter;
+			sourceTree = "<group>";
+		};
+		9D5201991656C30E00F3BF4E /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				9D52019A1656C30E00F3BF4E /* Display.ino */,
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
+		9D52019B1656C30E00F3BF4E /* HelloWorld */ = {
+			isa = PBXGroup;
+			children = (
+				9D52019C1656C30E00F3BF4E /* HelloWorld.ino */,
+			);
+			path = HelloWorld;
+			sourceTree = "<group>";
+		};
+		9D52019D1656C30E00F3BF4E /* Scroll */ = {
+			isa = PBXGroup;
+			children = (
+				9D52019E1656C30E00F3BF4E /* Scroll.ino */,
+			);
+			path = Scroll;
+			sourceTree = "<group>";
+		};
+		9D52019F1656C30E00F3BF4E /* SerialDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201A01656C30E00F3BF4E /* SerialDisplay.ino */,
+			);
+			path = SerialDisplay;
+			sourceTree = "<group>";
+		};
+		9D5201A11656C30E00F3BF4E /* setCursor */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201A21656C30E00F3BF4E /* setCursor.ino */,
+			);
+			path = setCursor;
+			sourceTree = "<group>";
+		};
+		9D5201A31656C30E00F3BF4E /* TextDirection */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201A41656C30E00F3BF4E /* TextDirection.ino */,
+			);
+			path = TextDirection;
+			sourceTree = "<group>";
+		};
+		9D5201A81656C30E00F3BF4E /* SD */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201A91656C30E00F3BF4E /* examples */,
+				9D5201B61656C30E00F3BF4E /* File.cpp */,
+				9D5201B71656C30E00F3BF4E /* keywords.txt */,
+				9D5201B81656C30E00F3BF4E /* README.txt */,
+				9D5201B91656C30E00F3BF4E /* SD.cpp */,
+				9D5201BA1656C30E00F3BF4E /* SD.h */,
+				9D5201BB1656C30E00F3BF4E /* utility */,
+			);
+			path = SD;
+			sourceTree = "<group>";
+		};
+		9D5201A91656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201AA1656C30E00F3BF4E /* CardInfo */,
+				9D5201AC1656C30E00F3BF4E /* Datalogger */,
+				9D5201AE1656C30E00F3BF4E /* DumpFile */,
+				9D5201B01656C30E00F3BF4E /* Files */,
+				9D5201B21656C30E00F3BF4E /* listfiles */,
+				9D5201B41656C30E00F3BF4E /* ReadWrite */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D5201AA1656C30E00F3BF4E /* CardInfo */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201AB1656C30E00F3BF4E /* CardInfo.ino */,
+			);
+			path = CardInfo;
+			sourceTree = "<group>";
+		};
+		9D5201AC1656C30E00F3BF4E /* Datalogger */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201AD1656C30E00F3BF4E /* Datalogger.ino */,
+			);
+			path = Datalogger;
+			sourceTree = "<group>";
+		};
+		9D5201AE1656C30E00F3BF4E /* DumpFile */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201AF1656C30E00F3BF4E /* DumpFile.ino */,
+			);
+			path = DumpFile;
+			sourceTree = "<group>";
+		};
+		9D5201B01656C30E00F3BF4E /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201B11656C30E00F3BF4E /* Files.ino */,
+			);
+			path = Files;
+			sourceTree = "<group>";
+		};
+		9D5201B21656C30E00F3BF4E /* listfiles */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201B31656C30E00F3BF4E /* listfiles.ino */,
+			);
+			path = listfiles;
+			sourceTree = "<group>";
+		};
+		9D5201B41656C30E00F3BF4E /* ReadWrite */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201B51656C30E00F3BF4E /* ReadWrite.ino */,
+			);
+			path = ReadWrite;
+			sourceTree = "<group>";
+		};
+		9D5201BB1656C30E00F3BF4E /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201BC1656C30E00F3BF4E /* FatStructs.h */,
+				9D5201BD1656C30E00F3BF4E /* Sd2Card.cpp */,
+				9D5201BE1656C30E00F3BF4E /* Sd2Card.h */,
+				9D5201BF1656C30E00F3BF4E /* Sd2PinMap.h */,
+				9D5201C01656C30E00F3BF4E /* SdFat.h */,
+				9D5201C11656C30E00F3BF4E /* SdFatmainpage.h */,
+				9D5201C21656C30E00F3BF4E /* SdFatUtil.h */,
+				9D5201C31656C30E00F3BF4E /* SdFile.cpp */,
+				9D5201C41656C30E00F3BF4E /* SdInfo.h */,
+				9D5201C51656C30E00F3BF4E /* SdVolume.cpp */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		9D5201C61656C30E00F3BF4E /* Servo */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201C71656C30E00F3BF4E /* examples */,
+				9D5201CC1656C30E00F3BF4E /* keywords.txt */,
+				9D5201CD1656C30E00F3BF4E /* Servo.cpp */,
+				9D5201CE1656C30E00F3BF4E /* Servo.h */,
+			);
+			path = Servo;
+			sourceTree = "<group>";
+		};
+		9D5201C71656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201C81656C30E00F3BF4E /* Knob */,
+				9D5201CA1656C30E00F3BF4E /* Sweep */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D5201C81656C30E00F3BF4E /* Knob */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201C91656C30E00F3BF4E /* Knob.ino */,
+			);
+			path = Knob;
+			sourceTree = "<group>";
+		};
+		9D5201CA1656C30E00F3BF4E /* Sweep */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201CB1656C30E00F3BF4E /* Sweep.ino */,
+			);
+			path = Sweep;
+			sourceTree = "<group>";
+		};
+		9D5201CF1656C30E00F3BF4E /* SoftwareSerial */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201D01656C30E00F3BF4E /* examples */,
+				9D5201D51656C30E00F3BF4E /* keywords.txt */,
+				9D5201D61656C30E00F3BF4E /* SoftwareSerial.cpp */,
+				9D5201D71656C30E00F3BF4E /* SoftwareSerial.h */,
+			);
+			path = SoftwareSerial;
+			sourceTree = "<group>";
+		};
+		9D5201D01656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201D11656C30E00F3BF4E /* SoftwareSerialExample */,
+				9D5201D31656C30E00F3BF4E /* TwoPortReceive */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D5201D11656C30E00F3BF4E /* SoftwareSerialExample */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201D21656C30E00F3BF4E /* SoftwareSerialExample.ino */,
+			);
+			path = SoftwareSerialExample;
+			sourceTree = "<group>";
+		};
+		9D5201D31656C30E00F3BF4E /* TwoPortReceive */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201D41656C30E00F3BF4E /* TwoPortReceive.ino */,
+			);
+			path = TwoPortReceive;
+			sourceTree = "<group>";
+		};
+		9D5201D81656C30E00F3BF4E /* SPI */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201D91656C30E00F3BF4E /* examples */,
+				9D5201E01656C30E00F3BF4E /* keywords.txt */,
+				9D5201E11656C30E00F3BF4E /* SPI.cpp */,
+				9D5201E21656C30E00F3BF4E /* SPI.h */,
+			);
+			path = SPI;
+			sourceTree = "<group>";
+		};
+		9D5201D91656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201DA1656C30E00F3BF4E /* BarometricPressureSensor */,
+				9D5201DE1656C30E00F3BF4E /* DigitalPotControl */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D5201DA1656C30E00F3BF4E /* BarometricPressureSensor */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201DB1656C30E00F3BF4E /* BarometricPressureSensor */,
+				9D5201DD1656C30E00F3BF4E /* BarometricPressureSensor.ino */,
+			);
+			path = BarometricPressureSensor;
+			sourceTree = "<group>";
+		};
+		9D5201DB1656C30E00F3BF4E /* BarometricPressureSensor */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201DC1656C30E00F3BF4E /* BarometricPressureSensor.ino */,
+			);
+			path = BarometricPressureSensor;
+			sourceTree = "<group>";
+		};
+		9D5201DE1656C30E00F3BF4E /* DigitalPotControl */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201DF1656C30E00F3BF4E /* DigitalPotControl.ino */,
+			);
+			path = DigitalPotControl;
+			sourceTree = "<group>";
+		};
+		9D5201E31656C30E00F3BF4E /* Stepper */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201E41656C30E00F3BF4E /* examples */,
+				9D5201ED1656C30E00F3BF4E /* keywords.txt */,
+				9D5201EE1656C30E00F3BF4E /* Stepper.cpp */,
+				9D5201EF1656C30E00F3BF4E /* Stepper.h */,
+			);
+			path = Stepper;
+			sourceTree = "<group>";
+		};
+		9D5201E41656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201E51656C30E00F3BF4E /* MotorKnob */,
+				9D5201E71656C30E00F3BF4E /* stepper_oneRevolution */,
+				9D5201E91656C30E00F3BF4E /* stepper_oneStepAtATime */,
+				9D5201EB1656C30E00F3BF4E /* stepper_speedControl */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D5201E51656C30E00F3BF4E /* MotorKnob */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201E61656C30E00F3BF4E /* MotorKnob.ino */,
+			);
+			path = MotorKnob;
+			sourceTree = "<group>";
+		};
+		9D5201E71656C30E00F3BF4E /* stepper_oneRevolution */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201E81656C30E00F3BF4E /* stepper_oneRevolution.ino */,
+			);
+			path = stepper_oneRevolution;
+			sourceTree = "<group>";
+		};
+		9D5201E91656C30E00F3BF4E /* stepper_oneStepAtATime */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201EA1656C30E00F3BF4E /* stepper_oneStepAtATime.ino */,
+			);
+			path = stepper_oneStepAtATime;
+			sourceTree = "<group>";
+		};
+		9D5201EB1656C30E00F3BF4E /* stepper_speedControl */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201EC1656C30E00F3BF4E /* stepper_speedControl.ino */,
+			);
+			path = stepper_speedControl;
+			sourceTree = "<group>";
+		};
+		9D5201F01656C30E00F3BF4E /* WiFi */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201F11656C30E00F3BF4E /* examples */,
+				9D5202081656C30E00F3BF4E /* keywords.txt */,
+				9D5202091656C30E00F3BF4E /* utility */,
+				9D5202161656C30E00F3BF4E /* WiFi.cpp */,
+				9D5202171656C30E00F3BF4E /* WiFi.h */,
+				9D5202181656C30E00F3BF4E /* WiFiClient.cpp */,
+				9D5202191656C30E00F3BF4E /* WiFiClient.h */,
+				9D52021A1656C30E00F3BF4E /* WiFiServer.cpp */,
+				9D52021B1656C30E00F3BF4E /* WiFiServer.h */,
+			);
+			path = WiFi;
+			sourceTree = "<group>";
+		};
+		9D5201F11656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201F21656C30E00F3BF4E /* ConnectNoEncryption */,
+				9D5201F41656C30E00F3BF4E /* ConnectWithWEP */,
+				9D5201F61656C30E00F3BF4E /* ConnectWithWPA */,
+				9D5201F81656C30E00F3BF4E /* ScanNetworks */,
+				9D5201FA1656C30E00F3BF4E /* WifiChatServer */,
+				9D5201FC1656C30E00F3BF4E /* WifiPachubeClient */,
+				9D5201FE1656C30E00F3BF4E /* WifiPachubeClientString */,
+				9D5202001656C30E00F3BF4E /* WifiTwitterClient */,
+				9D5202021656C30E00F3BF4E /* WifiWebClient */,
+				9D5202041656C30E00F3BF4E /* WifiWebClientRepeating */,
+				9D5202061656C30E00F3BF4E /* WifiWebServer */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D5201F21656C30E00F3BF4E /* ConnectNoEncryption */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201F31656C30E00F3BF4E /* ConnectNoEncryption.ino */,
+			);
+			path = ConnectNoEncryption;
+			sourceTree = "<group>";
+		};
+		9D5201F41656C30E00F3BF4E /* ConnectWithWEP */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201F51656C30E00F3BF4E /* ConnectWithWEP.ino */,
+			);
+			path = ConnectWithWEP;
+			sourceTree = "<group>";
+		};
+		9D5201F61656C30E00F3BF4E /* ConnectWithWPA */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201F71656C30E00F3BF4E /* ConnectWithWPA.ino */,
+			);
+			path = ConnectWithWPA;
+			sourceTree = "<group>";
+		};
+		9D5201F81656C30E00F3BF4E /* ScanNetworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201F91656C30E00F3BF4E /* ScanNetworks.ino */,
+			);
+			path = ScanNetworks;
+			sourceTree = "<group>";
+		};
+		9D5201FA1656C30E00F3BF4E /* WifiChatServer */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201FB1656C30E00F3BF4E /* WifiChatServer.ino */,
+			);
+			path = WifiChatServer;
+			sourceTree = "<group>";
+		};
+		9D5201FC1656C30E00F3BF4E /* WifiPachubeClient */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201FD1656C30E00F3BF4E /* WifiPachubeClient.ino */,
+			);
+			path = WifiPachubeClient;
+			sourceTree = "<group>";
+		};
+		9D5201FE1656C30E00F3BF4E /* WifiPachubeClientString */ = {
+			isa = PBXGroup;
+			children = (
+				9D5201FF1656C30E00F3BF4E /* WifiPachubeClientString.ino */,
+			);
+			path = WifiPachubeClientString;
+			sourceTree = "<group>";
+		};
+		9D5202001656C30E00F3BF4E /* WifiTwitterClient */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202011656C30E00F3BF4E /* WifiTwitterClient.ino */,
+			);
+			path = WifiTwitterClient;
+			sourceTree = "<group>";
+		};
+		9D5202021656C30E00F3BF4E /* WifiWebClient */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202031656C30E00F3BF4E /* WifiWebClient.ino */,
+			);
+			path = WifiWebClient;
+			sourceTree = "<group>";
+		};
+		9D5202041656C30E00F3BF4E /* WifiWebClientRepeating */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202051656C30E00F3BF4E /* WifiWebClientRepeating.ino */,
+			);
+			path = WifiWebClientRepeating;
+			sourceTree = "<group>";
+		};
+		9D5202061656C30E00F3BF4E /* WifiWebServer */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202071656C30E00F3BF4E /* WifiWebServer.ino */,
+			);
+			path = WifiWebServer;
+			sourceTree = "<group>";
+		};
+		9D5202091656C30E00F3BF4E /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				9D52020A1656C30E00F3BF4E /* debug.h */,
+				9D52020B1656C30E00F3BF4E /* server_drv.cpp */,
+				9D52020C1656C30E00F3BF4E /* server_drv.h */,
+				9D52020D1656C30E00F3BF4E /* socket.c */,
+				9D52020E1656C30E00F3BF4E /* socket.h */,
+				9D52020F1656C30E00F3BF4E /* spi_drv.cpp */,
+				9D5202101656C30E00F3BF4E /* spi_drv.h */,
+				9D5202111656C30E00F3BF4E /* wifi_drv.cpp */,
+				9D5202121656C30E00F3BF4E /* wifi_drv.h */,
+				9D5202131656C30E00F3BF4E /* wifi_spi.h */,
+				9D5202141656C30E00F3BF4E /* wl_definitions.h */,
+				9D5202151656C30E00F3BF4E /* wl_types.h */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		9D52021C1656C30E00F3BF4E /* Wire */ = {
+			isa = PBXGroup;
+			children = (
+				9D52021D1656C30E00F3BF4E /* examples */,
+				9D52022A1656C30E00F3BF4E /* keywords.txt */,
+				9D52022B1656C30E00F3BF4E /* utility */,
+				9D52022E1656C30E00F3BF4E /* Wire.cpp */,
+				9D52022F1656C30E00F3BF4E /* Wire.h */,
+			);
+			path = Wire;
+			sourceTree = "<group>";
+		};
+		9D52021D1656C30E00F3BF4E /* examples */ = {
+			isa = PBXGroup;
+			children = (
+				9D52021E1656C30E00F3BF4E /* digital_potentiometer */,
+				9D5202201656C30E00F3BF4E /* master_reader */,
+				9D5202221656C30E00F3BF4E /* master_writer */,
+				9D5202241656C30E00F3BF4E /* SFRRanger_reader */,
+				9D5202261656C30E00F3BF4E /* slave_receiver */,
+				9D5202281656C30E00F3BF4E /* slave_sender */,
+			);
+			path = examples;
+			sourceTree = "<group>";
+		};
+		9D52021E1656C30E00F3BF4E /* digital_potentiometer */ = {
+			isa = PBXGroup;
+			children = (
+				9D52021F1656C30E00F3BF4E /* digital_potentiometer.ino */,
+			);
+			path = digital_potentiometer;
+			sourceTree = "<group>";
+		};
+		9D5202201656C30E00F3BF4E /* master_reader */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202211656C30E00F3BF4E /* master_reader.ino */,
+			);
+			path = master_reader;
+			sourceTree = "<group>";
+		};
+		9D5202221656C30E00F3BF4E /* master_writer */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202231656C30E00F3BF4E /* master_writer.ino */,
+			);
+			path = master_writer;
+			sourceTree = "<group>";
+		};
+		9D5202241656C30E00F3BF4E /* SFRRanger_reader */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202251656C30E00F3BF4E /* SFRRanger_reader.ino */,
+			);
+			path = SFRRanger_reader;
+			sourceTree = "<group>";
+		};
+		9D5202261656C30E00F3BF4E /* slave_receiver */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202271656C30E00F3BF4E /* slave_receiver.ino */,
+			);
+			path = slave_receiver;
+			sourceTree = "<group>";
+		};
+		9D5202281656C30E00F3BF4E /* slave_sender */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202291656C30E00F3BF4E /* slave_sender.ino */,
+			);
+			path = slave_sender;
+			sourceTree = "<group>";
+		};
+		9D52022B1656C30E00F3BF4E /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				9D52022C1656C30E00F3BF4E /* twi.c */,
+				9D52022D1656C30E00F3BF4E /* twi.h */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+		9D52024D1656C33100F3BF4E /* include */ = {
+			isa = PBXGroup;
+			children = (
+				9D52024E1656C33100F3BF4E /* alloca.h */,
+				9D52024F1656C33100F3BF4E /* assert.h */,
+				9D5202501656C33100F3BF4E /* avr */,
+				9D5202D91656C33100F3BF4E /* compat */,
+				9D5202DD1656C33100F3BF4E /* ctype.h */,
+				9D5202DE1656C33100F3BF4E /* errno.h */,
+				9D5202DF1656C33100F3BF4E /* inttypes.h */,
+				9D5202E01656C33100F3BF4E /* math.h */,
+				9D5202E11656C33100F3BF4E /* setjmp.h */,
+				9D5202E21656C33100F3BF4E /* stdint.h */,
+				9D5202E31656C33100F3BF4E /* stdio.h */,
+				9D5202E41656C33100F3BF4E /* stdlib.h */,
+				9D5202E51656C33100F3BF4E /* string.h */,
+				9D5202E61656C33100F3BF4E /* util */,
+			);
+			name = include;
+			path = "../../../../Applications/Arduino.app/Contents/Resources/Java/hardware/tools/avr/etc/options/gcc-version/include";
+			sourceTree = "<group>";
+		};
+		9D5202501656C33100F3BF4E /* avr */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202511656C33100F3BF4E /* boot.h */,
+				9D5202521656C33100F3BF4E /* builtins.h */,
+				9D5202531656C33100F3BF4E /* common.h */,
+				9D5202541656C33100F3BF4E /* crc16.h */,
+				9D5202551656C33100F3BF4E /* delay.h */,
+				9D5202561656C33100F3BF4E /* eeprom.h */,
+				9D5202571656C33100F3BF4E /* fuse.h */,
+				9D5202581656C33100F3BF4E /* interrupt.h */,
+				9D5202591656C33100F3BF4E /* io.h */,
+				9D52025A1656C33100F3BF4E /* io1200.h */,
+				9D52025B1656C33100F3BF4E /* io2313.h */,
+				9D52025C1656C33100F3BF4E /* io2323.h */,
+				9D52025D1656C33100F3BF4E /* io2333.h */,
+				9D52025E1656C33100F3BF4E /* io2343.h */,
+				9D52025F1656C33100F3BF4E /* io43u32x.h */,
+				9D5202601656C33100F3BF4E /* io43u35x.h */,
+				9D5202611656C33100F3BF4E /* io4414.h */,
+				9D5202621656C33100F3BF4E /* io4433.h */,
+				9D5202631656C33100F3BF4E /* io4434.h */,
+				9D5202641656C33100F3BF4E /* io76c711.h */,
+				9D5202651656C33100F3BF4E /* io8515.h */,
+				9D5202661656C33100F3BF4E /* io8534.h */,
+				9D5202671656C33100F3BF4E /* io8535.h */,
+				9D5202681656C33100F3BF4E /* io86r401.h */,
+				9D5202691656C33100F3BF4E /* io90pwm1.h */,
+				9D52026A1656C33100F3BF4E /* io90pwm216.h */,
+				9D52026B1656C33100F3BF4E /* io90pwm2b.h */,
+				9D52026C1656C33100F3BF4E /* io90pwm316.h */,
+				9D52026D1656C33100F3BF4E /* io90pwm3b.h */,
+				9D52026E1656C33100F3BF4E /* io90pwmx.h */,
+				9D52026F1656C33100F3BF4E /* ioat94k.h */,
+				9D5202701656C33100F3BF4E /* iocan128.h */,
+				9D5202711656C33100F3BF4E /* iocan32.h */,
+				9D5202721656C33100F3BF4E /* iocan64.h */,
+				9D5202731656C33100F3BF4E /* iocanxx.h */,
+				9D5202741656C33100F3BF4E /* iom103.h */,
+				9D5202751656C33100F3BF4E /* iom128.h */,
+				9D5202761656C33100F3BF4E /* iom1280.h */,
+				9D5202771656C33100F3BF4E /* iom1281.h */,
+				9D5202781656C33100F3BF4E /* iom1284p.h */,
+				9D5202791656C33100F3BF4E /* iom16.h */,
+				9D52027A1656C33100F3BF4E /* iom161.h */,
+				9D52027B1656C33100F3BF4E /* iom162.h */,
+				9D52027C1656C33100F3BF4E /* iom163.h */,
+				9D52027D1656C33100F3BF4E /* iom164.h */,
+				9D52027E1656C33100F3BF4E /* iom165.h */,
+				9D52027F1656C33100F3BF4E /* iom165p.h */,
+				9D5202801656C33100F3BF4E /* iom168.h */,
+				9D5202811656C33100F3BF4E /* iom168p.h */,
+				9D5202821656C33100F3BF4E /* iom169.h */,
+				9D5202831656C33100F3BF4E /* iom169p.h */,
+				9D5202841656C33100F3BF4E /* iom16hva.h */,
+				9D5202851656C33100F3BF4E /* iom2560.h */,
+				9D5202861656C33100F3BF4E /* iom2561.h */,
+				9D5202871656C33100F3BF4E /* iom32.h */,
+				9D5202881656C33100F3BF4E /* iom323.h */,
+				9D5202891656C33100F3BF4E /* iom324.h */,
+				9D52028A1656C33100F3BF4E /* iom325.h */,
+				9D52028B1656C33100F3BF4E /* iom3250.h */,
+				9D52028C1656C33100F3BF4E /* iom328p.h */,
+				9D52028D1656C33100F3BF4E /* iom329.h */,
+				9D52028E1656C33100F3BF4E /* iom3290.h */,
+				9D52028F1656C33100F3BF4E /* iom32c1.h */,
+				9D5202901656C33100F3BF4E /* iom32hvb.h */,
+				9D5202911656C33100F3BF4E /* iom32m1.h */,
+				9D5202921656C33100F3BF4E /* iom32u4.h */,
+				9D5202931656C33100F3BF4E /* iom32u6.h */,
+				9D5202941656C33100F3BF4E /* iom406.h */,
+				9D5202951656C33100F3BF4E /* iom48.h */,
+				9D5202961656C33100F3BF4E /* iom48p.h */,
+				9D5202971656C33100F3BF4E /* iom64.h */,
+				9D5202981656C33100F3BF4E /* iom640.h */,
+				9D5202991656C33100F3BF4E /* iom644.h */,
+				9D52029A1656C33100F3BF4E /* iom645.h */,
+				9D52029B1656C33100F3BF4E /* iom6450.h */,
+				9D52029C1656C33100F3BF4E /* iom649.h */,
+				9D52029D1656C33100F3BF4E /* iom6490.h */,
+				9D52029E1656C33100F3BF4E /* iom8.h */,
+				9D52029F1656C33100F3BF4E /* iom8515.h */,
+				9D5202A01656C33100F3BF4E /* iom8535.h */,
+				9D5202A11656C33100F3BF4E /* iom88.h */,
+				9D5202A21656C33100F3BF4E /* iom88p.h */,
+				9D5202A31656C33100F3BF4E /* iom8hva.h */,
+				9D5202A41656C33100F3BF4E /* iomx8.h */,
+				9D5202A51656C33100F3BF4E /* iomxx0_1.h */,
+				9D5202A61656C33100F3BF4E /* iomxx4.h */,
+				9D5202A71656C33100F3BF4E /* iomxxhva.h */,
+				9D5202A81656C33100F3BF4E /* iotn11.h */,
+				9D5202A91656C33100F3BF4E /* iotn12.h */,
+				9D5202AA1656C33100F3BF4E /* iotn13.h */,
+				9D5202AB1656C33100F3BF4E /* iotn13a.h */,
+				9D5202AC1656C33100F3BF4E /* iotn15.h */,
+				9D5202AD1656C33100F3BF4E /* iotn167.h */,
+				9D5202AE1656C33100F3BF4E /* iotn22.h */,
+				9D5202AF1656C33100F3BF4E /* iotn2313.h */,
+				9D5202B01656C33100F3BF4E /* iotn24.h */,
+				9D5202B11656C33100F3BF4E /* iotn25.h */,
+				9D5202B21656C33100F3BF4E /* iotn26.h */,
+				9D5202B31656C33100F3BF4E /* iotn261.h */,
+				9D5202B41656C33100F3BF4E /* iotn28.h */,
+				9D5202B51656C33100F3BF4E /* iotn43u.h */,
+				9D5202B61656C33100F3BF4E /* iotn44.h */,
+				9D5202B71656C33100F3BF4E /* iotn45.h */,
+				9D5202B81656C33100F3BF4E /* iotn461.h */,
+				9D5202B91656C33100F3BF4E /* iotn48.h */,
+				9D5202BA1656C33100F3BF4E /* iotn84.h */,
+				9D5202BB1656C33100F3BF4E /* iotn85.h */,
+				9D5202BC1656C33100F3BF4E /* iotn861.h */,
+				9D5202BD1656C33100F3BF4E /* iotn88.h */,
+				9D5202BE1656C33100F3BF4E /* iotnx4.h */,
+				9D5202BF1656C33100F3BF4E /* iotnx5.h */,
+				9D5202C01656C33100F3BF4E /* iotnx61.h */,
+				9D5202C11656C33100F3BF4E /* iousb1286.h */,
+				9D5202C21656C33100F3BF4E /* iousb1287.h */,
+				9D5202C31656C33100F3BF4E /* iousb162.h */,
+				9D5202C41656C33100F3BF4E /* iousb646.h */,
+				9D5202C51656C33100F3BF4E /* iousb647.h */,
+				9D5202C61656C33100F3BF4E /* iousb82.h */,
+				9D5202C71656C33100F3BF4E /* iousbxx2.h */,
+				9D5202C81656C33100F3BF4E /* iousbxx6_7.h */,
+				9D5202C91656C33100F3BF4E /* iox128a1.h */,
+				9D5202CA1656C33100F3BF4E /* iox128a3.h */,
+				9D5202CB1656C33100F3BF4E /* iox256a3.h */,
+				9D5202CC1656C33100F3BF4E /* iox256a3b.h */,
+				9D5202CD1656C33100F3BF4E /* iox64a1.h */,
+				9D5202CE1656C33100F3BF4E /* iox64a3.h */,
+				9D5202CF1656C33100F3BF4E /* lock.h */,
+				9D5202D01656C33100F3BF4E /* parity.h */,
+				9D5202D11656C33100F3BF4E /* pgmspace.h */,
+				9D5202D21656C33100F3BF4E /* portpins.h */,
+				9D5202D31656C33100F3BF4E /* power.h */,
+				9D5202D41656C33100F3BF4E /* sfr_defs.h */,
+				9D5202D51656C33100F3BF4E /* signal.h */,
+				9D5202D61656C33100F3BF4E /* sleep.h */,
+				9D5202D71656C33100F3BF4E /* version.h */,
+				9D5202D81656C33100F3BF4E /* wdt.h */,
+			);
+			path = avr;
+			sourceTree = "<group>";
+		};
+		9D5202D91656C33100F3BF4E /* compat */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202DA1656C33100F3BF4E /* deprecated.h */,
+				9D5202DB1656C33100F3BF4E /* ina90.h */,
+				9D5202DC1656C33100F3BF4E /* twi.h */,
+			);
+			path = compat;
+			sourceTree = "<group>";
+		};
+		9D5202E61656C33100F3BF4E /* util */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202E71656C33100F3BF4E /* atomic.h */,
+				9D5202E81656C33100F3BF4E /* crc16.h */,
+				9D5202E91656C33100F3BF4E /* delay.h */,
+				9D5202EA1656C33100F3BF4E /* delay_basic.h */,
+				9D5202EB1656C33100F3BF4E /* parity.h */,
+				9D5202EC1656C33100F3BF4E /* setbaud.h */,
+				9D5202ED1656C33100F3BF4E /* twi.h */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		9D5202EE1656C3E200F3BF4E /* arduino */ = {
+			isa = PBXGroup;
+			children = (
+				9D5202EF1656C3E200F3BF4E /* Arduino.h */,
+				9D5202F01656C3E200F3BF4E /* binary.h */,
+				9D5202F11656C3E200F3BF4E /* CDC.cpp */,
+				9D5202F21656C3E200F3BF4E /* Client.h */,
+				9D5202F31656C3E200F3BF4E /* HardwareSerial.cpp */,
+				9D5202F41656C3E200F3BF4E /* HardwareSerial.h */,
+				9D5202F51656C3E200F3BF4E /* HID.cpp */,
+				9D5202F61656C3E200F3BF4E /* IPAddress.cpp */,
+				9D5202F71656C3E200F3BF4E /* IPAddress.h */,
+				9D5202F81656C3E200F3BF4E /* main.cpp */,
+				9D5202F91656C3E200F3BF4E /* new.cpp */,
+				9D5202FA1656C3E200F3BF4E /* new.h */,
+				9D5202FB1656C3E200F3BF4E /* Platform.h */,
+				9D5202FC1656C3E200F3BF4E /* Print.cpp */,
+				9D5202FD1656C3E200F3BF4E /* Print.h */,
+				9D5202FE1656C3E200F3BF4E /* Printable.h */,
+				9D5202FF1656C3E200F3BF4E /* Server.h */,
+				9D5203001656C3E200F3BF4E /* Stream.cpp */,
+				9D5203011656C3E200F3BF4E /* Stream.h */,
+				9D5203021656C3E200F3BF4E /* Tone.cpp */,
+				9D5203031656C3E200F3BF4E /* Udp.h */,
+				9D5203041656C3E200F3BF4E /* USBAPI.h */,
+				9D5203051656C3E200F3BF4E /* USBCore.cpp */,
+				9D5203061656C3E200F3BF4E /* USBCore.h */,
+				9D5203071656C3E200F3BF4E /* USBDesc.h */,
+				9D5203081656C3E200F3BF4E /* WCharacter.h */,
+				9D5203091656C3E200F3BF4E /* WInterrupts.c */,
+				9D52030A1656C3E200F3BF4E /* wiring.c */,
+				9D52030B1656C3E200F3BF4E /* wiring_analog.c */,
+				9D52030C1656C3E200F3BF4E /* wiring_digital.c */,
+				9D52030D1656C3E200F3BF4E /* wiring_private.h */,
+				9D52030E1656C3E200F3BF4E /* wiring_pulse.c */,
+				9D52030F1656C3E200F3BF4E /* wiring_shift.c */,
+				9D5203101656C3E200F3BF4E /* WMath.cpp */,
+				9D5203111656C3E200F3BF4E /* WString.cpp */,
+				9D5203121656C3E200F3BF4E /* WString.h */,
+			);
+			name = arduino;
+			path = ../../../../Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino;
+			sourceTree = "<group>";
+		};
 		9D77CB94158999490089EB0A = {
 			isa = PBXGroup;
 			children = (
+				9D5201351656C2F800F3BF4E /* Arduino Reference Files */,
 				9DCC75F61589A3D300564CB8 /* Libraries */,
 				9D52011E1650A17F00F3BF4E /* SPI.cpp */,
 				9D52011F1650A17F00F3BF4E /* SPI.h */,
@@ -256,8 +1819,6 @@
 		9D77CBA71589994A0089EB0A /* BMSDisplay */ = {
 			isa = PBXGroup;
 			children = (
-				9D5201221653405100F3BF4E /* CorbGraphics.cpp */,
-				9D5201231653405100F3BF4E /* CorbGraphics.h */,
 				9D77CBA81589994A0089EB0A /* main.cpp */,
 				9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */,
 				9D77CBAB1589994A0089EB0A /* LocalLibrary.h */,
@@ -997,9 +2558,55 @@
 				9DCC76AC1589A3D300564CB8 /* DateStrings.cpp in Sources */,
 				9DCC76AD1589A3D300564CB8 /* Time.cpp in Sources */,
 				9DCC76AE1589A3D300564CB8 /* TimeAlarms.cpp in Sources */,
-				9D5201241653405100F3BF4E /* CorbGraphics.cpp in Sources */,
 				9D52012B165341F100F3BF4E /* Adafruit_GFX.cpp in Sources */,
 				9D52012C165341F100F3BF4E /* glcdfont.c in Sources */,
+				9D5202301656C30E00F3BF4E /* EEPROM.cpp in Sources */,
+				9D5202311656C30E00F3BF4E /* Dhcp.cpp in Sources */,
+				9D5202321656C30E00F3BF4E /* Dns.cpp in Sources */,
+				9D5202331656C30E00F3BF4E /* Ethernet.cpp in Sources */,
+				9D5202341656C30E00F3BF4E /* EthernetClient.cpp in Sources */,
+				9D5202351656C30E00F3BF4E /* EthernetServer.cpp in Sources */,
+				9D5202361656C30E00F3BF4E /* EthernetUdp.cpp in Sources */,
+				9D5202371656C30E00F3BF4E /* socket.cpp in Sources */,
+				9D5202381656C30E00F3BF4E /* w5100.cpp in Sources */,
+				9D5202391656C30E00F3BF4E /* Firmata.cpp in Sources */,
+				9D52023A1656C30E00F3BF4E /* LiquidCrystal.cpp in Sources */,
+				9D52023B1656C30E00F3BF4E /* File.cpp in Sources */,
+				9D52023C1656C30E00F3BF4E /* SD.cpp in Sources */,
+				9D52023D1656C30E00F3BF4E /* Sd2Card.cpp in Sources */,
+				9D52023E1656C30E00F3BF4E /* SdFile.cpp in Sources */,
+				9D52023F1656C30E00F3BF4E /* SdVolume.cpp in Sources */,
+				9D5202401656C30E00F3BF4E /* Servo.cpp in Sources */,
+				9D5202411656C30E00F3BF4E /* SoftwareSerial.cpp in Sources */,
+				9D5202421656C30E00F3BF4E /* SPI.cpp in Sources */,
+				9D5202431656C30E00F3BF4E /* Stepper.cpp in Sources */,
+				9D5202441656C30E00F3BF4E /* server_drv.cpp in Sources */,
+				9D5202451656C30E00F3BF4E /* socket.c in Sources */,
+				9D5202461656C30E00F3BF4E /* spi_drv.cpp in Sources */,
+				9D5202471656C30E00F3BF4E /* wifi_drv.cpp in Sources */,
+				9D5202481656C30E00F3BF4E /* WiFi.cpp in Sources */,
+				9D5202491656C30E00F3BF4E /* WiFiClient.cpp in Sources */,
+				9D52024A1656C30E00F3BF4E /* WiFiServer.cpp in Sources */,
+				9D52024B1656C30E00F3BF4E /* twi.c in Sources */,
+				9D52024C1656C30E00F3BF4E /* Wire.cpp in Sources */,
+				9D5203131656C3E200F3BF4E /* CDC.cpp in Sources */,
+				9D5203141656C3E200F3BF4E /* HardwareSerial.cpp in Sources */,
+				9D5203151656C3E200F3BF4E /* HID.cpp in Sources */,
+				9D5203161656C3E200F3BF4E /* IPAddress.cpp in Sources */,
+				9D5203171656C3E200F3BF4E /* main.cpp in Sources */,
+				9D5203181656C3E200F3BF4E /* new.cpp in Sources */,
+				9D5203191656C3E200F3BF4E /* Print.cpp in Sources */,
+				9D52031A1656C3E200F3BF4E /* Stream.cpp in Sources */,
+				9D52031B1656C3E200F3BF4E /* Tone.cpp in Sources */,
+				9D52031C1656C3E200F3BF4E /* USBCore.cpp in Sources */,
+				9D52031D1656C3E200F3BF4E /* WInterrupts.c in Sources */,
+				9D52031E1656C3E200F3BF4E /* wiring.c in Sources */,
+				9D52031F1656C3E200F3BF4E /* wiring_analog.c in Sources */,
+				9D5203201656C3E200F3BF4E /* wiring_digital.c in Sources */,
+				9D5203211656C3E200F3BF4E /* wiring_pulse.c in Sources */,
+				9D5203221656C3E200F3BF4E /* wiring_shift.c in Sources */,
+				9D5203231656C3E200F3BF4E /* WMath.cpp in Sources */,
+				9D5203241656C3E200F3BF4E /* WString.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
