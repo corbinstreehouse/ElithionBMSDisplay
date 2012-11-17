@@ -464,6 +464,7 @@
 		9D5203101656C3E200F3BF4E /* WMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WMath.cpp; sourceTree = "<group>"; };
 		9D5203111656C3E200F3BF4E /* WString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WString.cpp; sourceTree = "<group>"; };
 		9D5203121656C3E200F3BF4E /* WString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WString.h; sourceTree = "<group>"; };
+		9D52034A1657FE9900F3BF4E /* UGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UGeometry.h; path = ../../../Documents/Arduino/Libraries/UTFT/UGeometry.h; sourceTree = "<group>"; };
 		9D77CB9D1589994A0089EB0A /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D77CBA81589994A0089EB0A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9D77CBAA1589994A0089EB0A /* BMSDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BMSDisplay.cpp; sourceTree = "<group>"; };
@@ -514,7 +515,6 @@
 		9DCC76221589A3D300564CB8 /* defaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defaults.h; sourceTree = "<group>"; };
 		9DCC76251589A3D300564CB8 /* ecu_reader_logger.ino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ecu_reader_logger.ino; sourceTree = "<group>"; };
 		9DCC76261589A3D300564CB8 /* global.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = global.h; sourceTree = "<group>"; };
-		9DCC76271589A3D300564CB8 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
 		9DCC76281589A3D300564CB8 /* mcp2515.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mcp2515.c; sourceTree = "<group>"; };
 		9DCC76291589A3D300564CB8 /* mcp2515.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp2515.h; sourceTree = "<group>"; };
 		9DCC762A1589A3D300564CB8 /* mcp2515_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mcp2515_defs.h; sourceTree = "<group>"; };
@@ -602,8 +602,9 @@
 				9D5200C91650691000F3BF4E /* HW_PIC32_defines.h */,
 				9D5200CA1650691000F3BF4E /* HW_PIC32.h */,
 				9D5200CB1650691000F3BF4E /* memorysaver.h */,
-				9D5200CC1650691000F3BF4E /* UTFT.cpp */,
+				9D52034A1657FE9900F3BF4E /* UGeometry.h */,
 				9D5200CD1650691000F3BF4E /* UTFT.h */,
+				9D5200CC1650691000F3BF4E /* UTFT.cpp */,
 			);
 			name = UTFT;
 			path = ../../../Projects/Arduino/BMSDisplay;
@@ -1992,7 +1993,6 @@
 				9DCC76221589A3D300564CB8 /* defaults.h */,
 				9DCC76231589A3D300564CB8 /* examples */,
 				9DCC76261589A3D300564CB8 /* global.h */,
-				9DCC76271589A3D300564CB8 /* keywords.txt */,
 				9DCC76281589A3D300564CB8 /* mcp2515.c */,
 				9DCC76291589A3D300564CB8 /* mcp2515.h */,
 				9DCC762A1589A3D300564CB8 /* mcp2515_defs.h */,
