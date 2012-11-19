@@ -33,6 +33,7 @@
 
 
 #define ERROR_COLOR RED_COLOR
+#define STORED_ERROR_COLOR 255, 0, 255
 #define WARNING_COLOR ORANGE_COLOR
 #define BACKGROUND_COLOR BLACK_COLOR
 
@@ -90,7 +91,11 @@ static inline void setupCanbusPins() {
 //    digitalWrite(CLICK, HIGH);
 }
 
-UTFT g_display(ADAFRUIT_2_2_TFT, 11, 13, 3, 9);   // Remember to change the model parameter to suit your display module!
+#define DISPLAY_CHIP_SELECT 3 // the only variable pin (usually
+#define DISPLAY_RESET 9
+
+// MISO == 12
+UTFT g_display(ADAFRUIT_2_2_TFT, MOSI/*11*/, SCK /*13*/, DISPLAY_CHIP_SELECT, DISPLAY_RESET);
 
 static inline void setupLCD() {
     g_display.InitLCD();
@@ -147,7 +152,7 @@ void printSOCDisplay(int *yOffset) {
 
 // stupid embedded. %.2f don't work!
 static void float_sprintf(char *buffer, char *postfix, float value) {
-    int d1 = value;            // Get the integer part (678).
+    int d1 = floor(value);
     float f2 = value - d1;     // Get fractional part (678.0123 - 678 = 0.0123).
     int d2 = round(f2 * 10);   // Turn into integer (0).
     
@@ -163,23 +168,37 @@ void printCenteredText(char *text, int *yOffset, float *lastValue, float newValu
     // print it, if it is different or has moved
     if (newValue != *lastValue || (*yOffset != URectMinY(*lastRect))) {
         *lastValue = newValue;
-        
+
         g_display.setFont(font);
-        URect currentRect = URectMake(0, *yOffset, g_display.getDisplayXSize(), g_display.getFont()->y_size);
+
+        // TODO: test for buffer overrun!
+        char buffer[32];
+        float_sprintf(buffer, text, newValue);
+        
+        // manual centering...
+        int textWidth = strlen(buffer)*g_display.getFont()->x_size;
+        int xPos = floor((g_display.getDisplayXSize() - textWidth) / 2.0);
+        
+        URect currentRect = URectMake(xPos, *yOffset, textWidth, g_display.getFont()->y_size);
+        // always fill...since the text y position may change, unless we calculate the center (which maybe I should do)
         if (!URectIsEqual(currentRect, *lastRect)) {
             // TODO: think about the moved part, because if the yOffset is >, then we don't want to cutoff the previous yOffset stuff drawn
-            g_display.setColor(BACKGROUND_COLOR);
-            g_display.fillRect(*lastRect);
+
+            // Do a smart fill only if we have to...
+            if (URectMinX(currentRect) > URectMinX(*lastRect)) {
+                g_display.setColor(BACKGROUND_COLOR);
+                // Fill to the min of new one and past it
+                g_display.fillRect(URectMinX(*lastRect), URectMinY(*lastRect), URectMinX(currentRect), URectMaxY(*lastRect));
+                // past it
+                g_display.fillRect(URectMaxX(currentRect), URectMinY(*lastRect), URectMaxX(*lastRect), URectMaxY(*lastRect));
+                
+            }
             *lastRect = currentRect;
         }
         
         g_display.setColor(WHITE_COLOR);
         g_display.setBackColor(BACKGROUND_COLOR);
-        // TODO: test for buffer overrun!
-        char buffer[32];
-        float_sprintf(buffer, text, newValue);
-        
-        g_display.print(buffer, CENTER, URectMinY(currentRect));
+        g_display.print(buffer, URectMinX(currentRect), URectMinY(currentRect));
     }
     *yOffset = URectMaxY(*lastRect);
 }
@@ -198,11 +217,11 @@ void printPackVoltage(int *yOffset) {
     printCenteredText("volts", yOffset, &g_lastValue, voltage, &g_lastValueRect, BigFont);
 }
 
-void printAvgLoadAmps(int *yOffset) {
+void printLoadCurrent(int *yOffset) {
     static float g_lastValue = -1;
     static URect g_lastValueRect = URectMake(0, 0, 0, 0);
-    float current = abs(g_canBus.getAverageLoadCurrent());
-    printCenteredText("amps avg discharge", yOffset, &g_lastValue, current, &g_lastValueRect, SmallFont);
+    float current = abs(g_canBus.getLoadCurrent());
+    printCenteredText("amps (current)", yOffset, &g_lastValue, current, &g_lastValueRect, SmallFont);
 }
 
 void printAvgSourceCurrent(int *yOffset) {
@@ -235,6 +254,9 @@ static void setAndPrintStatus(char *statusMessage) {
             g_lastStatus = g_currentStatus;
             g_display.setFont(SmallFont);
             printMessage(g_currentStatus, &yOffset, 1, 1, STATUS_COLOR);
+        } else {
+            // Clear the prior!
+            // corbin...
         }
     }
 }
@@ -258,10 +280,9 @@ static void printFaultsOrWarnings(FaultKindOptions faults, int *yOffset, byte r,
 
 static void printStoredFault(StoredFaultKind storedFault, int *yOffset, byte r, byte g, byte b) {
     if (storedFault) {
-        // Find the offset into the messages
-        int offsetIntoFaultMesssages = storedFault - 1;
-        if (offsetIntoFaultMesssages < StoredFaultKindOverVoltage) {
-            // Print that message
+        if (storedFault < StoredFaultKindNoBatteryVoltage) {
+            // Find the offset into the messages
+            int offsetIntoFaultMesssages = storedFault - 1;
             printMessage(FaultKindMessages[offsetIntoFaultMesssages], yOffset, 0, 0, r, g, b);
         } else {
             // Print the error number
@@ -279,7 +300,8 @@ static void printErrorsAndWarnings(int yOffset) {
     g_canBus.getFaults(&presentFaults, &storedFault, &presentWarnings);
     
     // See if they changed
-    static FaultKindOptions g_lastPresentFaults = 0, g_lastPresentWarnings = 0;
+    static FaultKindOptions g_lastPresentFaults = 0;
+    static FaultKindOptions g_lastPresentWarnings = 0;
     static StoredFaultKind g_lastStoredFault = 0;
     if (g_lastPresentFaults != presentFaults || g_lastPresentWarnings != presentWarnings || g_lastStoredFault != storedFault) {
         static URect g_lastRect = URectMake(0, 0, 0, 0);
@@ -287,12 +309,11 @@ static void printErrorsAndWarnings(int yOffset) {
         g_lastPresentWarnings = presentWarnings;
         g_lastStoredFault = storedFault;
         
-        // Fill the last rect we drew
+        // Fill the last rect we drew as we may be drawing different things
         if (!URectIsEmpty(g_lastRect)) {
             g_display.setColor(BACKGROUND_COLOR);
             g_display.fillRect(g_lastRect);
         }
-        
         if (presentFaults || storedFault || presentWarnings) {
             int yOriginOffset = yOffset;
             g_lastRect = URectMake(0, yOffset, SCREEN_WIDTH, 1);
@@ -304,13 +325,22 @@ static void printErrorsAndWarnings(int yOffset) {
             yOffset += URectHeight(g_lastRect);
             
             printFaultsOrWarnings(presentFaults, &yOffset, ERROR_COLOR);
-            printStoredFault(storedFault, &yOffset, ERROR_COLOR);
+            printStoredFault(storedFault, &yOffset, STORED_ERROR_COLOR);
             printFaultsOrWarnings(presentWarnings, &yOffset, WARNING_COLOR);
+            // print warnings as hex...so i can figure out what is up as they are wrong..
+            if (presentWarnings) {
+                char buffer[32];
+                sprintf(buffer, "RAW WARNINGS: %d", presentWarnings);
+                printMessage(buffer, &yOffset, 0, 0, WARNING_COLOR);
+            }
             
             g_display.setColor(ERROR_COLOR);
             g_lastRect.origin.y = yOffset;
             g_display.fillRect(g_lastRect);
-            g_lastRect.size.height = URectMaxX(g_lastRect) - yOriginOffset;
+
+            // Save the entire size so we can clear it on the next pass/update
+            g_lastRect.size.height = URectMaxY(g_lastRect) - yOriginOffset;
+            g_lastRect.origin.y = yOriginOffset;
         } else {
             g_lastRect = URectMake(0, 0, 0, 0);
         }
@@ -327,7 +357,7 @@ void setup() {
     setupLCD();
     
     int yOffset;
-    
+//    
 //    setAndPrintStatus("BMS Display for Elithion");
 //    delay(1000);
 //    setAndPrintStatus("by corbin dunn");
@@ -356,9 +386,10 @@ void loop() {
     printSOCDisplay(&yOffset);
     printPackCurrent(&yOffset);
     printPackVoltage(&yOffset);
-    printAvgLoadAmps(&yOffset);
-    printAvgSourceCurrent(&yOffset);
-    
+    printLoadCurrent(&yOffset);
+//    printAvgSourceCurrent(&yOffset);
+
+    // TODO: remove the delays...?
     delay(100);
     digitalWrite(CAN_BUS_LED3, LOW);
     delay(100);
