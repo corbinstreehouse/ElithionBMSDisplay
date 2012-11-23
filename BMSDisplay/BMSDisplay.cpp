@@ -73,8 +73,8 @@ static inline void setupCanbusPins() {
     digitalWrite(CAN_BUS_LED3, LOW);
 }
 
-#define DISPLAY_CHIP_SELECT 3 // the only variable pin (usually
-#define DISPLAY_RESET 9
+#define DISPLAY_CHIP_SELECT 3 // the only variable pin (usually pin 10, but we want it on 3, as the Can bus shield uses 10)
+#define DISPLAY_RESET 9 // Don't change
 
 // MISO == 12
 UTFT g_display(ADAFRUIT_2_2_TFT, MOSI/*11*/, SCK /*13*/, DISPLAY_CHIP_SELECT, DISPLAY_RESET);
@@ -444,7 +444,7 @@ void setup() {
     
     int yOffset;
 
-    printStatus("BMS Display for Elithion");
+    printStatus("BMS Display v1.0");
     delay(DELAY_BETWEEN_MESSAGES);
     printStatus("by corbin dunn");
     delay(DELAY_BETWEEN_MESSAGES);
