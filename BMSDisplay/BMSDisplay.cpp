@@ -31,7 +31,7 @@
 
 #define ERROR_COLOR RED_COLOR
 #define STORED_ERROR_COLOR 255, 0, 255
-#define WARNING_COLOR ORANGE_COLOR
+#define WARNING_COLOR 255, 128, 0 // organish
 #define BACKGROUND_COLOR BLACK_COLOR
 
 #define STATUS_COLOR 64, 64, 64
@@ -60,34 +60,112 @@ extern uint8_t SmallFont[];
 extern uint8_t BigFont[];
 extern uint8_t SevenSegNumFont[];
 
-int CAN_BUS_LED2 = 8;
+//int CAN_BUS_LED2 = 8;
 int CAN_BUS_LED3 = 7;
+
+#define DISPLAY_CHIP_SELECT 3 // the only variable pin (usually pin 10, but we want it on 3, as the Can bus shield uses 10)
+#define DISPLAY_RESET 9 // Don't change
+#define BUTTON_PIN A0
+
+
+// MISO == 12
+UTFT g_display(ADAFRUIT_2_2_TFT, MOSI/*11*/, SCK /*13*/, DISPLAY_CHIP_SELECT, DISPLAY_RESET);
 
 CanbusClass g_canBus;
 
 static inline void setupCanbusPins() {
-    pinMode(CAN_BUS_LED2, OUTPUT);
+//    pinMode(CAN_BUS_LED2, OUTPUT);
     pinMode(CAN_BUS_LED3, OUTPUT);
     
-    digitalWrite(CAN_BUS_LED2, LOW);
+//    digitalWrite(CAN_BUS_LED2, LOW);
     digitalWrite(CAN_BUS_LED3, LOW);
 }
-
-#define DISPLAY_CHIP_SELECT 3 // the only variable pin (usually pin 10, but we want it on 3, as the Can bus shield uses 10)
-#define DISPLAY_RESET 9 // Don't change
-
-// MISO == 12
-UTFT g_display(ADAFRUIT_2_2_TFT, MOSI/*11*/, SCK /*13*/, DISPLAY_CHIP_SELECT, DISPLAY_RESET);
 
 static inline void setupLCD() {
     g_display.InitLCD();
     g_display.clrScr();
 }
 
+// 5 buttons are hooked up, each to a different resistor value from a 5v input, all tapped by one analog read pin to see the voltage value
+
+static inline int getPushedButton() {
+    int val = analogRead(BUTTON_PIN);
+    
+#ifdef DEBUG
+//    Serial.print("button voltage value:");
+//    Serial.println(val);
+#endif
+    
+#define BUTTON_ERROR_MARGIN 15  // +/- this value
+    // Values found by measurement. Each button adds 1k resistance, and after the last resistor there is a 10k resistor
+#define BUTTON_VALUE_0 928
+#define BUTTON_VALUE_1 849
+#define BUTTON_VALUE_2 782
+#define BUTTON_VALUE_3 725
+#define BUTTON_VALUE_4 676
+    if (val >= (BUTTON_VALUE_0 - BUTTON_ERROR_MARGIN) && val <= (BUTTON_VALUE_0 + BUTTON_ERROR_MARGIN)) {
+        return 5; // rightmost button
+    } else if (val >= (BUTTON_VALUE_1 - BUTTON_ERROR_MARGIN) && val <= (BUTTON_VALUE_1 + BUTTON_ERROR_MARGIN)) {
+        return 4;
+    } else if (val >= (BUTTON_VALUE_2 - BUTTON_ERROR_MARGIN) && val <= (BUTTON_VALUE_2 + BUTTON_ERROR_MARGIN)) {
+        return 3;
+    } else if (val >= (BUTTON_VALUE_3 - BUTTON_ERROR_MARGIN) && val <= (BUTTON_VALUE_3 + BUTTON_ERROR_MARGIN)) {
+        return 2;
+    } else if (val >= (BUTTON_VALUE_4 - BUTTON_ERROR_MARGIN) && val <= (BUTTON_VALUE_4 + BUTTON_ERROR_MARGIN)) {
+        return 1; // leftmost button
+    }
+    return 0;
+}
+
+typedef enum {
+    CurrentPageStandard,
+    CurrentPageDetailed,
+} CurrentPage;
+
+static CurrentPage g_currentPage = CurrentPageStandard;
+static CurrentPage g_lastPageShown = CurrentPageStandard;
+
+static void checkButtonsAndUpdateCurrentPage() {
+    int pushedButton = getPushedButton();
+    if (pushedButton != 0) {
+        // Wait for the button to be up
+        while (getPushedButton() != 0) {
+            // ...
+        }
+        Serial.print("button:");
+        Serial.println(pushedButton);
+        // No process it
+        switch (pushedButton) {
+            case 1: {
+                // Left
+                g_currentPage = (CurrentPage)(g_currentPage - 1);
+                if (g_currentPage < 0) {
+                    g_currentPage = CurrentPageDetailed;
+                }
+                break;
+            }
+            case 2: {
+                // right
+                g_currentPage = (CurrentPage)(g_currentPage + 1);
+                if (g_currentPage > CurrentPageDetailed) {
+                    g_currentPage = CurrentPageStandard;
+                }
+                break;
+            }
+            case 5: {
+                // enter. clear stored faults (this happens automatically on a delay anyways)
+                g_canBus.clearStoredFault();
+                break;
+            }
+        }
+    }
+}
+
+
 static int8_t g_lastLimitAmount = -2; // Forces us to go through the code once; -1 is special
+static int g_lastSOC = -1;
 
 void printSOCDisplay(int *yOffset, bool needsRedraw) {
-    static int g_lastSOC = -1;
     static URect g_lastSOCRect = URectMake(0, 0, 0, 0);
     
     int soc = g_canBus.getStateOfCharge();
@@ -156,7 +234,8 @@ static void float_sprintf(char *buffer, char *postfix, float value) {
     }
 }
 
-void printCenteredText(char *text, int *yOffset, URect *lastRect, uint8_t *font) {
+// background colors must be set before calling this. Except the font color..which is always white
+void printCenteredText(char *text, int *yOffset, URect *lastRect, uint8_t *font, bool needsRedraw, bool fillBackground) {
     if (text) {
         g_display.setFont(font);
 
@@ -165,79 +244,101 @@ void printCenteredText(char *text, int *yOffset, URect *lastRect, uint8_t *font)
         int xPos = floor((g_display.getDisplayXSize() - textWidth) / 2.0);
         
         URect currentRect = URectMake(xPos, *yOffset, textWidth, g_display.getFont()->y_size);
+        
         // always fill...since the text y position may change, unless we calculate the center (which maybe I should do)
-        if (lastRect && !URectIsEqual(currentRect, *lastRect)) {
-            // TODO: think about the moved part, because if the yOffset is >, then we don't want to cutoff the previous yOffset stuff drawn
-
+        if (lastRect && (!URectIsEqual(currentRect, *lastRect) || needsRedraw)) {
+            int minY = max(URectMinY(*lastRect), *yOffset);
             // Do a smart fill only if we have to...
-            if (URectMinX(currentRect) > URectMinX(*lastRect)) {
-                g_display.setColor(BACKGROUND_COLOR);
+            if (URectMinY(*lastRect) != URectMinY(currentRect)) {
+                // y changed...fill it all, with a flash
+                URect rectToFill = *lastRect;
+                rectToFill.origin.y = *yOffset;// Don't fill something before us..
+                g_display.fillRect(rectToFill);
+            } else if (URectMinX(currentRect) > URectMinX(*lastRect)) {
                 // Fill to the min of new one and past it
-                g_display.fillRect(URectMinX(*lastRect), URectMinY(*lastRect), URectMinX(currentRect), URectMaxY(*lastRect));
+                g_display.fillRect(URectMinX(*lastRect), minY, URectMinX(currentRect), URectMaxY(*lastRect));
                 // past it
-                g_display.fillRect(URectMaxX(currentRect), URectMinY(*lastRect), URectMaxX(*lastRect), URectMaxY(*lastRect));
+                g_display.fillRect(URectMaxX(currentRect), minY, URectMaxX(*lastRect), URectMaxY(*lastRect));
                 
             }
             *lastRect = currentRect;
         }
         
+        if (fillBackground) {
+            URect fillRect = currentRect;
+            fillRect.origin.x = 0;
+            fillRect.size.width = SCREEN_WIDTH;
+            g_display.fillRect(fillRect);
+        }
+        
+        // font is always white (for now)
         g_display.setColor(WHITE_COLOR);
-        g_display.setBackColor(BACKGROUND_COLOR);
         g_display.print(text, URectMinX(currentRect), URectMinY(currentRect));
         *yOffset = URectMaxY(currentRect);
     } else {
         // Clear the prior rect
         if (lastRect && !URectIsEmpty(*lastRect)) {
-            g_display.setColor(BACKGROUND_COLOR);
-            g_display.fillRect(*lastRect);
+            URect fillRect = *lastRect;
+            fillRect.origin.y = *yOffset;// Don't fill something before us
+            if (fillBackground) {
+                fillRect.origin.x = 0;
+                fillRect.size.width = SCREEN_WIDTH;
+            }
+            g_display.fillRect(fillRect);
             *lastRect = URectMake(0,0,0,0);
         }
     }
 }
 
+void printCenteredTextWithStandardColors(char *text, int *yOffset, URect *lastRect, uint8_t *font, bool needsRedraw) {
+    g_display.setColor(BACKGROUND_COLOR);
+    g_display.setBackColor(BACKGROUND_COLOR);
+    printCenteredText(text, yOffset, lastRect, font, needsRedraw, false);
+}
+
 #define BUFFER_SIZE 28 // 27, max characters we can show, plus a NULL
 
-void printCenteredTextWithValue(char *text, int *yOffset, float *lastValue, float newValue, URect *lastRect, uint8_t *font) {
+void printCenteredTextWithValue(char *text, int *yOffset, float *lastValue, float newValue, URect *lastRect, uint8_t *font, bool needsRedraw) {
     // print it, if it is different or has moved
-    if (newValue != *lastValue || (*yOffset != URectMinY(*lastRect))) {
+    if (newValue != *lastValue || (*yOffset != URectMinY(*lastRect)) || needsRedraw) {
         *lastValue = newValue;
 
         // format the text then print it
         char buffer[BUFFER_SIZE];
         float_sprintf(buffer, text, newValue);
-        printCenteredText(buffer, yOffset, lastRect, font);
+        printCenteredTextWithStandardColors(buffer, yOffset, lastRect, font, needsRedraw);
     } else {
         *yOffset = URectMaxY(*lastRect);
     }
 }
 
-void printPackCurrent(int *yOffset) {
+void printPackCurrent(int *yOffset, bool needsRedraw) {
     static float g_lastValue = -1;
     static URect g_lastValueRect = URectMake(0, 0, 0, 0);
     float current = abs(g_canBus.getPackCurrent());
-    printCenteredTextWithValue("amps", yOffset, &g_lastValue, current, &g_lastValueRect, BigFont);
+    printCenteredTextWithValue("amps", yOffset, &g_lastValue, current, &g_lastValueRect, BigFont, needsRedraw);
 }
 
-void printPackVoltage(int *yOffset) {
+void printPackVoltage(int *yOffset, bool needsRedraw) {
     static float g_lastValue = -1;
     static URect g_lastValueRect = URectMake(0, 0, 0, 0);
     float voltage = g_canBus.getPackVoltage();
-    printCenteredTextWithValue("volts", yOffset, &g_lastValue, voltage, &g_lastValueRect, BigFont);
+    printCenteredTextWithValue("volts", yOffset, &g_lastValue, voltage, &g_lastValueRect, BigFont, needsRedraw);
 }
 
-void printLoadCurrent(int *yOffset) {
-    static float g_lastValue = -1;
-    static URect g_lastValueRect = URectMake(0, 0, 0, 0);
-    float current = abs(g_canBus.getLoadCurrent());
-    printCenteredTextWithValue("amps (current)", yOffset, &g_lastValue, current, &g_lastValueRect, SmallFont);
-}
-
-void printAvgSourceCurrent(int *yOffset) {
-    static float g_lastValue = -1;
-    static URect g_lastValueRect = URectMake(0, 0, 0, 0);
-    float current = abs(g_canBus.getAverageSourceCurrent());
-    printCenteredTextWithValue("amps avg charge", yOffset, &g_lastValue, current, &g_lastValueRect, SmallFont);
-}
+//void printLoadCurrent(int *yOffset) {
+//    static float g_lastValue = -1;
+//    static URect g_lastValueRect = URectMake(0, 0, 0, 0);
+//    float current = abs(g_canBus.getLoadCurrent());
+//    printCenteredTextWithValue("amps (current)", yOffset, &g_lastValue, current, &g_lastValueRect, SmallFont);
+//}
+//
+//void printAvgSourceCurrent(int *yOffset) {
+//    static float g_lastValue = -1;
+//    static URect g_lastValueRect = URectMake(0, 0, 0, 0);
+//    float current = abs(g_canBus.getAverageSourceCurrent());
+//    printCenteredTextWithValue("amps avg charge", yOffset, &g_lastValue, current, &g_lastValueRect, SmallFont);
+//}
 
 
 // background color is passed in
@@ -248,32 +349,22 @@ void printMessage(const char *message, int *yOffset, int yMinOutset, int yMaxOut
     g_display.fillRect(0, *yOffset, SCREEN_WIDTH - 1, *yOffset + totalHeight);
     g_display.setColor(WHITE_COLOR); // white text always for now
     g_display.setBackColor(r, g, b);
+//    int textWidth = strlen(message)*g_display.getFont()->x_size;
+//    int xPos = floor((g_display.getDisplayXSize() - textWidth) / 2.0);
     g_display.print(message, CENTER, *yOffset + yMinOutset);
     *yOffset += totalHeight;
 }
 
 static void printStatusWithColor(const char *statusMessage, byte r, byte g, byte b, int *yOffset) {
-//    static const char *g_currentStatus = NULL;
-//    if (g_currentStatus != statusMessage) // corbin
-    {
-//        g_currentStatus = statusMessage;
-        if (statusMessage != NULL) {
-            g_display.setFont(SmallFont);
-            printMessage(statusMessage, yOffset, 1, 1, r, g, b);
-        } else {
-            // Clear the prior...
-            URect r = URectMake(0, *yOffset, g_display.getDisplayXSize(), g_display.getFont()->y_size + 2);
-            g_display.setColor(BACKGROUND_COLOR);
-            g_display.fillRect(r);
-        }
+    if (statusMessage != NULL) {
+        g_display.setFont(SmallFont);
+        printMessage(statusMessage, yOffset, 1, 1, r, g, b);
+    } else {
+        // Clear the prior...
+        URect r = URectMake(0, *yOffset, g_display.getDisplayXSize(), g_display.getFont()->y_size + 2);
+        g_display.setColor(BACKGROUND_COLOR);
+        g_display.fillRect(r);
     }
-//    else {
-//        // Update the yOffset;
-//        if (g_currentStatus) {
-//            g_display.setFont(SmallFont);
-//            *yOffset += g_display.getFont()->y_size + 2;
-//        }
-//    }
 }
 
 static inline void printStatus(char *statusMessage) {
@@ -364,7 +455,7 @@ static inline void checkAndClearStoredFault() {
 }
 
 // returns the prior y we drew at if we cleared
-static int printErrorsAndWarnings(int *yOffset) {
+static int printErrorsAndWarnings(int *yOffset, bool needsRedraw) {
     FaultKindOptions presentFaults, presentWarnings;
     StoredFaultKind storedFault;
     g_canBus.getFaults(&presentFaults, &storedFault, &presentWarnings);
@@ -376,7 +467,16 @@ static int printErrorsAndWarnings(int *yOffset) {
     static StoredFaultKind g_lastStoredFault = 0;
     static URect g_lastRect = URectMake(0, 0, 0, 0);
     
-    bool forcedUpdate = !URectIsEmpty(g_lastRect) && URectMinY(g_lastRect) != *yOffset;
+    bool forcedUpdate = needsRedraw || (!URectIsEmpty(g_lastRect) && URectMinY(g_lastRect) != *yOffset);
+    
+#if 0 //DEBUG
+    if (presentFaults) {
+        Serial.print("faults:");
+        Serial.print(presentFaults);
+        Serial.print(" y:");
+        Serial.println(*yOffset);
+    }
+#endif
     
     if (g_lastPresentFaults != presentFaults || g_lastPresentWarnings != presentWarnings || g_lastStoredFault != storedFault || forcedUpdate) {
         g_lastPresentFaults = presentFaults;
@@ -397,7 +497,7 @@ static int printErrorsAndWarnings(int *yOffset) {
         // Fill the last rect we drew as we may be drawing different things
         if (!URectIsEmpty(g_lastRect)) {
             g_display.setColor(BACKGROUND_COLOR);
-            // make sure we dont' fill before the last y we drew
+            // make sure we don't fill before the last y we drew
             int amountOver = *yOffset - URectMinY(g_lastRect);
             if (amountOver > 0) {
                 g_lastRect.origin.y += amountOver;
@@ -427,9 +527,11 @@ static int printErrorsAndWarnings(int *yOffset) {
             g_lastRect.size.height = URectMaxY(g_lastRect) - yOriginOffset;
             g_lastRect.origin.y = yOriginOffset;
         } else {
-            result = URectMaxY(g_lastRect); // store off the old value to redraw in case it went into the next area
+            result = URectMaxY(g_lastRect); // store off the  old value to redraw in case it went into the next area
             g_lastRect = URectMake(0, 0, 0, 0);
         }
+        
+        Serial.println("done printing");
     }
     return result;
 }
@@ -444,7 +546,7 @@ void setup() {
     
     int yOffset;
 
-    printStatus("BMS Display v1.0");
+    printStatus("BMS Display v1.1");
     delay(DELAY_BETWEEN_MESSAGES);
     printStatus("by corbin dunn");
     delay(DELAY_BETWEEN_MESSAGES);
@@ -452,6 +554,8 @@ void setup() {
     setupCanbusPins();
 
     if (g_canBus.init(ELITHION_CAN_SPEED)) {
+        // Dropping unnecessary stuff
+        /*
         printStatus("CAN bus initialized");
         delay(DELAY_BETWEEN_MESSAGES); // Show that for a brief moment...
         
@@ -469,10 +573,11 @@ void setup() {
         delay(DELAY_BETWEEN_MESSAGES);
         
         printStatus(NULL); // Show something?
+         */
     }
 }
 
-static inline void printTimeLeftCharging(int *yOffset) {
+static inline void printTimeLeftCharging(int *yOffset, bool needsRedraw) {
     // Calculate how long we have to finish charging at the current rate we are going
     float currentAvgSourceCurrent = abs(g_canBus.getAverageSourceCurrent());
     int depthOfDischarge = g_canBus.getDepthOfDischarge();
@@ -496,7 +601,7 @@ static inline void printTimeLeftCharging(int *yOffset) {
     static float g_lastValue = -1;
     static URect g_lastValueRect = URectMake(0, 0, 0, 0);
     float current = minutesLeft;
-    printCenteredText(text, yOffset, &g_lastValueRect, SmallFont);
+    printCenteredTextWithStandardColors(text, yOffset, &g_lastValueRect, SmallFont, needsRedraw);
     if (!text) {
         // no text to show, but leave space...
         g_display.setFont(SmallFont);
@@ -513,46 +618,67 @@ static void _formatVoltageInBuff(char *buffer, char *kind, float value, int cell
     sprintf(buffer, "%s cell: %d.%02dv (#%d)", kind, d1, d2, cellNumber);
 }
 
-static inline void printMinMaxCells(int *yOffset) {
+static inline void printMinMaxCells(int *yOffset, bool needsRedraw) {
     // This just always writes it again and again..which is okay, since it doesn't change positions, so it won't flicker
 
     char buffer[BUFFER_SIZE];
 
     _formatVoltageInBuff(buffer, "Min", g_canBus.getMinVoltage(), g_canBus.getMinVoltageCellNumber());
-    printCenteredText(buffer, yOffset, NULL, SmallFont);
+    printCenteredTextWithStandardColors(buffer, yOffset, NULL, SmallFont, needsRedraw);
 
     _formatVoltageInBuff(buffer, "Avg", g_canBus.getAvgVoltage(), g_canBus.getAvgVoltageCellNumber());
-    printCenteredText(buffer, yOffset, NULL, SmallFont);
+    printCenteredTextWithStandardColors(buffer, yOffset, NULL, SmallFont, needsRedraw);
 
     _formatVoltageInBuff(buffer, "Max", g_canBus.getMaxVoltage(), g_canBus.getMaxVoltageCellNumber());
-    printCenteredText(buffer, yOffset, NULL, SmallFont);
+    printCenteredTextWithStandardColors(buffer, yOffset, NULL, SmallFont, needsRedraw);
 }
 
 // string constants
-static const char *const c_ChargingStr = "Charging";
+static char *const c_ChargingStr = "Charging";
 static const char *const c_pack = "Pack";
 static const char *const c_cell = "Cell";
 static const char *const c_vFormatStr = "%s voltage too %s";
 static const char *const c_high = "high";
 static const char *const c_low = "low";
 static const char *const c_tempFormatStr = "Temperature too %s";
-static const char *const c_currentPeak = "Current peak too long";
+static char *const c_currentPeak = "Current peak too long";
 
-// TODO: corbin, clean this method up. it got ugly fast
-static inline void printChargingStatus(bool charging, int *yOffset) {
+static void setColorBasedOnLimitAmount(bool charging) {
+    if (g_lastLimitAmount == 100) {
+        // Normal BG color
+        if (charging) {
+            // Blue background
+            g_display.setColor(BLUE_COLOR);
+            g_display.setBackColor(BLUE_COLOR);
+        } else {
+            g_display.setColor(BACKGROUND_COLOR);
+            g_display.setBackColor(BACKGROUND_COLOR);
+        }
+    } else {
+        uint8_t limitBlue = 0; // Change the blue tone too when charging
+        // Make it more red as we get closer to the limit (0% is limited all the way)
+        byte limitRed = 255*(100-g_lastLimitAmount)/100;
+        if (charging) {
+            limitBlue = 255*(g_lastLimitAmount)/100;
+        } else {
+            limitBlue = 0;
+        }
+        g_display.setColor(limitRed, 0, limitBlue);
+        g_display.setBackColor(limitRed, 0, limitBlue);
+    }
+}
+
+static inline void printChargingOrLimitAmount(bool charging, int *yOffset, bool needsRedraw) {
     // Print a note at the top in blue.. assumes this never goes away
     int8_t limitAmount = charging ? g_canBus.getChargeLimitValue() : g_canBus.getDischargeLimitValue();
-#if 1 // DEBUG
+#if 0 //  DEBUG
     Serial.print(charging? "charg limit:" : "discharge");
     Serial.println(limitAmount);
 #endif
     
-    char buffer[BUFFER_SIZE];
-    
-    uint8_t limitRectColor = 255; // full red
-    uint8_t limitBlue = 0;
-    
-    if (g_lastLimitAmount != limitAmount) {
+    static URect g_lastDrawnRect = URectMake(0, 0, 0, 0);
+    if (g_lastLimitAmount != limitAmount || needsRedraw) {
+        char buffer[BUFFER_SIZE];
         // ignore errors in reading the limit value
         if (limitAmount != LimitCauseErrorReadingValue) {
             g_lastLimitAmount = limitAmount;
@@ -562,128 +688,248 @@ static inline void printChargingStatus(bool charging, int *yOffset) {
                 g_lastLimitAmount = 100;
             }
         }
+        setColorBasedOnLimitAmount(charging);
+        
+        char *text;
         if (g_lastLimitAmount == 100) {
-            if (charging) {
-                printStatusWithColor(c_ChargingStr, BLUE_COLOR, yOffset);
-            } else {
-                // don't show anything if we are normally ready and have no problems
-                printStatusWithColor(NULL, GRAY_COLOR, yOffset);
-            }
+            text = charging ? c_ChargingStr : NULL;
         } else {
             // Print the limit, and then we will print why we are limited next in red!!
             sprintf(buffer, "%s limited to %d%%", charging? c_ChargingStr : "Discharging", limitAmount);
-            // Make it more red as we get closer to the limit (0% is limited all the way)
-            limitRectColor = 255*(100-limitAmount)/100;
-            if (charging) {
-                limitBlue = 255*(limitAmount)/100;
-            } else {
-                limitBlue = 0;
-            }
-            printStatusWithColor(buffer, limitRectColor, 0, limitBlue, yOffset);
+            text = buffer;
         }
+        // We always force a redraw
+        printCenteredText(text, yOffset, &g_lastDrawnRect, SmallFont, needsRedraw, true);
+#if DEBUG
+        Serial.print("printing: ");
+        Serial.println(text);
+        Serial.print("height:");
+        Serial.println(URectHeight(g_lastDrawnRect));
+#endif
     } else {
-        // Limit amount hasn't changed...but update our y post
-        g_display.setFont(SmallFont);
-        *yOffset += g_display.getFont()->y_size + 2;
-        limitRectColor = 255*(100-g_lastLimitAmount)/100;
-        if (charging) {
-            limitBlue = 255*(limitAmount)/100;
-        } else {
-            limitBlue = 128;
-        }
-    }
-    
-    g_display.setFont(SmallFont);
-    
-    LimitCause limitCause = charging ? g_canBus.getChargeLimitCause() : g_canBus.getDischargeLimitCause();
-    static LimitCause g_lastLimitCause = 0;
-    if (limitCause != g_lastLimitCause) {
-        g_lastLimitCause = limitCause;
-        if (g_lastLimitCause == LimitCauseNone) {
-            // Fill in the last area...
-            g_display.setColor(BACKGROUND_COLOR);
-            URect r = URectMake(0, *yOffset, SCREEN_WIDTH, g_display.getFont()->y_size + 1);
-            g_display.fillRect(r);
-        } else {
-            const char *ptr = buffer;
-            switch (g_lastLimitCause) {
-                case LimitCausePackVoltageTooLow: {
-                    sprintf(buffer, c_vFormatStr, c_pack, c_low);
-                    break;
-                }
-                case LimitCausePackVoltageTooHigh: {
-                    sprintf(buffer, c_vFormatStr, c_pack, c_high);
-                    break;
-                }
-                case LimitCauseCellVoltageTooLow: {
-                    sprintf(buffer, c_vFormatStr, c_cell, c_low);
-                    break;
-                }
-                case LimitCauseCellVoltageTooHigh: {
-                    sprintf(buffer, c_vFormatStr, c_cell, c_high);
-                    break;
-                }
-                case LimitCauseTempTooHighToDischarge:
-                case LimitCauseTempTooHighToCharge: {
-                    sprintf(buffer, c_tempFormatStr, c_high);
-                    break;
-                }
-                case LimitCauseTempTooLowToCharge:
-                case LimitCauseTempTooLowToDischarge: {
-                    sprintf(buffer, c_tempFormatStr, c_low);
-                    break;
-                }
-                case LimitCauseDischargingCurrentPeakTooLong:
-                case LimitCauseChargingCurrentPeakTooLong: {
-                    ptr = c_currentPeak;
-                    break;
-                }
-            }
-            
-            printMessage(ptr, yOffset, 0, 1, limitRectColor, 0, limitBlue);
-        }
-    } else if (g_lastLimitCause != LimitCauseNone) {
-        // account for the limit so we don't draw over it
-        *yOffset += g_display.getFont()->y_size + 1;
+        *yOffset += URectHeight(g_lastDrawnRect);
     }
 }
 
-void loop() {
-    // High when it is doing work
-    digitalWrite(CAN_BUS_LED3, HIGH);
-    
-    checkAndClearStoredFault();
+static inline void printChargingLimitReason(bool charging, int *yOffset, bool needsRedraw) {
+    LimitCause limitCause = charging ? g_canBus.getChargeLimitCause() : g_canBus.getDischargeLimitCause();
+    static LimitCause g_lastLimitCause = 0;
+    static URect g_lastLimitRect = URectMake(0, 0, 0, 0);
+    if (limitCause != g_lastLimitCause || needsRedraw) {
+        g_lastLimitCause = limitCause;
+        char buffer[BUFFER_SIZE];
+        char *text = buffer;
+        switch (g_lastLimitCause) {
+            case LimitCauseNone: {
+                text = NULL;
+                break;
+            }
+            case LimitCausePackVoltageTooLow: {
+                sprintf(buffer, c_vFormatStr, c_pack, c_low);
+                break;
+            }
+            case LimitCausePackVoltageTooHigh: {
+                sprintf(buffer, c_vFormatStr, c_pack, c_high);
+                break;
+            }
+            case LimitCauseCellVoltageTooLow: {
+                sprintf(buffer, c_vFormatStr, c_cell, c_low);
+                break;
+            }
+            case LimitCauseCellVoltageTooHigh: {
+                sprintf(buffer, c_vFormatStr, c_cell, c_high);
+                break;
+            }
+            case LimitCauseTempTooHighToDischarge:
+            case LimitCauseTempTooHighToCharge: {
+                sprintf(buffer, c_tempFormatStr, c_high);
+                break;
+            }
+            case LimitCauseTempTooLowToCharge:
+            case LimitCauseTempTooLowToDischarge: {
+                sprintf(buffer, c_tempFormatStr, c_low);
+                break;
+            }
+            case LimitCauseDischargingCurrentPeakTooLong:
+            case LimitCauseChargingCurrentPeakTooLong: {
+                text = c_currentPeak;
+                break;
+            }
+        }
+        if (g_lastLimitCause) {
+            setColorBasedOnLimitAmount(charging);
+        } else {
+            g_display.setColor(BACKGROUND_COLOR);
+        }
+        printCenteredText(text, yOffset, &g_lastLimitRect, SmallFont, needsRedraw, true);
+    } else {
+        // account for the limit so we don't draw over it
+        *yOffset += URectHeight(g_lastLimitRect);
+    }
+}
 
-    // Find out if we are in discharge or charge mode (i don't support both)
+static inline void printChargingStatus(bool charging, int *yOffset, bool needsRedraw) {
+    printChargingOrLimitAmount(charging, yOffset, needsRedraw);
+    printChargingLimitReason(charging, yOffset, needsRedraw);
+}
+
+#define SOC_START_Y 40
+
+static inline void printStandardPage(bool needsRedraw) {
     IOFlags ioFlags = g_canBus.getIOFlags();
+    checkButtonsAndUpdateCurrentPage();
+    
     bool isCharging = ioFlags & IOFlagPowerFromSource; // If the bit isn't set, we are discharging, or we couldn't find the BMS on the can bus
     
     // Each area is completely responsible for the height and width in that area. It is almost as though I need to develop some lightweight view mechanism
     int yOffset = 0;
-    printChargingStatus(isCharging, &yOffset);
     
-    int lastY = printErrorsAndWarnings(&yOffset);
+    // print the common things
+    printChargingStatus(isCharging, &yOffset, needsRedraw);
+    checkButtonsAndUpdateCurrentPage();
+    
+    int lastY = printErrorsAndWarnings(&yOffset, needsRedraw);
+    needsRedraw = needsRedraw || (lastY > SOC_START_Y); // we might have to redraw the rest of the stuff depending on the location of the last errors..
     
     //hardcode the y start for everything else. The warnings and errors might bleed into this area.
-#define SOC_START_Y 40
-    bool needsRedraw = (lastY > SOC_START_Y);
     yOffset = SOC_START_Y;
     printSOCDisplay(&yOffset, needsRedraw);
-    printPackCurrent(&yOffset);
-    printPackVoltage(&yOffset);
-
+    checkButtonsAndUpdateCurrentPage();
+    printPackCurrent(&yOffset, needsRedraw);
+    checkButtonsAndUpdateCurrentPage();
+    printPackVoltage(&yOffset, needsRedraw);
+    checkButtonsAndUpdateCurrentPage();
+    
     if (isCharging) {
-        printTimeLeftCharging(&yOffset);
+        printTimeLeftCharging(&yOffset, needsRedraw);
     } else {
         // Leave a gap
         yOffset += 12;
     }
-
-    printMinMaxCells(&yOffset);
     
-    // TODO: remove the delays...?
-    delay(100);
-    digitalWrite(CAN_BUS_LED3, LOW);
-    delay(100);
+    printMinMaxCells(&yOffset, needsRedraw);
+}
+
+static inline void drawGraphSOC(int yPos) {
+    int soc = g_canBus.getStateOfCharge();
+    if (soc != g_lastSOC) {
+        g_lastSOC = soc;
+        // Right align; 4 chars
+        int xPos = g_display.getDisplayXSize() - g_display.getFont()->x_size*9;
+        if (g_lastSOC < 100) {
+            g_display.print(" ", xPos, yPos);
+            xPos++;
+        }
+        if (g_lastSOC < 10) {
+            g_display.print(" ", xPos, yPos);
+            xPos++;
+        }
+        char buffer[8];
+        sprintf(buffer, "SOC: %d%%", g_lastSOC);
+        g_display.print(buffer, xPos, yPos);
+    }
+}
+
+static inline void setColorForGraphForCellLevel(float cellLevel) {
+    if (cellLevel <= 2.7 || cellLevel >= 3.7) {
+        // sagging to below pretty low..red
+        g_display.setColor(RED_COLOR);
+    } else if (cellLevel < 3.0 || cellLevel >= 3.5) {
+        g_display.setColor(ORANGE_COLOR); // getting low or high
+    } else {
+        g_display.setColor(0, 255, 0); // green
+    }
+}
+
+static inline void drawCellGraphPage(bool needsRedraw) {
+    // individual cell levels; everything drawn each time
+    g_display.setFont(SmallFont);
+    g_display.setBackColor(BACKGROUND_COLOR);
+    g_display.setColor(WHITE_COLOR);
+    
+    int yPos = 1;
+    if (needsRedraw) {
+        // Print the title
+        g_display.print("Cell Levels", 0, yPos);
+    }
+    drawGraphSOC(yPos);
+    
+    yPos += g_display.getFont()->y_size + 4;
+    
+    int maxYPos = g_display.getDisplayYSize() - 1 - 3*g_display.getFont()->y_size - 2;
+    int xPos = 0;
+    int amountAvailableXWidth = g_display.getDisplayXSize() - 1;
+    g_display.setColor(BLUE_COLOR);
+    g_display.drawRoundRect(xPos, yPos, amountAvailableXWidth, maxYPos);
+    
+    amountAvailableXWidth -= 2;
+
+    yPos++;
+
+    int graphHeight = maxYPos - yPos - 1;
+    
+#define MIN_GRAPH_VOLTAGE 2.0
+#define MAX_GRAPH_VOLTAGE 4.0
+    
+    // Get each cell's voltage and draw it
+    int numberOfCells = g_canBus.getNumberOfCells();
+    if (numberOfCells > 0) {
+        int amountToShowPerCell = floor(amountAvailableXWidth / numberOfCells);
+        if (amountToShowPerCell <= 0) {
+            // Don't have enough room to show it all..should do something!
+            amountToShowPerCell = 3; // Need at least 2 pixels per cell; two for the color, and one for a separator color
+        }
+        // Find the best starting xPos
+        xPos = xPos + floor((amountAvailableXWidth - numberOfCells*amountToShowPerCell)/2);
+        
+        // TODO: should get the cell number from the bms..
+        for (int cell = 0; cell < numberOfCells; cell++) {
+            float voltage = g_canBus.getVoltageForCell(cell);
+            // how much of a percent is that?
+            float percent = (voltage - MIN_GRAPH_VOLTAGE) / (MAX_GRAPH_VOLTAGE - MIN_GRAPH_VOLTAGE);
+            int voltYAmount = round(percent * graphHeight);
+            int yPosForLevel = maxYPos - voltYAmount;
+            // Fill with background to that pos, then down with the color
+            int maxXForColor = xPos + amountToShowPerCell - 2;
+            int backgroundColorAmount = yPosForLevel - yPos;
+            if (backgroundColorAmount > 0) {
+                g_display.setColor(BACKGROUND_COLOR);
+                g_display.fillRect(xPos, yPos, maxXForColor, yPosForLevel - 1);
+            }
+            setColorForGraphForCellLevel(voltage);
+            g_display.fillRect(xPos, yPosForLevel, maxXForColor, maxYPos);
+            
+            xPos += amountToShowPerCell;
+        }
+    }
+}
+
+void loop() {
+    // We do checkButtons a lot, as we might "miss" some due to the timeout for each call
+    checkButtonsAndUpdateCurrentPage();
+    checkAndClearStoredFault();
+    
+    bool needsRedraw = false;
+    // See if the page we are showing is different
+    if (g_lastPageShown != g_currentPage) {
+        g_lastPageShown = g_currentPage;
+        // fill with black
+        g_display.clrScr();
+        
+        g_lastSOC = -1; // Reset the SOC
+        needsRedraw = true;
+    }
+
+    switch (g_currentPage) {
+        case CurrentPageStandard: {
+            printStandardPage(needsRedraw);
+            break;
+        }
+        case CurrentPageDetailed: {
+            drawCellGraphPage(needsRedraw);
+            break;
+        }
+            
+    }
 }
 
