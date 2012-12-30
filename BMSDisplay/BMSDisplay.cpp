@@ -15,12 +15,7 @@
 //#include <EEPROM.h>
 //#include <avr/eeprom.h>
 
-//#include <DS1307RTC.h>  // a basic DS1307 library that returns time as a time_t
-//#include <Time.h>
-//#include <TimeAlarms.h> // NOTE: not using; I could remove this
-
 #include <stdint.h> // We can compile without this, but it kills xcode completion without it! it took me a while to discover that..
-
 #include <UTFT.h>
 
 // Configure your screen sizes. Only tested with this size, and the Adafruit 2.2" TFT display
@@ -41,7 +36,7 @@
 
 #define DELAY_BETWEEN_MESSAGES 500
 
-#if DEBUG
+#if 0 // DEBUG
     // Make a nice visual assert using the display!
     #define ASSERT(cond, message) \
         if (!(cond)) { \
@@ -60,26 +55,33 @@ extern uint8_t SmallFont[];
 extern uint8_t BigFont[];
 extern uint8_t SevenSegNumFont[];
 
-//int CAN_BUS_LED2 = 8;
-int CAN_BUS_LED3 = 7;
-
 #define DISPLAY_CHIP_SELECT 3 // the only variable pin (usually pin 10, but we want it on 3, as the Can bus shield uses 10)
 #define DISPLAY_RESET 9 // Don't change
 #define BUTTON_PIN A0
 
+// This must match the bitset options above
+#define MAX_FAULT_MESSAGES 10
+char *FaultKindMessages[MAX_FAULT_MESSAGES] = {
+    "Driving and plugged in",
+    "Interlock tripped",
+    "Communication fault",
+    "Charge over current",
+    "Discharge over current",
+    "Over Temperature",
+    "Under voltage",
+    "Over voltage",
+    "BMS not found",
+    "CAN Bus init failed"
+};
 
 // MISO == 12
 UTFT g_display(ADAFRUIT_2_2_TFT, MOSI/*11*/, SCK /*13*/, DISPLAY_CHIP_SELECT, DISPLAY_RESET);
 
-CanbusClass g_canBus;
+// Shared global buffer for formatting
+#define BUFFER_SIZE 28 // 27, max characters we can show, plus a NULL
+char g_buffer[BUFFER_SIZE];
 
-static inline void setupCanbusPins() {
-//    pinMode(CAN_BUS_LED2, OUTPUT);
-    pinMode(CAN_BUS_LED3, OUTPUT);
-    
-//    digitalWrite(CAN_BUS_LED2, LOW);
-    digitalWrite(CAN_BUS_LED3, LOW);
-}
+CanbusClass g_canBus;
 
 static inline void setupLCD() {
     g_display.InitLCD();
@@ -87,14 +89,8 @@ static inline void setupLCD() {
 }
 
 // 5 buttons are hooked up, each to a different resistor value from a 5v input, all tapped by one analog read pin to see the voltage value
-
-static inline int getPushedButton() {
+static inline byte getPushedButton() {
     int val = analogRead(BUTTON_PIN);
-    
-#ifdef DEBUG
-//    Serial.print("button voltage value:");
-//    Serial.println(val);
-#endif
     
 #define BUTTON_ERROR_MARGIN 15  // +/- this value
     // Values found by measurement. Each button adds 1k resistance, and after the last resistor there is a 10k resistor
@@ -117,23 +113,27 @@ static inline int getPushedButton() {
     return 0;
 }
 
-typedef enum {
+enum _CurrentPage {
     CurrentPageStandard,
     CurrentPageDetailed,
-} CurrentPage;
+};
+
+typedef uint8_t CurrentPage;
 
 static CurrentPage g_currentPage = CurrentPageStandard;
 static CurrentPage g_lastPageShown = CurrentPageStandard;
 
 static void checkButtonsAndUpdateCurrentPage() {
-    int pushedButton = getPushedButton();
+    byte pushedButton = getPushedButton();
     if (pushedButton != 0) {
         // Wait for the button to be up
         while (getPushedButton() != 0) {
             // ...
         }
+#if DEBUG
         Serial.print("button:");
         Serial.println(pushedButton);
+#endif
         // No process it
         switch (pushedButton) {
             case 1: {
@@ -163,12 +163,12 @@ static void checkButtonsAndUpdateCurrentPage() {
 
 
 static int8_t g_lastLimitAmount = -2; // Forces us to go through the code once; -1 is special
-static int g_lastSOC = -1;
+static uint8_t g_lastSOC = -1;
 
-void printSOCDisplay(int *yOffset, bool needsRedraw) {
+static inline void printSOCDisplay(int *yOffset, bool needsRedraw) {
     static URect g_lastSOCRect = URectMake(0, 0, 0, 0);
     
-    int soc = g_canBus.getStateOfCharge();
+    uint8_t soc = g_canBus.getStateOfCharge();
     // We always redraw if the limit is 0!
     if (soc != g_lastSOC || needsRedraw|| g_lastLimitAmount == 0) {
         g_lastSOC = soc;
@@ -241,7 +241,7 @@ void printCenteredText(char *text, int *yOffset, URect *lastRect, uint8_t *font,
 
         // manual centering...
         int textWidth = strlen(text)*g_display.getFont()->x_size;
-        int xPos = floor((g_display.getDisplayXSize() - textWidth) / 2.0);
+        int xPos = floor((SCREEN_WIDTH - textWidth) / 2.0);
         
         URect currentRect = URectMake(xPos, *yOffset, textWidth, g_display.getFont()->y_size);
         
@@ -296,17 +296,14 @@ void printCenteredTextWithStandardColors(char *text, int *yOffset, URect *lastRe
     printCenteredText(text, yOffset, lastRect, font, needsRedraw, false);
 }
 
-#define BUFFER_SIZE 28 // 27, max characters we can show, plus a NULL
-
 void printCenteredTextWithValue(char *text, int *yOffset, float *lastValue, float newValue, URect *lastRect, uint8_t *font, bool needsRedraw) {
     // print it, if it is different or has moved
     if (newValue != *lastValue || (*yOffset != URectMinY(*lastRect)) || needsRedraw) {
         *lastValue = newValue;
 
         // format the text then print it
-        char buffer[BUFFER_SIZE];
-        float_sprintf(buffer, text, newValue);
-        printCenteredTextWithStandardColors(buffer, yOffset, lastRect, font, needsRedraw);
+        float_sprintf(g_buffer, text, newValue);
+        printCenteredTextWithStandardColors(g_buffer, yOffset, lastRect, font, needsRedraw);
     } else {
         *yOffset = URectMaxY(*lastRect);
     }
@@ -326,50 +323,11 @@ void printPackVoltage(int *yOffset, bool needsRedraw) {
     printCenteredTextWithValue("volts", yOffset, &g_lastValue, voltage, &g_lastValueRect, BigFont, needsRedraw);
 }
 
-//void printLoadCurrent(int *yOffset) {
-//    static float g_lastValue = -1;
-//    static URect g_lastValueRect = URectMake(0, 0, 0, 0);
-//    float current = abs(g_canBus.getLoadCurrent());
-//    printCenteredTextWithValue("amps (current)", yOffset, &g_lastValue, current, &g_lastValueRect, SmallFont);
-//}
-//
-//void printAvgSourceCurrent(int *yOffset) {
-//    static float g_lastValue = -1;
-//    static URect g_lastValueRect = URectMake(0, 0, 0, 0);
-//    float current = abs(g_canBus.getAverageSourceCurrent());
-//    printCenteredTextWithValue("amps avg charge", yOffset, &g_lastValue, current, &g_lastValueRect, SmallFont);
-//}
-
-
 // background color is passed in
-void printMessage(const char *message, int *yOffset, int yMinOutset, int yMaxOutset, byte r, byte g, byte b) {
-    unsigned char fontHeight = g_display.getFont()->y_size;
-    int totalHeight = yMinOutset + fontHeight + yMaxOutset;
+void printMessage(char *message, int *yOffset, byte r, byte g, byte b) {
     g_display.setColor(r, g, b);
-    g_display.fillRect(0, *yOffset, SCREEN_WIDTH - 1, *yOffset + totalHeight);
-    g_display.setColor(WHITE_COLOR); // white text always for now
     g_display.setBackColor(r, g, b);
-//    int textWidth = strlen(message)*g_display.getFont()->x_size;
-//    int xPos = floor((g_display.getDisplayXSize() - textWidth) / 2.0);
-    g_display.print(message, CENTER, *yOffset + yMinOutset);
-    *yOffset += totalHeight;
-}
-
-static void printStatusWithColor(const char *statusMessage, byte r, byte g, byte b, int *yOffset) {
-    if (statusMessage != NULL) {
-        g_display.setFont(SmallFont);
-        printMessage(statusMessage, yOffset, 1, 1, r, g, b);
-    } else {
-        // Clear the prior...
-        URect r = URectMake(0, *yOffset, g_display.getDisplayXSize(), g_display.getFont()->y_size + 2);
-        g_display.setColor(BACKGROUND_COLOR);
-        g_display.fillRect(r);
-    }
-}
-
-static inline void printStatus(char *statusMessage) {
-    int yOffset = 0;
-    printStatusWithColor(statusMessage, STATUS_COLOR, &yOffset);
+    printCenteredText(message, yOffset, NULL, SmallFont, false, true);
 }
 
 static void printFaultsOrWarnings(FaultKindOptions faults, int *yOffset, byte r, byte g, byte b) {
@@ -381,13 +339,15 @@ static void printFaultsOrWarnings(FaultKindOptions faults, int *yOffset, byte r,
         const FaultKindOptions faultMask = 0x1; // rightmost bit
         if ((faults & faultMask) == faultMask) {
             // That fault is set; print it
-            printMessage(FaultKindMessages[offsetIntoFaultMesssages], yOffset, 0, 0, r, g, b);
+            printMessage(FaultKindMessages[offsetIntoFaultMesssages], yOffset, r, g, b);
         }
         faults = faults >> 1; // Drop off the right most bit
         offsetIntoFaultMesssages++;
     }
     
 }
+
+char *c_strWarningFormat = "Warning: %s";
 
 static void printWarnings(FaultKindOptions warnings, int *yOffset, byte r, byte g, byte b) {
     // printFaultsOrWarnings should work, but the values aren't what I expect. By observation, I'm figuring things out. If it is a bitset...i'm screwed
@@ -396,23 +356,23 @@ static void printWarnings(FaultKindOptions warnings, int *yOffset, byte r, byte 
             // Nothing to do, no warnings
             break;
         }
+        case 1:
+        {
+            sprintf(g_buffer, c_strWarningFormat, FaultKindMessages[StoredFaultKindUnderVoltage - 1]);
+            break;
+        }
         case 2: {
-            char buffer[BUFFER_SIZE];
-            sprintf(buffer, "Warning: %s", FaultKindMessages[StoredFaultKindOverVoltage - 1]);
-#if 0 // DEBUG
-            Serial.println("    ----------- printing warning");
-            Serial.println(buffer);
-#endif
-            printMessage(buffer, yOffset, 0, 0, WARNING_COLOR);
+            sprintf(g_buffer, c_strWarningFormat, FaultKindMessages[StoredFaultKindOverVoltage - 1]);
             break;
         }
         default: {
             // Unknown yet...
-            char buffer[BUFFER_SIZE];
-            sprintf(buffer, "RAW WARNINGS: %d", warnings);
-            printMessage(buffer, yOffset, 0, 0, WARNING_COLOR);
+            sprintf(g_buffer, "Warning: %d", warnings);
             break;
         }
+    }
+    if (warnings) {
+        printMessage(g_buffer, yOffset, WARNING_COLOR);
     }
 }
 
@@ -422,12 +382,11 @@ static void printStoredFault(StoredFaultKind storedFault, int *yOffset, byte r, 
         if (storedFault < StoredFaultKindNoBatteryVoltage) {
             // Find the offset into the messages
             int offsetIntoFaultMesssages = storedFault - 1;
-            printMessage(FaultKindMessages[offsetIntoFaultMesssages], yOffset, 0, 0, r, g, b);
+            printMessage(FaultKindMessages[offsetIntoFaultMesssages], yOffset, r, g, b);
         } else {
             // Print the error number
-            char buffer[BUFFER_SIZE];
-            sprintf(buffer, "Stored error number: %03u", storedFault);
-            printMessage(buffer, yOffset, 0, 0, r, g, b);
+            sprintf(g_buffer, "Stored error: %03u", storedFault);
+            printMessage(g_buffer, yOffset, r, g, b);
         }
     }
 }
@@ -530,8 +489,6 @@ static int printErrorsAndWarnings(int *yOffset, bool needsRedraw) {
             result = URectMaxY(g_lastRect); // store off the  old value to redraw in case it went into the next area
             g_lastRect = URectMake(0, 0, 0, 0);
         }
-        
-        Serial.println("done printing");
     }
     return result;
 }
@@ -539,42 +496,18 @@ static int printErrorsAndWarnings(int *yOffset, bool needsRedraw) {
 void setup() {
 #if DEBUG
     Serial.begin(9600);
-    Serial.println("initialized");
 #endif
     
     setupLCD();
     
-    int yOffset;
-
-    printStatus("BMS Display v1.1");
+    int yOffset = 0;
+    printMessage("BMS Display v1.1", &yOffset, STATUS_COLOR);
     delay(DELAY_BETWEEN_MESSAGES);
-    printStatus("by corbin dunn");
+    yOffset = 0;
+    printMessage("by corbin dunn", &yOffset, STATUS_COLOR);
     delay(DELAY_BETWEEN_MESSAGES);
     
-    setupCanbusPins();
-
-    if (g_canBus.init(ELITHION_CAN_SPEED)) {
-        // Dropping unnecessary stuff
-        /*
-        printStatus("CAN bus initialized");
-        delay(DELAY_BETWEEN_MESSAGES); // Show that for a brief moment...
-        
-        // TODO: Get and print the elithion BMS version
-        
-        // See how we are powered
-        IOFlags ioFlags = g_canBus.getIOFlags();
-        if (ioFlags & IOFlagPowerFromSource) {
-            printStatus("BMS in charging mode");
-        } else if (ioFlags & IOFlagPowerFromLoad) {
-            printStatus("BMS in discharging mode");
-        } else {
-            // BMS not found...
-        }
-        delay(DELAY_BETWEEN_MESSAGES);
-        
-        printStatus(NULL); // Show something?
-         */
-    }
+    g_canBus.init(ELITHION_CAN_SPEED); // Errors initing are ignored
 }
 
 static inline void printTimeLeftCharging(int *yOffset, bool needsRedraw) {
@@ -584,18 +517,17 @@ static inline void printTimeLeftCharging(int *yOffset, bool needsRedraw) {
     int minutesLeft = 0;
     
     char *text = NULL;
-    char buffer[BUFFER_SIZE];
     if (depthOfDischarge > 0 && currentAvgSourceCurrent > 0) {
         float hoursFractionalLeft = (float)depthOfDischarge / (float)currentAvgSourceCurrent;
         int minutesLeft = hoursFractionalLeft*60;
         if (hoursFractionalLeft < 1) {
-            sprintf(buffer, "%d minutes left", minutesLeft);
-            text = buffer;
+            sprintf(g_buffer, "%d minutes left", minutesLeft);
+            text = g_buffer;
         } else {
             int hoursLeft = floor(hoursFractionalLeft);
             minutesLeft = minutesLeft - hoursLeft * 60;
-            sprintf(buffer, "%d hrs %d mins left", hoursLeft, minutesLeft);
-            text = buffer;
+            sprintf(g_buffer, "%d hrs %d mins left", hoursLeft, minutesLeft);
+            text = g_buffer;
         }
     }
     static float g_lastValue = -1;
@@ -621,16 +553,14 @@ static void _formatVoltageInBuff(char *buffer, char *kind, float value, int cell
 static inline void printMinMaxCells(int *yOffset, bool needsRedraw) {
     // This just always writes it again and again..which is okay, since it doesn't change positions, so it won't flicker
 
-    char buffer[BUFFER_SIZE];
+    _formatVoltageInBuff(g_buffer, "Min", g_canBus.getMinVoltage(), g_canBus.getMinVoltageCellNumber());
+    printCenteredTextWithStandardColors(g_buffer, yOffset, NULL, SmallFont, needsRedraw);
 
-    _formatVoltageInBuff(buffer, "Min", g_canBus.getMinVoltage(), g_canBus.getMinVoltageCellNumber());
-    printCenteredTextWithStandardColors(buffer, yOffset, NULL, SmallFont, needsRedraw);
+    _formatVoltageInBuff(g_buffer, "Avg", g_canBus.getAvgVoltage(), g_canBus.getAvgVoltageCellNumber());
+    printCenteredTextWithStandardColors(g_buffer, yOffset, NULL, SmallFont, needsRedraw);
 
-    _formatVoltageInBuff(buffer, "Avg", g_canBus.getAvgVoltage(), g_canBus.getAvgVoltageCellNumber());
-    printCenteredTextWithStandardColors(buffer, yOffset, NULL, SmallFont, needsRedraw);
-
-    _formatVoltageInBuff(buffer, "Max", g_canBus.getMaxVoltage(), g_canBus.getMaxVoltageCellNumber());
-    printCenteredTextWithStandardColors(buffer, yOffset, NULL, SmallFont, needsRedraw);
+    _formatVoltageInBuff(g_buffer, "Max", g_canBus.getMaxVoltage(), g_canBus.getMaxVoltageCellNumber());
+    printCenteredTextWithStandardColors(g_buffer, yOffset, NULL, SmallFont, needsRedraw);
 }
 
 // string constants
@@ -678,7 +608,6 @@ static inline void printChargingOrLimitAmount(bool charging, int *yOffset, bool 
     
     static URect g_lastDrawnRect = URectMake(0, 0, 0, 0);
     if (g_lastLimitAmount != limitAmount || needsRedraw) {
-        char buffer[BUFFER_SIZE];
         // ignore errors in reading the limit value
         if (limitAmount != LimitCauseErrorReadingValue) {
             g_lastLimitAmount = limitAmount;
@@ -695,12 +624,12 @@ static inline void printChargingOrLimitAmount(bool charging, int *yOffset, bool 
             text = charging ? c_ChargingStr : NULL;
         } else {
             // Print the limit, and then we will print why we are limited next in red!!
-            sprintf(buffer, "%s limited to %d%%", charging? c_ChargingStr : "Discharging", limitAmount);
-            text = buffer;
+            sprintf(g_buffer, "%s limited to %d%%", charging? c_ChargingStr : "Discharging", limitAmount);
+            text = g_buffer;
         }
         // We always force a redraw
         printCenteredText(text, yOffset, &g_lastDrawnRect, SmallFont, needsRedraw, true);
-#if DEBUG
+#if 0 // DEBUG
         Serial.print("printing: ");
         Serial.println(text);
         Serial.print("height:");
@@ -717,37 +646,36 @@ static inline void printChargingLimitReason(bool charging, int *yOffset, bool ne
     static URect g_lastLimitRect = URectMake(0, 0, 0, 0);
     if (limitCause != g_lastLimitCause || needsRedraw) {
         g_lastLimitCause = limitCause;
-        char buffer[BUFFER_SIZE];
-        char *text = buffer;
+        char *text = g_buffer;
         switch (g_lastLimitCause) {
             case LimitCauseNone: {
                 text = NULL;
                 break;
             }
             case LimitCausePackVoltageTooLow: {
-                sprintf(buffer, c_vFormatStr, c_pack, c_low);
+                sprintf(g_buffer, c_vFormatStr, c_pack, c_low);
                 break;
             }
             case LimitCausePackVoltageTooHigh: {
-                sprintf(buffer, c_vFormatStr, c_pack, c_high);
+                sprintf(g_buffer, c_vFormatStr, c_pack, c_high);
                 break;
             }
             case LimitCauseCellVoltageTooLow: {
-                sprintf(buffer, c_vFormatStr, c_cell, c_low);
+                sprintf(g_buffer, c_vFormatStr, c_cell, c_low);
                 break;
             }
             case LimitCauseCellVoltageTooHigh: {
-                sprintf(buffer, c_vFormatStr, c_cell, c_high);
+                sprintf(g_buffer, c_vFormatStr, c_cell, c_high);
                 break;
             }
             case LimitCauseTempTooHighToDischarge:
             case LimitCauseTempTooHighToCharge: {
-                sprintf(buffer, c_tempFormatStr, c_high);
+                sprintf(g_buffer, c_tempFormatStr, c_high);
                 break;
             }
             case LimitCauseTempTooLowToCharge:
             case LimitCauseTempTooLowToDischarge: {
-                sprintf(buffer, c_tempFormatStr, c_low);
+                sprintf(g_buffer, c_tempFormatStr, c_low);
                 break;
             }
             case LimitCauseDischargingCurrentPeakTooLong:
@@ -815,7 +743,7 @@ static inline void drawGraphSOC(int yPos) {
     if (soc != g_lastSOC) {
         g_lastSOC = soc;
         // Right align; 4 chars
-        int xPos = g_display.getDisplayXSize() - g_display.getFont()->x_size*9;
+        int xPos = SCREEN_WIDTH - g_display.getFont()->x_size*9;
         if (g_lastSOC < 100) {
             g_display.print(" ", xPos, yPos);
             xPos++;
@@ -824,9 +752,8 @@ static inline void drawGraphSOC(int yPos) {
             g_display.print(" ", xPos, yPos);
             xPos++;
         }
-        char buffer[8];
-        sprintf(buffer, "SOC: %d%%", g_lastSOC);
-        g_display.print(buffer, xPos, yPos);
+        sprintf(g_buffer, "SOC: %d%%", g_lastSOC);
+        g_display.print(g_buffer, xPos, yPos);
     }
 }
 
@@ -840,6 +767,16 @@ static inline void setColorForGraphForCellLevel(float cellLevel) {
         g_display.setColor(0, 255, 0); // green
     }
 }
+
+static void _formatVoltage2InBuff(char *buffer, char *kind, float value) {
+    int d1 = floor(value);
+    float f2 = value - d1;     // Get fractional part (678.0123 - 678 = 0.0123).
+    int d2 = round(f2 * 100);   // Turn into integer with 2 digits
+    
+    char *format;
+    sprintf(buffer, "%s: %d.%02dv", kind, d1, d2);
+}
+
 
 static inline void drawCellGraphPage(bool needsRedraw) {
     // individual cell levels; everything drawn each time
@@ -856,9 +793,9 @@ static inline void drawCellGraphPage(bool needsRedraw) {
     
     yPos += g_display.getFont()->y_size + 4;
     
-    int maxYPos = g_display.getDisplayYSize() - 1 - 3*g_display.getFont()->y_size - 2;
+    int maxYPos = SCREEN_HEIGHT - 1 - 3*g_display.getFont()->y_size - 2;
     int xPos = 0;
-    int amountAvailableXWidth = g_display.getDisplayXSize() - 1;
+    int amountAvailableXWidth = SCREEN_WIDTH - 1;
     g_display.setColor(BLUE_COLOR);
     g_display.drawRoundRect(xPos, yPos, amountAvailableXWidth, maxYPos);
     
@@ -871,6 +808,18 @@ static inline void drawCellGraphPage(bool needsRedraw) {
 #define MIN_GRAPH_VOLTAGE 2.0
 #define MAX_GRAPH_VOLTAGE 4.0
     
+#define MAX_CELL_NUMBERS_TO_SHOW 4
+
+    // I really only care about min and max cells
+    byte minCellCount = 0;
+    byte minCells[MAX_CELL_NUMBERS_TO_SHOW];
+    
+    byte maxCells[MAX_CELL_NUMBERS_TO_SHOW];
+    byte maxCellCount = 0; // at most 128 cells...
+    
+    float minCellVoltage = 5.0;
+    float maxCellVoltage = 0.0;
+    
     // Get each cell's voltage and draw it
     int numberOfCells = g_canBus.getNumberOfCells();
     if (numberOfCells > 0) {
@@ -882,9 +831,36 @@ static inline void drawCellGraphPage(bool needsRedraw) {
         // Find the best starting xPos
         xPos = xPos + floor((amountAvailableXWidth - numberOfCells*amountToShowPerCell)/2);
         
-        // TODO: should get the cell number from the bms..
         for (int cell = 0; cell < numberOfCells; cell++) {
             float voltage = g_canBus.getVoltageForCell(cell);
+            // Keep track of min/max
+            if (voltage < minCellVoltage) {
+                minCellVoltage = voltage;
+                // reset
+                minCells[0] = cell;
+                minCellCount = 1;
+            } else if (voltage == minCellVoltage) {
+                // Keep track of it..
+                if (minCellCount < MAX_CELL_NUMBERS_TO_SHOW) {
+                    minCells[minCellCount] = cell;
+                }
+                minCellCount++;
+            }
+            
+            // Keep track of min/max
+            if (voltage > maxCellVoltage) {
+                maxCellVoltage = voltage;
+                // reset
+                maxCells[0] = cell;
+                maxCellCount = 1;
+            } else if (voltage == maxCellVoltage) {
+                // Keep track of it..
+                if (maxCellCount < MAX_CELL_NUMBERS_TO_SHOW) {
+                    maxCells[maxCellCount] = cell;
+                }
+                maxCellCount++;
+            }
+            
             // how much of a percent is that?
             float percent = (voltage - MIN_GRAPH_VOLTAGE) / (MAX_GRAPH_VOLTAGE - MIN_GRAPH_VOLTAGE);
             int voltYAmount = round(percent * graphHeight);
@@ -894,7 +870,7 @@ static inline void drawCellGraphPage(bool needsRedraw) {
             int backgroundColorAmount = yPosForLevel - yPos;
             if (backgroundColorAmount > 0) {
                 g_display.setColor(BACKGROUND_COLOR);
-                g_display.fillRect(xPos, yPos, maxXForColor, yPosForLevel - 1);
+                g_display.fillRect(xPos, yPos, maxXForColor, yPosForLevel);
             }
             setColorForGraphForCellLevel(voltage);
             g_display.fillRect(xPos, yPosForLevel, maxXForColor, maxYPos);
@@ -902,6 +878,74 @@ static inline void drawCellGraphPage(bool needsRedraw) {
             xPos += amountToShowPerCell;
         }
     }
+    
+    g_display.setColor(WHITE_COLOR);
+
+    byte charWidth = g_display.getFont()->x_size;
+    byte fontHeight = g_display.getFont()->y_size;
+
+    // TODO: maybe make this a function instead of a long bunch of code that is very similar?
+    yPos = maxYPos + 2;
+    xPos = charWidth; // initial spacing
+    _formatVoltage2InBuff(g_buffer, "Min", minCellVoltage);
+    g_display.print(g_buffer, xPos, yPos);
+    xPos = xPos + strlen(g_buffer)*charWidth + charWidth;
+    g_display.print("(", xPos, yPos);
+    xPos += charWidth;
+    // print the numbers
+    for (int cell = 0; cell < min(minCellCount, MAX_CELL_NUMBERS_TO_SHOW); cell++) {
+        if (cell > 0) {
+            g_display.print(",", xPos, yPos);
+            xPos += charWidth;
+        }
+        sprintf(g_buffer, "%d", minCells[cell]);
+        g_display.print(g_buffer, xPos, yPos);
+        xPos += strlen(g_buffer)*charWidth;
+    }
+    if (minCellCount > MAX_CELL_NUMBERS_TO_SHOW) {
+        g_display.print(",...)", xPos, yPos);
+        xPos += charWidth * 5;
+    } else {
+        g_display.print(")", xPos, yPos);
+        xPos += charWidth * 1;
+    }
+    // Fill to the end
+    g_display.setColor(BACKGROUND_COLOR);
+    g_display.fillRect(xPos, yPos, SCREEN_WIDTH - 1, yPos + fontHeight);
+    
+    yPos += fontHeight;
+    
+    // max        -------------- this code is almost identical to the above code and should be a function...
+    g_display.setColor(WHITE_COLOR);
+    yPos = yPos + 2;
+    xPos = charWidth; // initial spacing
+    _formatVoltage2InBuff(g_buffer, "Max", maxCellVoltage);
+    g_display.print(g_buffer, xPos, yPos);
+    xPos = xPos + strlen(g_buffer)*charWidth + charWidth;
+    g_display.print("(", xPos, yPos);
+    xPos += charWidth;
+    // print the numbers
+    for (int cell = 0; cell < min(maxCellCount, MAX_CELL_NUMBERS_TO_SHOW); cell++) {
+        if (cell > 0) {
+            g_display.print(",", xPos, yPos);
+            xPos += charWidth;
+        }
+        sprintf(g_buffer, "%d", maxCells[cell]);
+        g_display.print(g_buffer, xPos, yPos);
+        xPos += strlen(g_buffer)*charWidth;
+    }
+    
+    if (maxCellCount > MAX_CELL_NUMBERS_TO_SHOW) {
+        g_display.print(",...)", xPos, yPos);
+        xPos += charWidth * 5;
+    } else {
+        g_display.print(")", xPos, yPos);
+        xPos += charWidth * 1;
+    }
+    // Fill to the end
+    g_display.setColor(BACKGROUND_COLOR);
+    g_display.fillRect(xPos, yPos, SCREEN_WIDTH - 1, yPos + fontHeight);
+    yPos += fontHeight;
 }
 
 void loop() {
